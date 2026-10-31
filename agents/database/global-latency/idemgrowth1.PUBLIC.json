@@ -1,0 +1,1788 @@
+{
+  "scope": "owned local socket-only MySQL correctness, not SUT/HTTP/performance acceptance",
+  "checks": {},
+  "runtime_sha256": "84309825b2e0a214130a0871cd493773aab07f36721dddf45311c9312e68345a",
+  "ddl_sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+  "server": [
+    "8.4.11",
+    "REPEATABLE-READ",
+    1,
+    1
+  ],
+  "effective_isolation": "READ-COMMITTED",
+  "storage_before": {
+    "rows": 0,
+    "pending": 0,
+    "complete": 0,
+    "response_binary_json_total_bytes": 0,
+    "response_binary_json_mean_bytes": "0.0000",
+    "table_stats": [
+      16384,
+      32768,
+      0,
+      "Dynamic"
+    ],
+    "persistent_index_stats": [
+      [
+        "PRIMARY",
+        "n_leaf_pages",
+        1
+      ],
+      [
+        "PRIMARY",
+        "size",
+        1
+      ],
+      [
+        "ix_idempotency_recovery",
+        "n_leaf_pages",
+        1
+      ],
+      [
+        "ix_idempotency_recovery",
+        "size",
+        1
+      ],
+      [
+        "uq_idempotency_scope",
+        "n_leaf_pages",
+        1
+      ],
+      [
+        "uq_idempotency_scope",
+        "size",
+        1
+      ]
+    ]
+  },
+  "metrics_before": {
+    "index_page_splits": 0,
+    "Innodb_buffer_pool_pages_flushed": 0,
+    "Innodb_data_written": 2987520,
+    "Innodb_os_log_written": 2320896,
+    "Innodb_redo_log_current_lsn": 20985545
+  },
+  "http_requests": [
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 20471666,
+      "server_timing": "app;dur=11.652"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 10096500,
+      "server_timing": "app;dur=8.059"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8672750,
+      "server_timing": "app;dur=6.879"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 9483125,
+      "server_timing": "app;dur=7.625"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8589375,
+      "server_timing": "app;dur=6.845"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8690833,
+      "server_timing": "app;dur=6.955"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8550542,
+      "server_timing": "app;dur=6.734"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 9133208,
+      "server_timing": "app;dur=7.341"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8524750,
+      "server_timing": "app;dur=6.821"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8757000,
+      "server_timing": "app;dur=7.046"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8563958,
+      "server_timing": "app;dur=6.768"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8540334,
+      "server_timing": "app;dur=6.779"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8350375,
+      "server_timing": "app;dur=6.592"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8855459,
+      "server_timing": "app;dur=7.085"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8619625,
+      "server_timing": "app;dur=6.846"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8596291,
+      "server_timing": "app;dur=6.860"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8180250,
+      "server_timing": "app;dur=6.468"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8824125,
+      "server_timing": "app;dur=7.029"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8469125,
+      "server_timing": "app;dur=6.740"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8832916,
+      "server_timing": "app;dur=7.022"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8768792,
+      "server_timing": "app;dur=6.955"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 9575084,
+      "server_timing": "app;dur=7.647"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8450917,
+      "server_timing": "app;dur=6.646"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 9147792,
+      "server_timing": "app;dur=7.326"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8485125,
+      "server_timing": "app;dur=6.727"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8902709,
+      "server_timing": "app;dur=7.152"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8228750,
+      "server_timing": "app;dur=6.488"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8937792,
+      "server_timing": "app;dur=7.194"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8512000,
+      "server_timing": "app;dur=6.754"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 9974917,
+      "server_timing": "app;dur=8.018"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 9330875,
+      "server_timing": "app;dur=7.362"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 11575833,
+      "server_timing": "app;dur=9.474"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 10170542,
+      "server_timing": "app;dur=8.097"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 9511667,
+      "server_timing": "app;dur=7.533"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 9003250,
+      "server_timing": "app;dur=7.080"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 9080500,
+      "server_timing": "app;dur=7.204"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8993292,
+      "server_timing": "app;dur=7.135"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 9629708,
+      "server_timing": "app;dur=7.679"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 9085625,
+      "server_timing": "app;dur=7.184"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 9494375,
+      "server_timing": "app;dur=7.557"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8596500,
+      "server_timing": "app;dur=6.804"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 9364125,
+      "server_timing": "app;dur=7.504"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8566708,
+      "server_timing": "app;dur=6.776"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 9123333,
+      "server_timing": "app;dur=7.355"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8565875,
+      "server_timing": "app;dur=6.769"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 9387916,
+      "server_timing": "app;dur=7.568"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8864625,
+      "server_timing": "app;dur=6.983"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 9391916,
+      "server_timing": "app;dur=7.440"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8908708,
+      "server_timing": "app;dur=7.055"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 9379167,
+      "server_timing": "app;dur=7.491"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8722583,
+      "server_timing": "app;dur=6.796"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 9280208,
+      "server_timing": "app;dur=7.394"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8667583,
+      "server_timing": "app;dur=6.892"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8880250,
+      "server_timing": "app;dur=7.155"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8666083,
+      "server_timing": "app;dur=6.894"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 9161000,
+      "server_timing": "app;dur=7.290"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8786959,
+      "server_timing": "app;dur=7.011"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8920750,
+      "server_timing": "app;dur=7.095"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8873667,
+      "server_timing": "app;dur=7.004"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 9311333,
+      "server_timing": "app;dur=7.381"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 10457292,
+      "server_timing": "app;dur=8.340"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 11040459,
+      "server_timing": "app;dur=8.880"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 9801250,
+      "server_timing": "app;dur=7.700"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 9650208,
+      "server_timing": "app;dur=7.702"
+    }
+  ],
+  "metrics_after_measured": {
+    "index_page_splits": 7,
+    "Innodb_buffer_pool_pages_flushed": 0,
+    "Innodb_data_written": 4024320,
+    "Innodb_os_log_written": 3050496,
+    "Innodb_redo_log_current_lsn": 21513674
+  },
+  "statement_observations": [
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 1024,
+        "Innodb_os_log_written": 1024,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 1536,
+        "Innodb_os_log_written": 1536,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 512,
+        "Innodb_os_log_written": 512,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 1536,
+        "Innodb_os_log_written": 1536,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 1536,
+        "Innodb_os_log_written": 1536,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 1024,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 1,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 1024,
+        "Innodb_os_log_written": 1024,
+        "Innodb_redo_log_current_lsn": 5977
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 1,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 512,
+        "Innodb_os_log_written": 512,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 9216,
+        "Innodb_os_log_written": 3072,
+        "Innodb_redo_log_current_lsn": 6667
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 1024,
+        "Innodb_os_log_written": 1024,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 1536,
+        "Innodb_os_log_written": 1536,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 2048,
+        "Innodb_os_log_written": 1536,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 1024,
+        "Innodb_os_log_written": 1024,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 512,
+        "Innodb_os_log_written": 512,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 6481
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 2560,
+        "Innodb_os_log_written": 2560,
+        "Innodb_redo_log_current_lsn": 4471
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 10752,
+        "Innodb_os_log_written": 3072,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 1,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 512,
+        "Innodb_os_log_written": 512,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 1024,
+        "Innodb_os_log_written": 1024,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 32768,
+        "Innodb_os_log_written": 25600,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 1024,
+        "Innodb_os_log_written": 1024,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 512,
+        "Innodb_os_log_written": 512,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 2560,
+        "Innodb_os_log_written": 2560,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 1536,
+        "Innodb_os_log_written": 1536,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 1024,
+        "Innodb_os_log_written": 1024,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 1536,
+        "Innodb_os_log_written": 1536,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 512,
+        "Innodb_os_log_written": 512,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 1024,
+        "Innodb_os_log_written": 1024,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 10752,
+        "Innodb_os_log_written": 3584,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 1,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 10240,
+        "Innodb_os_log_written": 2560,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 1024,
+        "Innodb_os_log_written": 1024,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 2048,
+        "Innodb_os_log_written": 1536,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 2560,
+        "Innodb_os_log_written": 2048,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 2560,
+        "Innodb_os_log_written": 2048,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 1024,
+        "Innodb_os_log_written": 1024,
+        "Innodb_redo_log_current_lsn": 5282
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 9216,
+        "Innodb_os_log_written": 1536,
+        "Innodb_redo_log_current_lsn": 5834
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 1536,
+        "Innodb_os_log_written": 1536,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 2048,
+        "Innodb_os_log_written": 1536,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "INSERT_pending",
+      "deltas": {
+        "index_page_splits": 1,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    },
+    {
+      "operation": "UPDATE_complete",
+      "deltas": {
+        "index_page_splits": 0,
+        "Innodb_buffer_pool_pages_flushed": 0,
+        "Innodb_data_written": 0,
+        "Innodb_os_log_written": 0,
+        "Innodb_redo_log_current_lsn": 0
+      }
+    }
+  ],
+  "storage_after_before_analyze": {
+    "rows": 64,
+    "pending": 0,
+    "complete": 64,
+    "response_binary_json_total_bytes": 58432,
+    "response_binary_json_mean_bytes": "913.0000",
+    "table_stats": [
+      16384,
+      32768,
+      0,
+      "Dynamic"
+    ],
+    "persistent_index_stats": [
+      [
+        "PRIMARY",
+        "n_leaf_pages",
+        1
+      ],
+      [
+        "PRIMARY",
+        "size",
+        1
+      ],
+      [
+        "ix_idempotency_recovery",
+        "n_leaf_pages",
+        1
+      ],
+      [
+        "ix_idempotency_recovery",
+        "size",
+        1
+      ],
+      [
+        "uq_idempotency_scope",
+        "n_leaf_pages",
+        1
+      ],
+      [
+        "uq_idempotency_scope",
+        "size",
+        1
+      ]
+    ]
+  },
+  "storage_after_analyze": {
+    "rows": 64,
+    "pending": 0,
+    "complete": 64,
+    "response_binary_json_total_bytes": 58432,
+    "response_binary_json_mean_bytes": "913.0000",
+    "table_stats": [
+      114688,
+      32768,
+      64,
+      "Dynamic"
+    ],
+    "persistent_index_stats": [
+      [
+        "PRIMARY",
+        "n_leaf_pages",
+        6
+      ],
+      [
+        "PRIMARY",
+        "size",
+        7
+      ],
+      [
+        "ix_idempotency_recovery",
+        "n_leaf_pages",
+        1
+      ],
+      [
+        "ix_idempotency_recovery",
+        "size",
+        1
+      ],
+      [
+        "uq_idempotency_scope",
+        "n_leaf_pages",
+        1
+      ],
+      [
+        "uq_idempotency_scope",
+        "size",
+        1
+      ]
+    ]
+  },
+  "operation_delta_sums": {
+    "INSERT_pending": {
+      "index_page_splits": 5,
+      "Innodb_buffer_pool_pages_flushed": 0,
+      "Innodb_data_written": 17408,
+      "Innodb_os_log_written": 16384,
+      "Innodb_redo_log_current_lsn": 11259
+    },
+    "UPDATE_complete": {
+      "index_page_splits": 0,
+      "Innodb_buffer_pool_pages_flushed": 0,
+      "Innodb_data_written": 107008,
+      "Innodb_os_log_written": 60928,
+      "Innodb_redo_log_current_lsn": 23453
+    }
+  },
+  "http_total_requests": 64,
+  "diagnostics_enabled": false,
+  "driver_errors": [],
+  "status": "SINGLE_IMPLEMENTATION_64_COMPLETE_LIFECYCLES_OBSERVED_NOT_PERFORMANCE_AB",
+  "owned_server_shutdown_exit": 0,
+  "socket_absent": true
+}
