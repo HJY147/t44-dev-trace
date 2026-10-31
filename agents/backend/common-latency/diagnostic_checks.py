@@ -56,6 +56,7 @@ class Checks(unittest.TestCase):
    return SimpleNamespace(headers={'Server-Timing':'app;dur=1'})
   response=handle(request);self.assertLessEqual(len(response.headers['Server-Timing']),2048)
   self.assertNotIn('secret',response.headers['Server-Timing']);self.assertFalse(d.active())
+  self.assertIn('diag-incomplete;desc="1"',response.headers['Server-Timing'])
  def test_real_http_on_off_and_no_token_projection(self):
   fixture=importlib.import_module('tmp.backend.contracts.conftest');http=importlib.import_module('tmp.backend.contracts.986_http')
   for flag in ['0','1']:

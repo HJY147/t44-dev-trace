@@ -19,8 +19,10 @@ def count(name, value=1):
         trace = _CURRENT.get()
         if (trace is not None and type(value) is int and isinstance(name, str)
                 and len(name) <= 64 and name.isascii()
-                and all(c.isalnum() or c in '._' for c in name)
-                and (name in trace or len(trace) < 64)):
+                and all(c.isalnum() or c in '._' for c in name)):
+            if name not in trace and len(trace) >= 63:
+                trace['diagnostic.incomplete'] = 1
+                return
             trace[name] = min(2**63 - 1, trace.get(name, 0) + max(0, value))
     except Exception:
         pass
@@ -62,16 +64,20 @@ def measured(name):
 def _export(response, trace):
     original = response.headers['Server-Timing']
     value = original
-    for name in sorted(trace):
+    incomplete = bool(trace.get('diagnostic.incomplete'))
+    marker = ', diag-incomplete;desc="0"'
+    for name in sorted(key for key in trace if key != 'diagnostic.incomplete'):
         number = trace[name]
         if name.endswith('_ns'):
             metric = f"diag-{name[:-3].replace('.', '-')};dur={number / 1e6:.3f}"
         else:
             metric = f'diag-{name.replace(".", "-")};desc="{number:.0f}"'
-        if len(value) + len(metric) + 2 > 2048:
+        if len(value) + len(metric) + 2 + len(marker) > 2048:
+            incomplete = True
             break
         value += ', ' + metric
-    response.headers['Server-Timing'] = value
+    marker = f', diag-incomplete;desc="{int(incomplete)}"'
+    response.headers['Server-Timing'] = value + marker
 
 
 def diagnosed(enabled):
