@@ -526,3 +526,5 @@ Reviewed defect correction: a60 new receipt reference path/future observation ga
 ROLE-backend-COMMON-LATENCY-DIAGNOSTIC-v1: opt-in numeric spans plus15boundedSQLiteHTTP samples;140originalHTTP+4diagnostic checks pass. Production root cause unresolved; no cloud or performance acceptance claim. See agents/backend/common-latency/FINDINGS.md.
 
 ROLE-backend-DIAGNOSTIC-BANDIT-FIX-v1: isolateddd320 one-file observation-only suppress boundaries fix3B110. Local7diagnostic+fullstatic config/23ops/Ruff/recursiveBandit1.9.4 all PASS; no fullCI-green/performance claim, pending root uniqueoff/onCI. See agents/backend/diagnostic-bandit-fix.
+
+ROLE-backend-BCEC-MATERIAL-P15-v1: tools adapted as explicit PREPARING template awaiting realbundle freeze.5local groups+3.10 AST+normalized originalguard bytes pass; source comparison archived, no product/server/SUT change. See agents/backend/bcec-material.
