@@ -1,0 +1,32 @@
+{
+  "frozen_utc": "2026-10-31T12:01:39.687388+00:00",
+  "run": "r30posttools18",
+  "source": "bcec3326b40814fdb1922bbfea7c29473b47ba47",
+  "binding": "af93a6ffd956c0a2ae86362a6a0e13db9be589e8cfde7335195020cc3a7401b7",
+  "tool_hash_checks": {
+    "runtime.py": true,
+    "functional.py": true,
+    "openapi.json": true,
+    "backup.py": true,
+    "verify_backup.py": true,
+    "verify_raw.py": true,
+    "backup.key": true,
+    "direct_boot.py": true,
+    "post_runtime.py": true,
+    "compiled_post.py": true
+  },
+  "criteria": [
+    "receipt bytes and SHA match local immutable backup",
+    "authenticated decrypt and all archive member hashes",
+    "raw authenticated stream footer, counters, completeness",
+    "run/source/runtime/bootstrap and 400 identities bind",
+    "400 clients, 60s warmup then full 600s steady",
+    "independently recompute four class P95 <=270ms",
+    "ten completed minute buckets >=1000 requests each",
+    "zero steady errors",
+    "400 snapshots and 400 complete audits within original 40 second budget; exclude late responses",
+    "retain original direct preparation exemptions; no claim of complete formal gates"
+  ],
+  "scope": "LOCAL_OFFLINE_ACTUAL_BACKUP_ONLY",
+  "awaiting_recovery": true
+}
