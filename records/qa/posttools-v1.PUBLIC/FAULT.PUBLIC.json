@@ -1,0 +1,34 @@
+{
+  "case": "fault",
+  "timing": {
+    "deadline_offset_s": 40,
+    "first_dispatch_s": 0.000175583,
+    "last_http_exit_s": 27.11302475,
+    "all_owners_finished_s": 27.115011125,
+    "global_close_s": 27.122030458,
+    "no_dispatch_at_or_after_deadline": true,
+    "close_after_all_readers_and_owners": true
+  },
+  "clients": 400,
+  "budget_seconds": 40,
+  "wall_seconds": 28.49400120903738,
+  "postconditions": {
+    "post_errors": 1,
+    "final_task_snapshot": 399,
+    "audit_complete_clients": 399,
+    "validation_pending_at_shutdown": 0
+  },
+  "states": {
+    "ERROR": 1,
+    "COMPLETE": 399
+  },
+  "page_requests": 8564,
+  "raced_close": 0,
+  "workers_stopped": true,
+  "pool_stopped": true,
+  "writer_stopped": true,
+  "raw_complete": true,
+  "full_raw_records": 8565,
+  "deadline_seen": false,
+  "all400_post_complete": false
+}

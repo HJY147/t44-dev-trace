@@ -1,0 +1,50 @@
+{
+  "status": "OFFLINE_ONLY_PENDING_FRESH_INDEPENDENT_TOOL_REVIEW",
+  "original_base_core_sha256": "9cf747e308969ceba37e2cfcfa6591def45e118ad928c4f310f57b6ecf37542a",
+  "effective_runtime_is_new_posttools_not_original_core_alone": true,
+  "measurement_prefix_literal_byte_equal": true,
+  "measurement_prefix_sha256": "d522db77778d5bc81dff7c78f9910ac45a137d7e4c6da7b5d43b73e39bf19706",
+  "inherited_method_object_and_source_byte_equal": {
+    "client": "2e17e70ea5468914c094bb82501f9763d853c9fb394f87ad59cb671723600b4f",
+    "call": "c3484d1d65e983e5a7bf0bbbac4101ae52cc235173fd9363df65d2569351b743",
+    "conn": "ff35277b5b0fe7d6ef5f3d5d5ad0697ecb7745de4db4826c36b4ce24166a7a82",
+    "task_equal": "a9489cbceb23ec1d2c7e98553c90fb4dba1556ba7dc8c32b8cc74bf7477e69f2",
+    "val_headers": "79999f28c5c361780ed670e0cad52c85ce36d2e13fe0a0c8fb019fd91a1efbb9"
+  },
+  "Metrics_same_class_object": true,
+  "Metrics_class_sha256": "d93a4b04b0059d7584aeaddc4a78a8cb59667739df2ca478ebd32b4beffec2b2",
+  "changed_scope": [
+    "post schema compilation/caching",
+    "post8process validation/64 IO slots",
+    "post deadline dispatch and bounded owned drain",
+    "explicit post timing/errors/incomplete",
+    "combined verdict/BOOT exit mapping/effective identity"
+  ],
+  "unchanged_limits": {
+    "clients": 400,
+    "warmup_seconds": 60,
+    "steady_seconds": 600,
+    "P95_each_ms": 270,
+    "minute_minimum": 1000,
+    "post_budget_seconds": 40,
+    "request_timeout_seconds": 15,
+    "measurement_cpu": 8,
+    "measurement_memory_bytes": 8589934592,
+    "plain_bytes": 10737418240,
+    "compressed_bytes": 11811160064,
+    "cipher_bytes": 12884901888
+  },
+  "post_cleanup_grace_seconds": 30,
+  "grace_late_completion_not_budget_PASS": true,
+  "scope_assertions": [
+    "Task snapshot exact same delegated13fields",
+    "Task/project scope every audit entry",
+    "Outcomes/operation/actor/kind filter exact same",
+    "All captured audit IDs subset of found exact same",
+    "Frozen whole response schema and headers/replay/request_id exact checks",
+    "Full task-filtered historical pagination retained with no early captured-ID exit"
+  ],
+  "old_Direct16_157_unobserved_not_reclassified": true,
+  "production_source_changed": false,
+  "SUT_calls": 0
+}

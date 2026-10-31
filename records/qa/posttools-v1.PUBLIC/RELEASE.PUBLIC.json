@@ -1,0 +1,26 @@
+{
+  "status": "KNOWN_COMPILER_MEMO_LIFETIME_DEFECT_DO_NOT_DEPLOY",
+  "effective_runtime": {
+    "base_sha256": "9cf747e308969ceba37e2cfcfa6591def45e118ad928c4f310f57b6ecf37542a",
+    "post_sha256": "d33de3e8cefff408663db86dad856fe66737f7f7c8f66ea58594a6806625994a",
+    "compiled_schema_sha256": "83f912366b53150f0535e29500f4dc0efc1f47397e56810e695d986dc2d68cd6",
+    "boot_sha256": "09e917ec74711a9b3a331107dacb902e3a2c78b9523ddd2a85723c7045d14c89"
+  },
+  "effective_runtime_binding_sha256": "d9a0c19fbbc17bfce6f8efd6e51004ab9012e4e64a01bc4d5aef52f737762c45",
+  "combined_exit_policy": "0 only metrics PASS +full400 cohort+400 snapshot+400 audits+all post errors/deadline/pending zero+raw capacity complete+writer/pool stopped; metrics FAIL=1, incomplete/NP=2",
+  "run_id_for_candidate_only": "r30posttools17",
+  "historical_Direct16_not_modified": true,
+  "product_source_changed": false,
+  "cloud_calls": 0,
+  "SUT_calls": 0,
+  "schema_replay_real_complete_responses": 5092,
+  "schema_mutation_differential_cases": 2400,
+  "normal_synthetic_task_histories": 400,
+  "normal_replay_dispatches": 8582,
+  "post_budget_seconds": 40,
+  "local_normal_seconds": 26.917510958970524,
+  "deadline_cleanup_seconds_not_credited_as_budget_success": true,
+  "local_testing_transport": "In-memory authenticated-response-shape replay with remapped task/audit IDs and deterministic blocking read/HTTP503 fixtures; no real production or loopback HTTP/TLS in these post-only cases.",
+  "Linux_8CPU_8GiB_not_executed": true,
+  "known_defect": "Memo indexed by id(schema) does not retain ephemeral root schema lifetime, so reused object id can select prior compiled validator; confirmed minimal local reproduction. Historical sources frozen unchanged."
+}
