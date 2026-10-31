@@ -1,0 +1,9 @@
+python3 - <<'T44_INSTALL_AUTHORIZED_KEY'
+import hashlib, subprocess, urllib.request
+url = 'https://raw.githubusercontent.com/HJY147/t44-dev-trace/0ccaf5eca6849374b6796098f2fee6aaeeb6124c/agents/coordinator/manualp15-preparation/ssh/01_INSTALL_PERSISTENT_SSH.sh'
+with urllib.request.urlopen(url, timeout=30) as response:
+    script = response.read(16385)
+if len(script) > 16384 or hashlib.sha256(script).hexdigest() != '6b56244d7481df17d72cd56b65d1cb4ba3d071e0c7ebf2e3e3f1a6a60ec39fea':
+    raise SystemExit('PUBLIC_SCRIPT_SHA_MISMATCH_NO_CHANGES')
+subprocess.run(['bash'], input=script, check=True, timeout=90)
+T44_INSTALL_AUTHORIZED_KEY
