@@ -1,0 +1,14 @@
+{
+  "role": "database",
+  "stage": "LOCAL_DIAGNOSTIC_CANDIDATE",
+  "shared_dependency": "backend owner t44.diagnostics",
+  "existing_tests": 69,
+  "boundary_tests": 5,
+  "artifacts": [
+    "agents/database/global-latency/REPORT.md",
+    "backend/t44/persistence/rows.py",
+    "backend/t44/persistence/uow.py"
+  ],
+  "live_validation": false,
+  "p95_effect": "UNMEASURED"
+}

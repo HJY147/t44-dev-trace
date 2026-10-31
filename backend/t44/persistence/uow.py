@@ -6,6 +6,8 @@ from contextlib import suppress
 from sqlalchemy import Engine
 from sqlalchemy.orm import Session, sessionmaker
 
+from t44.diagnostics import active, span
+
 from .errors import CommitUncertain, PersistenceUnavailable, TransactionStateError
 from .rows import RowsGateway
 
@@ -54,7 +56,11 @@ class SqlAlchemyUnitOfWork:
             raise TransactionStateError("Failed transaction was rolled back")
         session = self._require_active()
         try:
-            session.commit()
+            if active():
+                with span("db.commit"):
+                    session.commit()
+            else:
+                session.commit()
             self._state = "committed"
         except Exception:
             self._state = "uncertain"
@@ -67,7 +73,11 @@ class SqlAlchemyUnitOfWork:
         if self._state != "active" or self._session is None:
             raise TransactionStateError("Unit of work is not active")
         try:
-            self._session.rollback()
+            if active():
+                with span("db.rollback"):
+                    self._session.rollback()
+            else:
+                self._session.rollback()
             self._state = "rolled_back"
         except Exception:
             self._state = "failed"
@@ -76,7 +86,11 @@ class SqlAlchemyUnitOfWork:
     def _close(self, *, suppress_errors: bool = False) -> None:
         try:
             if self._session is not None:
-                self._session.close()
+                if active():
+                    with span("db.close"):
+                        self._session.close()
+                else:
+                    self._session.close()
         except Exception:
             if not suppress_errors:
                 raise PersistenceUnavailable("Transaction resources could not close") from None
