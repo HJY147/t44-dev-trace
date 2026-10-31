@@ -27,3 +27,7 @@ bf1de3ec的五个backend文件与e07eff0d DB文件在独立临时源码快照合
 人工工具校准另用pool1/pre_ping=True的socket engine：刻意持唯一连接50ms→db.acquire52.873ms、threadCPU0.092ms；刻意SELECT SLEEP50ms→db.execute_fetch55.420ms、threadCPU0.311ms。这只是验证计时边界能将已知等待分开，不证明生产发生这两种等待。
 
 诊断clock抛错时真实GET仍200，实际数据库update成功commit且重查version+1；没有误判CommitUncertain。另合成counter storage抛错时UoW commit1/rollback0/close1/stateclosed保持。default-off响应没有diag字段。运行原有Starlette/httpx兼容warning保留，不为刷绿换库。原生驱动错误空，finally server shutdown0/socket消失。无云/旧PRIVATE访问，未重复旧4项RC测试，没有正式性能通过或根因结论。
+
+## 4590e788诊断完整性标记追加观察
+
+共享diagnostics升级4590e788，其余bf1/e07源码保持；在全新getmarker1原生socket实例只追加GET/contract/transition各1，共3个完整schema HTTP请求。原文header分别1134/1134/1476字符，均diag-incomplete;desc="0"且不超2048；字段缺失/marker为1仍必须UNKNOWN，不能当0耗时。各文件实际SHA在getmarker1.PUBLIC.json，server shutdown0/socket消失。未重复原人工校准或4RC，不能把3个观测叫P95。注意该次raw status继承harness旧的AND_ARTIFICIAL_CALIBRATION_PASS字样，但本次实际仅3HTTP marker观察、未执行人工校准；以本文和http_total_requests=3及原实际字段为准，原raw标签原样保留。native_marker.py后续label已改为准确名称，不伪造本次原输出。
