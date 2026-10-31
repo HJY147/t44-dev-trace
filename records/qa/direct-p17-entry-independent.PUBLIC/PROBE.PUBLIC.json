@@ -1,0 +1,27 @@
+{
+  "nonzero_recovers": true,
+  "app_stop_notice_before_backup_download": true,
+  "nonzero_events": [
+    "get:/root/t44-direct-p17/recipient.PUBLIC.pem",
+    "run:app",
+    "run:app",
+    "run:app",
+    "get:/root/t44-direct-p17/inputs.753cms",
+    "run:load",
+    "get:/root/t44-direct-p17/inputs.753cms.PUBLIC.json",
+    "run:load",
+    "run:load",
+    "run:load",
+    "DIRECT_RUNNER_DISPATCHED",
+    "run:load",
+    "notify:APP_EVIDENCE_RECOVERED_CAN_STOP_APP",
+    "get:/root/t44-sealed-posttools17-tmpfs/r30posttools17.753backup.receipt.json",
+    "get:/root/t44-sealed-posttools17-tmpfs/r30posttools17.753backup",
+    "notify:EVIDENCE_RECOVERED_CAN_STOP_BOTH_SERVERS"
+  ],
+  "timeout_error": "DIRECT_RUNNER_TIMEOUT_NO_AUTOMATIC_RETRY_OR_VM_SHUTDOWN",
+  "timeout_backup_fetches": [],
+  "run_source_has_READY_check": false,
+  "direct_main_exit": 0,
+  "direct_main_reached_execute_while_source_READY_PREPARING": true
+}
