@@ -1,0 +1,78 @@
+{
+  "source": "bcec3326b40814fdb1922bbfea7c29473b47ba47",
+  "overall_status": "CI_PASS_NOT_PERFORMANCE_ACCEPTANCE",
+  "runs": {
+    "off": 41169683822,
+    "on": 41169697472
+  },
+  "modes": {
+    "off": {
+      "unique_main_testcases": 809,
+      "additional_unittest_subchecks": 5,
+      "junit_testsuite_attributes": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "814",
+          "time": "422.781",
+          "timestamp": "2026-10-31T04:44:03.950861+00:00",
+          "hostname": "runnervm48cm3"
+        }
+      ],
+      "pytest_summary": "809 passed, 3 warnings in 422.80s (0:07:02) ==================",
+      "line_coverage": {
+        "metric": "line_coverage",
+        "covered_lines": 2628,
+        "total_lines": 2910,
+        "threshold_percent": 80,
+        "branch_coverage": "reported without an extra threshold",
+        "exit_code": 0,
+        "real_success": true
+      },
+      "production_file_count": 44,
+      "frontend_passed": 89,
+      "static_all_commands_exit0": true,
+      "bandit_issues": 0,
+      "junit_sha256": "50cb090e73855e538a2858a7d66d2e6f51b2a7072f78c1afdc1a91fb49219822"
+    },
+    "on": {
+      "unique_main_testcases": 809,
+      "additional_unittest_subchecks": 5,
+      "junit_testsuite_attributes": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "814",
+          "time": "292.985",
+          "timestamp": "2026-10-31T04:43:57.876463+00:00",
+          "hostname": "runnervm48cm3"
+        }
+      ],
+      "pytest_summary": "809 passed, 3 warnings in 293.00s (0:04:52) ==================",
+      "line_coverage": {
+        "metric": "line_coverage",
+        "covered_lines": 2628,
+        "total_lines": 2910,
+        "threshold_percent": 80,
+        "branch_coverage": "reported without an extra threshold",
+        "exit_code": 0,
+        "real_success": true
+      },
+      "production_file_count": 44,
+      "frontend_passed": 89,
+      "static_all_commands_exit0": true,
+      "bandit_issues": 0,
+      "junit_sha256": "18ec090af504e67f3321142b0dc9b1768b88e6eb91f05e263ba71705193d7364"
+    }
+  },
+  "servers": "off; no production changes or new pressure test",
+  "cancelled_wrong_source_dispatch": {
+    "run": 41169619555,
+    "source": "dd32059be9cc41784e774fcf4e4f52f3806faa10",
+    "reason": "Upload had not completed; cancelled, excluded from final validation"
+  }
+}
