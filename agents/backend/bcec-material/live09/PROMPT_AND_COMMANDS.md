@@ -1,0 +1,7 @@
+ROLE-backend-LIVE-MATERIAL09-v1. Parent delegated actual APP operations after user real-test authorization, only after deployment API/web ready. Root explicitly authorized existing400 manager PATCH +2days preserving all other plan fields, original800 IDs and escalation tasks, no SQL/new tasks/unknown retries; then one complete original maintenance09 in a new exclusive maintenance09-after-plan prefix, preserving the zero-UNBLOCK failed09. Material09 nonce remains unconsumed until actual host tool execution.
+
+Actual APP target t44-manual-app with root supplied private SSHconfig; no credentials output or committed. Immutable app source bcec3326b40814fdb1922bbfea7c29473b47ba47. Original account initialized file was necessary: generated file had preinitialization subjects and original guard refused before HTTP. OCI original proof mismatch refused before SUT; new strict dual-identity tools committed9b6bbd87. Logs retained root0600 under /root/t44-p15-backend09-20261031.
+
+Executed replan_transition.py --root-admit-existing400-plan-shift --helper ORIGINAL_DEPLOYMENT_DERIVED_OCI_HELPER --backend-tools backend-oci --before-journal maintenance09/PRIVATE/events.private.jsonl --output replan09 with explicit historical packet/accounts/CA/current API actualID. Script records each prepared PATCH before send, response and successful audit/version readback, performs400 freshGET+400PATCH and final original800 readback; no request retries. Exact script SHA below.
+
+Script SHA256 cf0e3ae4d96dfcc1adb62db853546fb663773c15ea2ec5930e94c23653d03bd2
