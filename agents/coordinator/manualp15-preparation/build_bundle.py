@@ -44,7 +44,7 @@ def main():
     selected = {}
     for name in git("ls-tree", "-r", "--name-only", head).decode().splitlines():
         for prefix, target in PREFIXES.items():
-            if name.startswith(prefix) and not name.endswith(".log"):
+            if name.startswith(prefix):
                 selected[target + name[len(prefix):]] = git("show", head + ":" + name)
     for prefix in PREFIXES.values():
         if not any(name.startswith(prefix) for name in selected):
@@ -59,6 +59,7 @@ def main():
         raise ValueError("ORIGINAL_CMS_TRANSPORT_BYTES_REQUIRED")
     selected["transport/cms_five_transport.py"] = raw
     for folder, filename in (("backend/", "RELEASE.PUBLIC.json"),
+                             ("deployment/", "MANIFEST.PUBLIC.json"),
                              ("qa-install/", "DELIVERY_MANIFEST.PUBLIC.json"),
                              ("qa-controls/", "DELIVERY_MANIFEST.PUBLIC.json")):
         manifest = json.loads(selected[folder + filename])
