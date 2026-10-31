@@ -1,0 +1,7 @@
+# Independent posttools offline work
+
+Prompt TEST-POSTTOOLS-OFFLINE-20261031 supplied by coordinator. No product developer discussions or logs read. Only authenticated actual Direct16 evidence, frozen schemas and own testing tools used. Historical Direct16 NP remains.
+
+5092 complete actual post responses verified, 4863 unique audit URLs prove no duplicate project page cache opportunity; original process Validator was already cached. Implemented post-only compiled schema /8 validation processes/64 IO slots, deadline-aware owned drain, explicit incomplete/error and combined nonzero exits. Measured original method objects and literal loop prefix frozen. Full original historical pagination kept.
+
+v1 frozen with confirmed ephemeral schema memo-id lifetime defect. v1.1 separate frozen strong-reference fix, 10000 lifetime/5092 real+2400 mutation/4008582 replay regressions, but additional delayed-reservation deadline violation confirmed; marked do not deploy. v1.2 separate directory adds post-reserve and atomic HTTP-dispatch gates with reserved metadata accounting. Six deadline-stage regressions pass, including genuine delayed-read fixtures and late validation; normal 400 snapshots/audits under unchanged40s at27.319s locally. HTTP503 remains ERROR, late deadline remains incomplete, all readers/owners drain before close and raw is complete.13 BOOT exit policy checks pass. No cloud/SUT calls, no Linux cgroup claim. Frozen v1.2 pending fresh independent tool audit, not approved by own tests.
