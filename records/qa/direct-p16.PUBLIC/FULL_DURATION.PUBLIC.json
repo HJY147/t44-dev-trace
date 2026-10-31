@@ -1,0 +1,49 @@
+{
+  "all400_postconditions_verified": true,
+  "status": "FULL_LOCAL_TLS_TOOL_EXERCISE_COMPLETED_NOT_PRODUCT_ACCEPTANCE",
+  "started_utc": "2026-10-31T06:18:07.430879+00:00",
+  "finished_utc": "2026-10-31T06:29:40.549630+00:00",
+  "wall_seconds": 693.119,
+  "runtime_sha256": "9cf747e308969ceba37e2cfcfa6591def45e118ad928c4f310f57b6ecf37542a",
+  "configured_clients": 400,
+  "warmup_seconds": 60,
+  "steady_seconds": 600,
+  "full_cohort": true,
+  "postconditions": {
+    "final_task_snapshot": 400,
+    "audit_complete_clients": 400
+  },
+  "writer_finalized": true,
+  "post_validator_pool_stopped": true,
+  "metrics_verdict": "FAIL",
+  "original_metrics_reasons": [
+    "CLASS_P95"
+  ],
+  "boot_returncode": 1,
+  "raw_verification": {
+    "records": 133158,
+    "plain_bytes": 404218546,
+    "compressed_bytes": 50434437,
+    "complete": true
+  },
+  "backup_receipt": {
+    "backup_file": "FULL_FINAL.753backup",
+    "cipher_bytes": 50831163,
+    "cipher_sha256": "61d7235fcd64ea2a15cfc4b45bfa3e6a84b7e05a3c4c3702df8a7cfdf9c38e6e",
+    "compressed_tar_sha256": "bb78fa684b306d7b452775b034af688d411e5073b4a49a445d59c1a6187c7435",
+    "files": 13,
+    "status": "ENCRYPTED_BACKUP_CREATED_REQUIRES_LOCAL_DECRYPT_VERIFY"
+  },
+  "backup_verification": {
+    "cipher_sha256": "61d7235fcd64ea2a15cfc4b45bfa3e6a84b7e05a3c4c3702df8a7cfdf9c38e6e",
+    "compressed_tar_sha256": "bb78fa684b306d7b452775b034af688d411e5073b4a49a445d59c1a6187c7435",
+    "files": 13,
+    "status": "LOCAL_BACKUP_DECRYPT_AND_ALL_FILE_HASHES_VERIFIED"
+  },
+  "formal_acceptance": false,
+  "test_environment": "macOS local TLS synthetic service; no real VM or product SUT contact",
+  "not_a_Linux_Docker_or_production_resource_acceptance": true,
+  "all_owned_boot_and_runtime_processes_exited": true,
+  "fixture_deliberate_POST_delay_seconds": 2.5,
+  "measurements_not_relaxed": true
+}

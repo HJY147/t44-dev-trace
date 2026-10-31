@@ -1,5 +1,5 @@
 {
-  "status": "CANDIDATE_FULL_DURATION_EXERCISE_RUNNING_NOT_RELEASED",
+  "status": "OFFLINE_DIRECT_TOOL_SELF_CHECKS_COMPLETE_NOT_PRODUCT_ACCEPTANCE",
   "source": "bcec3326b40814fdb1922bbfea7c29473b47ba47",
   "original_core_byte_equal": true,
   "original_functional_byte_equal": true,
@@ -26,12 +26,20 @@
   "capsule_exact_roundtrip_all_member_SHA_pass": true,
   "shell_syntax_and_embedded_python_AST": true,
   "full_duration_exercise": {
-    "status": "RUNNING",
+    "status": "COMPLETED",
+    "report": "FULL_DURATION.PUBLIC.json",
     "clients": 400,
     "warmup_seconds": 60,
     "steady_seconds": 600,
-    "core_time_constants_unmodified": true,
-    "prior_local_driver_directory_argument_failure_preserved": true
+    "wall_seconds": 693.119,
+    "full_cohort": true,
+    "all400_postconditions_verified": true,
+    "writer_finalized": true,
+    "post_validator_pool_stopped": true,
+    "raw_and_backup_all_file_hashes_verified": true,
+    "metrics_verdict": "FAIL",
+    "reason": "CLASS_P95",
+    "not_product_acceptance": true
   },
   "server_connections": 0
 }
