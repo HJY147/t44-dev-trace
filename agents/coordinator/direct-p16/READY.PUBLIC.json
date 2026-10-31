@@ -1,5 +1,5 @@
 {
-  "status": "READY_FOR_USER_BOOT",
+  "status": "COMPLETED_NO_REDISPATCH",
   "source": "bcec3326b40814fdb1922bbfea7c29473b47ba47",
   "run_id": "r30directp16",
   "archive_name": "direct16-ready-20261031-r3.tar.gz",
@@ -25,7 +25,7 @@
   "actual_server_calls_during_new_offline_preparation": 0,
   "automatic_vm_shutdown": false,
   "next_user_action": "Start original APP and LOAD; supply actual public IPs. Coordinator invokes after_boot.py once; no old manual preparation sequence.",
-  "actual_run_started": false,
+  "actual_run_started": true,
   "workspace": "/root/t44-final-20261031/QA753_DIRECT_P16_R3",
   "remote_root": "/root/t44-direct-p16-r3",
   "known_router_bug_fixed_with_real_application_tests": true,
@@ -34,5 +34,19 @@
     "archive": "direct16-ready-20261031-r2.tar.gz",
     "reason": "Real API OPTIONS returned405 Allow POST; bootstrap guard incorrectly requiredGET",
     "benchmark_started": false
-  }
+  },
+  "current_run_output": "/Users/yang/Desktop/nothing/软件开发大作业/.submission-private/directp16-20261031T092315Z/utf8-recovery",
+  "actual_barrier_utc": "2026-10-31T09:29:29.584271Z",
+  "runtime_tool_fix": {
+    "bootstrap_commit": "dfef9a82",
+    "utf8_canonical_hash_matches_original": true,
+    "production_source_unchanged": true,
+    "old_failure_prefix_retained": true
+  },
+  "actual_finished_utc": "2026-10-31T09:41:09.695740Z",
+  "backup_bytes": 238736009,
+  "backup_sha256": "36fd706bf7fed1d5c2028238b86690ea7f5f5ef7edcedaaedf8aba05a7ce5e9a",
+  "backup_bytes_and_sha_verified": true,
+  "independent_result_validation": "BACKUP_AND_RAW_AUTHENTICATED_METRICS_PASS_OVERALL_NP_POSTCONDITIONS_INCOMPLETE",
+  "user_told_both_can_stop": true
 }
