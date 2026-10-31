@@ -11,3 +11,9 @@
 现有989_rows/993_foundation SQLite69项通过，5个合成observer边界测试通过（默认无acquire/无事件；active计数；acquire/execute错误映射rollback；CommitUncertain保持）。共享diagnostics.py测试时来自backend owner未提交工作区，精确SHA见SOURCE.PUBLIC.json；根集成其准确最终版本后仍须整体检查。未跑native MySQL/完整CI/正式400并发。
 
 官方依据：[SQLAlchemy2.1 Pooling](https://docs.sqlalchemy.org/en/21/core/pooling.html)；[MySQL8.4 Performance Schema Summary Tables](https://dev.mysql.com/doc/refman/8.4/en/performance-schema-summary-tables.html)。这些解释度量语义，不证明本项目主因。
+
+## 后续GET候选原生RC检查（独立于初始计时提交）
+
+backend实际dc556cd3候选Runtime SHA84309825b2e0a214130a0871cd493773aab07f36721dddf45311c9312e68345a：GET同一个RC事务中仍两次authenticate，中间validate。自建getrc1 socket-only MySQL8.4.11，原DDL+10任务最小seed，四项真实Runtime检查通过：validate期间另一个连接提交session revoke→401 TOKEN_REVOKED；成员inactive→403 PROJECT_ACCESS_DENIED；自然expiry跨界→401 TOKEN_EXPIRED；validate期间revoke且抛输入错误→422 PARAMETER_INVALID优先保持。驱动错误空，实际隔离READ-COMMITTED（server默认RR字段不是连接隔离），durability1/1。finally shutdown0/socket消失，无云/HTTP/完整suite/性能运行。SOURCE.PUBLIC.json为前一诊断提交的历史快照，native当前证据另见getrc1.PUBLIC.json与native_get_rc.py。
+
+这证明有限真实RC语义反例未退化，不证明吞吐/P95改善。该候选持连接跨输入校验，可能增加连接占用；应联合db.acquire与validate wall/CPU证据决定，不把checkout/commit2→1当全局根因已解决。

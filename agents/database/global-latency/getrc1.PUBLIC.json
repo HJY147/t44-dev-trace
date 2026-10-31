@@ -1,0 +1,34 @@
+{
+  "scope": "owned local socket-only MySQL correctness, not SUT/HTTP/performance acceptance",
+  "checks": {
+    "revoke": {
+      "status": 401,
+      "code": "TOKEN_REVOKED"
+    },
+    "membership": {
+      "status": 403,
+      "code": "PROJECT_ACCESS_DENIED"
+    },
+    "expiry": {
+      "status": 401,
+      "code": "TOKEN_EXPIRED"
+    },
+    "validation_priority": {
+      "status": 422,
+      "code": "PARAMETER_INVALID"
+    }
+  },
+  "runtime_sha256": "84309825b2e0a214130a0871cd493773aab07f36721dddf45311c9312e68345a",
+  "ddl_sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+  "server": [
+    "8.4.11",
+    "REPEATABLE-READ",
+    1,
+    1
+  ],
+  "effective_isolation": "READ-COMMITTED",
+  "driver_errors": [],
+  "status": "NATIVE_RC_SAME_UOW_GET_REAUTH_PASS",
+  "owned_server_shutdown_exit": 0,
+  "socket_absent": true
+}

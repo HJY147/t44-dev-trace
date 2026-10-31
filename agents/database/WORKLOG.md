@@ -410,3 +410,5 @@
 2026-10-31 已锁任务复用候选a59a90a1开发原生RC正确性通过，12并发1成功11版本冲突、最新锁行可见及上下文拒绝；原夹具缺证据422保留。非压测/独立验收，详agents/database/locked-task-native/REPORT.md。
 
 2026-10-31 global DB latency: disabled-by-default acquire/execute_fetch/commit/rollback/close wall+CPU spans;69 existing SQLite+5 synthetic boundaries pass, real P95/root cause unproven. No cloud/durability change. See agents/database/global-latency/REPORT.md.
+
+2026-10-31 GET dc556cd3 native MySQL8.4.11 actualRC four auth/expiry/validation priority checks passed; own socket server shutdown0, no cloud/HTTP/P95 proof. Raw getrc1.PUBLIC.json retained.
