@@ -13,3 +13,10 @@ P17独立初始400query聚合为232 state2/168 state3，168全部blocked_from_st
 此前GitHub直连HTTP/2/HTTP1连接失败已如实保留；本轮仅对git命令使用已存在系统HTTP代理127.0.0.1:7890后，push20801cc3..bbf53447成功，未改系统网络或SSH配置。后续本地未发布改动仍以实际git记录为准，不把同步失败说成成功。
 
 需规/设计写作继续暂停，所有记录为AI实际工程留痕，不冒学生本人。
+
+
+用户已明确两台关闭，要求准备完才再通知开机，期间未连接。最终本地整轮身份和原400/60+600完整：182268个exchange错误0、400首BLOCK从2到3；8400后置job、快照400/审计400，post窗口13.526477375s、steady_end至owner排空13.665105167s，原40s不改，raw及14文件84892925B备份认证。人为2.5s写延迟使原CLASS_P95 FAIL/combined exit1，正常封存；这是完整流程/负例证据，不是性能PASS。新LOCAL19域保留同fixture尾态、合法UNBLOCK70/零写330、400首次BLOCK成功，只有3s短起步，非第二完整轮。初次本地Meta接线失败和原失败密文均留证，修复只在fixture响应字段。
+
+最终QA证据owner98defa12集成73d593b0，未改运行源/key。最终总包161440B、50payload、SHAd010498af9beffdf82e1fd2d39b67d7ad149403447102eac9d645e0b6fb8db0d；新鲜独立入口审核2e0f590c和最终补核ed16c3b9均限定通过，无新增阻断。全部owner manifest闭合、执行源/CLI/capsule/key封装不变。root复核READY绑定21文件，覆盖独立SOURCE_HASHES全部9项执行源，并锁定精确包；真实require_ready正例本地调用无网络。产品backend/t44/frontend/src/specs/compose对bcec无变化。
+
+至此READY_FOR_USER_BOOT只表示新一轮准备就绪；现场Linux8CPU/8GiB、真实服务权限/业务数据和原所有性能/400后置要在用户再次开启后验收，不把本地人工延迟负例、限定审核或原P16性能结果改称本轮性能通过。下一步由用户开启原0mt/0mu并给当前两台公网IP，root只运行已冻结after_boot一次，正常/非零结果回收后立即通知用户手动停机，无自动关机/继任轮次。
