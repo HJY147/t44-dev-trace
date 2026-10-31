@@ -1,5 +1,5 @@
 {
-  "status": "READY_FOR_USER_BOOT",
+  "status": "WITHDRAWN_STARTUP_PROBE_BUG_DO_NOT_START_SERVERS",
   "source": "bcec3326b40814fdb1922bbfea7c29473b47ba47",
   "run_id": "r30directp16",
   "archive_name": "direct16-ready-20261031-r2.tar.gz",
@@ -24,5 +24,7 @@
   "servers": "USER_REPORTED_POWERED_OFF_NO_FURTHER_CONNECTIONS",
   "actual_server_calls_during_new_offline_preparation": 0,
   "automatic_vm_shutdown": false,
-  "next_user_action": "Start original APP and LOAD; supply actual public IPs. Coordinator invokes after_boot.py once; no old manual preparation sequence."
+  "next_user_action": "Start original APP and LOAD; supply actual public IPs. Coordinator invokes after_boot.py once; no old manual preparation sequence.",
+  "actual_run_started": false,
+  "withdrawal_reason": "Real API OPTIONS returned405 Allow POST; bootstrap guard incorrectly requiredGET"
 }
