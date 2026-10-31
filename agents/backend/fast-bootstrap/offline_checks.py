@@ -93,6 +93,23 @@ def collect(old, accounts, tasks, events, fail_at=None):
 
 
 class Checks(unittest.TestCase):
+    def test_chinese_full_packet_original_canonical_binding(self):
+        old, _, _, _ = fixture()
+        old.pop('binding_sha256')
+        old['inventory']['clients'][0]['description'] = '中文任务：经理延期，保留审计'
+        old['inventory']['说明'] = '完整原始物料'
+        # Independent frozen algorithm, not the implementation under test.
+        original = (json.dumps(old, ensure_ascii=False, sort_keys=True,
+                    separators=(',', ':'), allow_nan=False) + '\n').encode('utf-8')
+        expected = b.hashlib.sha256(original).hexdigest()
+        old['binding_sha256'] = expected
+        payload = {k: v for k, v in old.items() if k != 'binding_sha256'}
+        self.assertEqual(b.canonical(payload), original)
+        self.assertEqual(b.sha(b.canonical(payload)), old['binding_sha256'])
+        ascii_raw = (json.dumps(payload, sort_keys=True, separators=(',', ':'),
+                               allow_nan=False) + '\n').encode()
+        self.assertNotEqual(b.sha(ascii_raw), expected)
+
     def test_full_123_request_graph_no_horizon_or_scan_gate(self):
         old, accounts, tasks, events = fixture()
         (value, _), api, issued = collect(old, accounts, tasks, events)
