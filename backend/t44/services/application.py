@@ -1,6 +1,7 @@
 """Application facade. Component owners are injected; no alternate storage is created."""
 
 from t44.contracts import OPERATIONS, violations
+from t44.diagnostics import measured
 
 from .codes import ERROR_CODES, Action, State
 from .common import SCHEMAS, model, page, plan, plan_values, roles
@@ -90,6 +91,7 @@ class Business(Projects, Tasks, Reviews, Workflow):
             )
         return model(schema, row)
 
+    @measured("business.dispatch")
     def dispatch(self, g, call, *, locked_task=None):
         if locked_task is not None:
             gateway, row = locked_task

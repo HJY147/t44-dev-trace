@@ -7,6 +7,7 @@ import secrets
 from datetime import timedelta
 
 from t44.contracts import OPERATIONS
+from t44.diagnostics import measured
 from t44.persistence import CommitUncertain, PersistenceError, PersistenceIntegrityError
 
 from .codes import ERROR_IDS, Action
@@ -42,6 +43,7 @@ class Runtime:
             with self.factory() as uow:
                 authenticate(uow.gateway, call)
 
+    @measured("runtime.prepare")
     def prepare(self, call, validate):
         if call.operation != "login":
             with self.factory() as uow:
@@ -137,6 +139,7 @@ class Runtime:
         with self.factory() as uow:
             return self._claim(uow.gateway, call)
 
+    @measured("runtime.claim")
     def _claim(self, g, call):
         digest = hashlib.sha256(
             json.dumps(
@@ -194,6 +197,7 @@ class Runtime:
         call.idem = {**row, "owner_token": owner}
         return None
 
+    @measured("runtime.locked_scope")
     def locked_scope(self, g, call):
         authenticate(g, call, lock="update" if call.operation == "logout" else "share")
         if call.idem:
@@ -244,6 +248,7 @@ class Runtime:
                     target = rows[0] if rows else None
             return target
 
+    @measured("runtime.execute")
     def execute(self, call, validate, source="unknown"):
         try:
             if call.operation == "validateContractPayload":

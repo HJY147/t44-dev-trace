@@ -522,3 +522,5 @@ CI completion audit: exact69dff6f4 run41109743811 static/frontend PASS; complete
 2026-10-31 ROLE-backend-NEW-SOURCE-MATERIAL-v2: explicit old90b history/new13ac rawsource/bundle/actualimport dualchain tooling, packet legacy81e vs QA9cf kept distinct;7 offline synthetic tests+3.10 AST. No product or cloud action; live08 admission pending. See agents/backend/new-source-material/RUNBOOK.md.
 
 Reviewed defect correction: a60 new receipt reference path/future observation gap fixed with actual APP canonical path+producer stat observation, local copy explicit remote path and UTC/nonfuture check.9local synthetic checks pass; original7log preserved. No actualAPP stat or live material claim.
+
+ROLE-backend-COMMON-LATENCY-DIAGNOSTIC-v1: opt-in numeric spans plus15boundedSQLiteHTTP samples;140originalHTTP+4diagnostic checks pass. Production root cause unresolved; no cloud or performance acceptance claim. See agents/backend/common-latency/FINDINGS.md.

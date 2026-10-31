@@ -1,6 +1,7 @@
 """Strict frozen HTTP adapter and lazy dependency injection composition root."""
 
 import json
+import os
 import re
 import threading
 import time
@@ -10,6 +11,7 @@ from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
 from t44.contracts import OPERATIONS, SPEC, VERSION, normalized, validator, violations
+from t44.diagnostics import diagnosed, measured, span
 from t44.messaging.facade import NotificationFacade
 from t44.persistence import PersistenceUnavailable, SqlAlchemyUnitOfWorkFactory, create_mysql_engine
 from t44.scheduling.facade import EscalationFacade
@@ -102,6 +104,7 @@ def _body_error(schema, payload, operation):
     return "PARAMETER_INVALID"
 
 
+@measured("request.validate")
 def validate_request(request, operation, c):
     if "requestBody" in operation:
         require(not request.state.too_large, "PAYLOAD_TOO_LARGE")
@@ -200,6 +203,7 @@ def create_app(*, factory=None, settings=None, notifications=_DEFAULT, escalatio
         ),
     )
     app.state.runtime = runtime
+    diagnostics_enabled = os.getenv("T44_REQUEST_DIAGNOSTICS") == "1"
 
     @app.middleware("http")
     async def capture(request, call_next):
@@ -211,9 +215,11 @@ def create_app(*, factory=None, settings=None, notifications=_DEFAULT, escalatio
         request.state.raw_body = b"".join(chunks)
         request.state.too_large = size > 1048576
         request.state.request_id = str(uuid4())
+        request.state.diagnostic_dispatch_ready_ns = time.perf_counter_ns()
         return await call_next(request)
 
     def endpoint(operation):
+        @diagnosed(diagnostics_enabled)
         def handle(request: Request):
             started = time.perf_counter()
             auth = request.headers.get("authorization", "")
@@ -266,7 +272,8 @@ def create_app(*, factory=None, settings=None, notifications=_DEFAULT, escalatio
                 headers["Retry-After"] = (
                     "1" if status == 409 else str(settings.login_window_seconds)
                 )
-            return JSONResponse(wire(payload), status_code=status, headers=headers)
+            with span("response.encode"):
+                return JSONResponse(wire(payload), status_code=status, headers=headers)
 
         return handle
 
