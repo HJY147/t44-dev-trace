@@ -1,0 +1,38 @@
+{
+  "status": "READY_FOR_USER_BOOT",
+  "source": "bcec3326b40814fdb1922bbfea7c29473b47ba47",
+  "run_id": "r30directp16",
+  "archive_name": "direct16-ready-20261031-r3.tar.gz",
+  "archive_sha256": "cc06d8c82a66b0b924a59c64c8b1f808eb8b24d898630524ddbc2bd2c581bf5a",
+  "archive_bytes": 151147,
+  "payload_files": 38,
+  "review_commit": "a9533319",
+  "classification": "DIAGNOSTIC_PRESSURE_NOT_FORMAL_ACCEPTANCE",
+  "original_measurement": {
+    "clients": 400,
+    "warmup_seconds": 60,
+    "steady_seconds": 600
+  },
+  "local_full_flow": {
+    "wall_seconds": 693.119,
+    "postconditions400": true,
+    "raw_authenticated_records": 133158,
+    "backup_all_files_verified": 13,
+    "not_a_production_performance_result": true
+  },
+  "controller_offline_groups_passed": 6,
+  "servers": "USER_REPORTED_POWERED_OFF_NO_FURTHER_CONNECTIONS",
+  "actual_server_calls_during_new_offline_preparation": 0,
+  "automatic_vm_shutdown": false,
+  "next_user_action": "Start original APP and LOAD; supply actual public IPs. Coordinator invokes after_boot.py once; no old manual preparation sequence.",
+  "actual_run_started": false,
+  "workspace": "/root/t44-final-20261031/QA753_DIRECT_P16_R3",
+  "remote_root": "/root/t44-direct-p16-r3",
+  "known_router_bug_fixed_with_real_application_tests": true,
+  "actual_server_calls_during_r3_preparation": 0,
+  "previous_release_withdrawn": {
+    "archive": "direct16-ready-20261031-r2.tar.gz",
+    "reason": "Real API OPTIONS returned405 Allow POST; bootstrap guard incorrectly requiredGET",
+    "benchmark_started": false
+  }
+}
