@@ -1,0 +1,13 @@
+# DirectP16 最终 r2 包审核
+
+结论：EXACT_DIRECT16_R2_TECHNICAL_CONFIRMATION_NO_BLOCKER。用户明确取消准备工期等额外门禁后，本包按诊断压测范围准备，不是原正式全验收准入；可由总协调发行并按既有授权通知开机。
+
+本岗实际离线核归档 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/direct16-ready-20261031-r2.tar.gz：148424字节，SHA377ffcb2c33ac53a7fb0d4a41457be332e40bcbf371677590113ee47fbd55c85；37payload+manifest，共38个唯一regular成员，无绝对路径/父目录逃逸/links。逐文件SHA/bytes、精确成员集合、三owner嵌套清单全部通过；各owner payload逐字等于root e11324c9已提交文件。Manifest SHA c548f1e21849fb78575f6420de85cb5a71f47a5069986b441731384b922440c4。
+
+coordinator run/launch逐字e11324c9；helper实际随包、原CMS466fa0b7、source52d74144、bundle3e09cc1b准确。全部py Python3.10 AST通过。产品backend/t44、requirements.lock、frontend/src、specs、compose、tmp/backend相对bcec无diff。未重跑产品suite或11分钟演练，没有SSH/云/真实Docker/SUT/PRIVATE读取。
+
+原三项缺陷保持已关闭：先stopworker、会话前有界只读连接就绪、可选observer失败不丢NP回收。15876ee4只在采样任务结束并完成APP摘要回收尝试后通知可停APP，同时明确LOAD继续开机等待备份；采样缺失仍标UNKNOWN，不伪作零。e11324c9仅将大密文scp进程期限放宽1800秒，不是VM关机定时。LOAD密文与receipt下载后核全SHA/bytes才声明可停两机。无重复发压/seal/自动VMstop。实际网络或资源失败仍须保留原prefix据实报告，不承诺任意断网都能自动回收。
+
+FULL_DURATION.PUBLIC.json实际包内存在，公开报告SHA64f6091670a182acd934e487ecceaae8e80fddc60e0e36908ae37af7c41ee739已核。报告记693.119秒/400client/原60+600、400finalsnapshot/400audit、writer及pool退出、133158raw认证与13文件备份认证；CLASS_P95因合成stub2.5s故意延迟导致NP，未降低指标。此为QA公开报告的本地TLS工具证据，本岗未解密/读取原PRIVATE逐条复验；不证明云端Linux资源、真实产品性能或正式验收。首轮完整演练分页/post失败仍保持历史，不回写。
+
+最终READY与发行由root在此准确包审核后单独记录；本岗不改其他角色工具或授权模板。

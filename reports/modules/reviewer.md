@@ -615,3 +615,5 @@ CAS审核9fb99864已push/远端匹配，GitHub插件Issue3 COMMENT6494709568按I
 2026-10-31 DirectP16 controller3d741: a7ad startup findings closed; optional observer exception blocks NP evidence recovery reproduced with purelocal FakeSSH (backup downloads0), root notified. Actual finalarchive pending. Prompt-Ref review_p13_preparation/direct-p16-controller; CONTROLLER-REVIEW.md.
 
 2026-10-31 DirectP16 dd5a94e4 observer recovery closed; exact6purelocalFakeSSHgroups exit0, helper packaged/main resolves kit. Reviewed source no blocker; finalarchive and second660s evidence pending. Prompt-Ref review_p13_preparation/direct-p16-controller-closure; CONTROLLER-CLOSURE.md.
+
+2026-10-31 Direct16 finalr2 exact148424B SHA377ffc/manifestc548/37payload allhash+ownerexact+CMS/source/helper/AST pass; source no blocker, localstub CLASS_P95 NP accurately preserved/not product acceptance. Prompt-Ref review_p13_preparation/direct-p16-final-r2; FINAL-R2-REVIEW.md.
