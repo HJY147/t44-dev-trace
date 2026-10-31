@@ -16,7 +16,8 @@ def active():
 
 
 def count(name, value=1):
-    try:
+    # Optional numeric bookkeeping only; never encloses a business operation.
+    with suppress(Exception):
         trace = _CURRENT.get()
         if (trace is not None and type(value) is int and isinstance(name, str)
                 and len(name) <= 64 and name.isascii()
@@ -25,8 +26,6 @@ def count(name, value=1):
                 trace['diagnostic.incomplete'] = 1
                 return
             trace[name] = min(2**63 - 1, trace.get(name, 0) + max(0, value))
-    except Exception:
-        pass
 
 
 def _stamp():
@@ -42,14 +41,13 @@ def span(name):
     try:
         yield
     finally:
-        try:
+        # Only observer clocks/counters are optional; yield stays outside suppression.
+        with suppress(Exception):
             end = _stamp() if start is not None else None
             if end is not None:
                 count(name + '.wall_ns', end[0] - start[0])
                 count(name + '.cpu_ns', end[1] - start[1])
                 count(name + '.calls')
-        except Exception:
-            pass
 
 
 def measured(name):
@@ -108,12 +106,11 @@ def diagnosed(enabled):
                             count('diagnostic.incomplete')
                     except Exception:
                         count('diagnostic.incomplete')
-                try:
+                # Readiness bookkeeping must not change the handler result.
+                with suppress(Exception):
                     ready = getattr(request.state, 'diagnostic_dispatch_ready_ns', None)
                     if ready is not None:
                         count('dispatch_wait.wall_ns', perf_counter_ns() - ready)
-                except Exception:
-                    pass
                 with span('handle'):
                     response = function(request)
                 with suppress(Exception):

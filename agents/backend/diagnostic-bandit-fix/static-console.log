@@ -1,0 +1,15 @@
+RUN /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python scripts/ci/validate_config.py
+Compose schema and deployment invariants passed; Docker/Nginx runtime NOT executed.
+RUN /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python -m pytest -c backend/pyproject.toml tmp/deployment/997_ops.py tmp/deployment/971_credentials.py tmp/ci/996_gates.py -q
+.......................                                                  [100%]
+23 passed in 0.05s
+RUN /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python -m ruff check --config scripts/ci/ruff.toml deployment scripts/ci tmp/deployment tmp/ci
+All checks passed!
+RUN /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python -m ruff check --config scripts/ci/ruff.toml backend/t44 tmp/backend
+All checks passed!
+RUN /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python -m bandit -r backend/t44 -f json -o /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend-diagnostic-bandit-fix-20261031/agents/backend/diagnostic-bandit-fix/static/bandit.json
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[json]	INFO	JSON output written to file: /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/backend-diagnostic-bandit-fix-20261031/agents/backend/diagnostic-bandit-fix/static/bandit.json
