@@ -30,3 +30,5 @@
 诊断属于独立观察，不改变上述结论：全部128989稳态请求均带app、workerPID及diag-incomplete=0，观测到18个不同PID；这不证明实际只启动18个worker。app P95=32.080ms。逐请求配对E2E−app的P50=43.737039ms、P95=88.951085ms；没有用两个独立P95相减。完整PID分布、各DB/CPU/wall span分布及各项缺失UNKNOWN数见DIAGNOSTICS.PUBLIC.json；缺失不补0、不删请求，嵌套span不能相加当端到端时间。
 
 本次没有验证消息实际送达或被豁免的原完整准入门禁，不将这些写为通过。服务器不必再开；以上验证全部在本地回收密文上完成。
+
+离线时间线补充：16个错误全部为audit-events后置GET，发生于稳态结束后40.004326～40.020270秒，集中在原40秒后置截止。两条TimeoutError均已收到HTTP200和完整body；结合原执行顺序，支持定位为后置schema验证池等待截止。其余13次断开与一次NoneType.close紧随首个超时约11.1～15.9ms，与全局stop后集中关闭连接的原代码一致；缺少逐调用栈/服务端证据，不能证明各次具体归因，不能据此剔除错误或判生产接口故障。详见POST_ERROR_TIMELINE.PUBLIC.json。

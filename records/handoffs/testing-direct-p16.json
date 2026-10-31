@@ -1,7 +1,7 @@
 {
   "role": "independent-testing",
   "prompt_id": "TEST-DIRECT-P16-OFFLINE-20261031",
-  "status": "OFFLINE_DIRECT_TOOL_PREPARED_AND_FULL_DURATION_LOOPBACK_VERIFIED",
+  "status": "ACTUAL_DIAGNOSTIC_METRICS_PASS_OVERALL_NP_POSTCONDITIONS_INCOMPLETE",
   "public": "records/qa/direct-p16.PUBLIC",
   "source": "bcec3326b40814fdb1922bbfea7c29473b47ba47",
   "classification": "DIAGNOSTIC_PRESSURE_NOT_FORMAL_ACCEPTANCE",
@@ -9,5 +9,19 @@
   "formal_grant_issued": false,
   "original_core_functional_byte_unchanged": true,
   "full_local_exercise_report": "records/qa/direct-p16.PUBLIC/FULL_DURATION.PUBLIC.json",
-  "actual_product_performance_tested": false
+  "actual_product_performance_tested": true,
+  "formal_acceptance": false,
+  "public_result": "records/qa/directp16-result-20261031.PUBLIC",
+  "performance_metrics": "PASS",
+  "independent_conclusion": "NP",
+  "postconditions": {
+    "final_task_snapshot": 243,
+    "audit_complete_clients": 227,
+    "post_budget_not_observed": 157
+  },
+  "steady_errors": 0,
+  "postcheck_errors": 16,
+  "backup_authenticated": true,
+  "raw_complete": true,
+  "verification_remote_calls": 0
 }
