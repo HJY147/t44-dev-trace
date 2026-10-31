@@ -1,0 +1,55 @@
+#!/usr/bin/env python3
+"""Source-aware neutral IO adapter; no HTTP, login, product imports or cases."""
+import argparse,datetime,hashlib,ipaddress,json,os,re,ssl,sys,time,urllib.parse
+from pathlib import Path
+os.umask(0o077)
+ORIGINAL_CORE='81e04666cf05c2932397c5d39521ef881602f3046342e2d4d5605a694e5829bf'
+CORE='9cf747e308969ceba37e2cfcfa6591def45e118ad928c4f310f57b6ecf37542a'
+LOAD='sha256:4f3baf081863a4580b5608699d9a7a8af2d89c3e87abbb60089b630b9102b2a1'
+OPENAPI='6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478'
+LIMITS={'cpu':8,'memory_bytes':8589934592,'pids':2048,'plain_bytes':10737418240,'compressed_bytes':11811160064,'cipher_bytes':12884901888}
+def need(x,s):
+ if not x:raise ValueError(s)
+def raw(p):
+ p=Path(p);need(p.is_file()and p.stat().st_size<=16*1024**2,'INPUT_FILE_BOUND');return p.read_bytes()
+def obj(p):return json.loads(raw(p))
+def enc(v):return json.dumps(v,ensure_ascii=False,separators=(',',':'),sort_keys=True,allow_nan=False).encode()+b'\n'
+def sha(b):return hashlib.sha256(b).hexdigest()
+def epoch(v):
+ d=datetime.datetime.fromisoformat(v.replace('Z','+00:00'));need(d.tzinfo is not None and d.utcoffset()==datetime.timedelta(0),'UTC');return d.timestamp()
+def save(p,b):
+ p=Path(p);fd=os.open(p,os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
+ with os.fdopen(fd,'wb')as f:f.write(b if isinstance(b,bytes)else enc(b));f.flush();os.fsync(f.fileno())
+def safe(v):need(isinstance(v,str)and re.fullmatch('[A-Za-z0-9][A-Za-z0-9_-]{0,63}',v),'SAFE_RUN_ID')
+def profile(work):
+ p=work/'public/TARGET_PROFILE_753.json';b=raw(p);v=json.loads(b);a=obj(work/'public/APPROVAL_753.json');need(v['runtime_sha256']==CORE and v['load_runtime_image_config_digest']==LOAD and v['openapi_sha256']==OPENAPI,'FIXED_TOOL_BINDING');need(a['supports_source']==v['git_commit']and a['target_profile_sha256']==sha(b)and a['qa_adapter_sha256']==sha(raw(__file__)),'SOURCE_APPROVAL_BINDING');need(a['approved']is True,'QA_SOURCE_APPROVAL_REQUIRED');return v,a
+def installed(work):need(sha(raw(work/'private_tools/runtime.py'))==CORE and sha(raw(work/'private_tools/openapi.json'))==OPENAPI,'INSTALLED_TOOL_HASH')
+def validate(packet,files,run_id,work,execution=False):
+ safe(run_id);p,a=profile(work);now=time.time();need(packet['schema']=='NEUTRAL_753_INPUTS_V1','ORIGINAL_PACKET_SCHEMA');safe(packet['run_id']);need(packet['run_id']!=run_id,'NEW_MANUAL_RUN_REQUIRED');created=epoch(packet['created_at']);need(created<=now+5,'PACKET_NOT_FROM_FUTURE');need(packet['binding_sha256']==sha(enc({k:v for k,v in packet.items()if k!='binding_sha256'})),'PACKET_RAW_BINDING')
+ for k in ['git_commit','source_manifest_sha256','backend_bundle_manifest_sha256','sut_image_config_digest','load_runtime_image_config_digest','runtime_sha256','openapi_sha256']:need(packet['identity'][k]==(ORIGINAL_CORE if k=='runtime_sha256' else p[k]),'TARGET_'+k)
+ for key,pkey in [('source-manifest.json','source_manifest_sha256'),('backend-bundle-manifest.json','backend_bundle_manifest_sha256'),('backend-import-receipt.json','backend_import_receipt_sha256')]:need(sha(files[key])==p[pkey],'RAW_'+key)
+ receipt=json.loads(files['backend-import-receipt.json'])
+ for rkey,pkey in [('source_sha','git_commit'),('source_manifest_sha256','source_manifest_sha256'),('bundle_manifest_sha256','backend_bundle_manifest_sha256')]:need(receipt[rkey]==p[pkey],'ACTUAL_IMPORT_'+rkey)
+ def leaves(x):return [z for y in x.values()for z in leaves(y)]if isinstance(x,dict)else [z for y in x for z in leaves(y)]if isinstance(x,list)else[x]
+ need(any(x in [p['sut_image_config_digest'],p['sut_image_config_digest'][7:]]for x in leaves(receipt['identity'])),'ACTUAL_IMAGE_CONFIG_IN_RECEIPT');need(packet['loaded_receipt_sha256']==p['backend_import_receipt_sha256'],'RECEIPT_REFERENCE_SHA');need(packet['loaded_receipt_reference']['sha256']==packet['loaded_receipt_sha256'],'RECEIPT_REFERENCE_BINDING')
+ window=packet['window'];start=epoch(window['start_utc']);end=epoch(window['end_utc']);need(end>start,'ORIGINAL_WINDOW_PROVENANCE');end=now+900;need(not execution or a.get('manual_start_protocol')=='753-ready-manual-once-v1','MANUAL_IDENTITY_APPROVAL')
+ origin=urllib.parse.urlsplit(packet['environment']['origin']);need(origin.scheme=='https'and origin.hostname and not origin.username and not origin.password and not origin.query and not origin.fragment and origin.path in ('','/'),'STRICT_HTTPS_ORIGIN');need(ipaddress.ip_address(packet['environment']['connect_ip']).is_private,'PRIVATE_CONNECT_IP');need(sha(files['ca.pem'])==packet['environment']['ca_sha256'],'CA_BINDING');ssl.create_default_context(cadata=files['ca.pem'].decode())
+ sessions=packet['sessions'];need(set(sessions)=={'manager','developer','reviewer','service'},'FOUR_PERF_SESSIONS')
+ for role,s in sessions.items():need(isinstance(s['token'],str)and len(s['token'])>=16 and epoch(s['expires_at'])>end,'REAL_SESSION_COVERS_WINDOW_'+role)
+ need('escalation:write'in sessions['service']['scopes'],'SERVICE_SCOPE');inv=packet['inventory'];need(inv['schema']=='772-inventory-v1'and len(inv['clients'])==400 and{x['client_id']for x in inv['clients']}==set(range(400)),'400_INVENTORY');need(epoch(inv['captured_at'])<=now+5,'INVENTORY_NOT_FROM_FUTURE');ids=[];projects=set()
+ for x in inv['clients']:
+  pid=x['project_id'];t=x['transition_task'];e=x['escalation_task'];ev=x['escalation_event'];ids.extend([t['id'],e['id']]);projects.add(pid);need(t['project_id']==pid==e['project_id']==ev['project_id'],'PROJECT_BINDING');need(t['state']==2 and t['owner_id']==sessions['developer']['user_id'],'TRANSITION_ELIGIBLE');need(epoch(t['plan']['planned_end'])>end+86400,'NOT_DUE_DURING_PERF');need(e['state']not in(6,7)and ev['task_id']==e['id']and ev['schedule_version']==e['schedule_version']and ev['rule_version']==inv['rule_version'],'EXISTING_CURRENT_ESCALATION')
+  for s in sessions.values():need(pid in s['project_ids'],'ACTUAL_PROJECT_SCOPE')
+ need(len(set(ids))==800 and len(projects)>=35,'800_EXCLUSIVE_TASKS_PROJECT_SPREAD');need(re.fullmatch('[0-9a-f]{64}',packet['fixture_sha256']),'FIXTURE_SHA');return p,a
+def environment(packet,work,run_id,p):return {'schema':'772-env-v1','run_id':run_id,'created_at':packet['created_at'],'origin':packet['environment']['origin'],'connect_ip':packet['environment']['connect_ip'],'ca_file':str(work/'runs'/run_id/'ca.pem'),'sessions_file':str(work/'runs'/run_id/'sessions.json'),'inventory_file':str(work/'runs'/run_id/'inventory.json'),'output_dir':str(work/'results'/run_id),'identity':{'source_sha256':p['source_manifest_sha256'],'source_git_commit':p['git_commit'],'backend_bundle_manifest_sha256':p['backend_bundle_manifest_sha256'],'image_digest':p['sut_image_config_digest'],'load_runtime_image_config_digest':LOAD,'fixture_sha256':packet['fixture_sha256'],'openapi_sha256':OPENAPI,'backend_import_receipt_sha256':p['backend_import_receipt_sha256'],'backend_import_receipt_reference':packet['loaded_receipt_reference'],'neutral_binding_sha256':packet['binding_sha256']},'declared_fixture_counts':packet['counts']}
+def grant(e,p,b,allow=False):return {'schema':'772-grant-v1','allow':allow,'run_id':e['run_id'],'created_at':p['created_at'],'window_start_utc':p['window']['start_utc'],'window_end_utc':p['window']['end_utc'],'cost_stop_utc':p['window']['cost_stop_utc'],'origin':e['origin'],'environment_sha256':sha(b),'runtime_sha256':CORE,'source_sha256':e['identity']['source_sha256'],'image_digest':e['identity']['image_digest'],'fixture_sha256':p['fixture_sha256'],'clients':400,'warmup_seconds':60,'steady_seconds':600,'request_timeout_seconds':15,'postcheck_seconds':40,'limits':LIMITS,'permissions':['linux-preflight','one-cohort','read-postconditions'],'prohibitions':['cloud-control','install','login','session-extension','request-retry','restart','successor-run'],'manual_start_protocol':'753-ready-manual-once-v1','max_elapsed_seconds':900,'packet_run_id':p['run_id'],'original_packet_window':p['window']}
+def main():
+ parser=argparse.ArgumentParser();parser.add_argument('mode',choices=['prepare','execute']);parser.add_argument('--workspace',required=True);parser.add_argument('--run-id',required=True);parser.add_argument('--neutral-opened-dir');parser.add_argument('--grant-file');parser.add_argument('--authorize-once');a=parser.parse_args();safe(a.run_id);work=Path(a.workspace);installed(work);r=work/'runs'/a.run_id
+ if a.mode=='prepare':
+  f=Path(a.neutral_opened_dir)/'inputs';packet=obj(f/'session.private.json');files={n:raw(f/n)for n in ['ca.pem','source-manifest.json','backend-bundle-manifest.json','backend-import-receipt.json']};p,approval=validate(packet,files,a.run_id,work);r.parent.mkdir(mode=0o700,parents=True,exist_ok=True);r.mkdir(mode=0o700);(work/'results').mkdir(mode=0o700,exist_ok=True);need(not(work/'results'/a.run_id).exists(),'NEW_RESULT_DIR');save(r/'packet.private.json',packet)
+  for n,b in files.items():save(r/n,b)
+  save(r/'sessions.json',packet['sessions']);save(r/'inventory.json',packet['inventory']);e=environment(packet,work,a.run_id,p);b=enc(e);save(r/'environment.json',b);save(r/'grant.default-false.json',grant(e,packet,b));print(json.dumps({'status':'PREPARED_DEFAULT_FALSE','run_id':a.run_id,'environment_sha256':sha(b),'supports_source':p['git_commit'],'qa_adapter_sha256':sha(raw(__file__)),'SUT_requests':0}));return
+ need(a.authorize_once==a.run_id,'EXPLICIT_ONCE');packet=obj(r/'packet.private.json');files={n:raw(r/n)for n in ['ca.pem','source-manifest.json','backend-bundle-manifest.json','backend-import-receipt.json']};p,approval=validate(packet,files,a.run_id,work,True);b=raw(r/'environment.json');e=json.loads(b);need(e==environment(packet,work,a.run_id,p),'ENV_UNCHANGED');need(obj(r/'sessions.json')==packet['sessions']and obj(r/'inventory.json')==packet['inventory'],'INPUTS_UNCHANGED');g=obj(a.grant_file);need(g==grant(e,packet,b,True),'EXACT_EXTERNAL_ONCE_GRANT');need(not(r/'grant.json').exists()and not(r/'grant.consumed').exists()and not Path(e['output_dir']).exists(),'ONCE_ONLY');save(r/'grant.json',g);actual=datetime.datetime.now(datetime.timezone.utc);effective=dict(g);effective['created_at']=actual.isoformat().replace('+00:00','Z');effective['window_start_utc']=effective['created_at'];effective['window_end_utc']=(actual+datetime.timedelta(seconds=900)).isoformat().replace('+00:00','Z');effective['cost_stop_utc']=effective['window_end_utc'];save(r/'runtime-effective-grant.json',effective);save(r/'actual-trigger.PUBLIC.json',{'schema':'753-manual-actual-trigger-v1','run_id':a.run_id,'actual_trigger_utc':effective['created_at'],'original_packet_run_id':packet['run_id'],'original_packet_created_at':packet['created_at'],'original_window_preserved':packet['window'],'execution_bound_seconds_from_actual_trigger':900,'cohort':400,'warmup_seconds':60,'steady_seconds':600});os.execv(sys.executable,[sys.executable,str(work/'private_tools/runtime.py'),'run',str(r/'environment.json'),str(r/'runtime-effective-grant.json')])
+if __name__=='__main__':
+ try:main()
+ except Exception as e:print(json.dumps({'status':'BLOCKED','code':str(e),'exception_type':type(e).__name__,'SUT_requests_by_adapter':0}));raise SystemExit(2)
