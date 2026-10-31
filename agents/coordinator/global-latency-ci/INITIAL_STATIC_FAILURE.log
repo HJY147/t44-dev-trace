@@ -1,0 +1,360 @@
+static	Set up job	﻿2026-10-31T04:15:14.6209270Z Current runner version: '2.338.2'
+static	Set up job	2026-10-31T04:15:14.6230272Z ##[group]Runner Image Provisioner
+static	Set up job	2026-10-31T04:15:14.6231068Z Hosted Compute Agent
+static	Set up job	2026-10-31T04:15:14.6231602Z Version: 20261021.618
+static	Set up job	2026-10-31T04:15:14.6232116Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+static	Set up job	2026-10-31T04:15:14.6232776Z Build Date: 2026-10-21T00:45:21Z
+static	Set up job	2026-10-31T04:15:14.6233352Z Worker ID: {fc496d0c-1191-4122-b4d0-e72062b26ad7}
+static	Set up job	2026-10-31T04:15:14.6234114Z Region: westus3
+static	Set up job	2026-10-31T04:15:14.6234638Z Cloud: Azure
+static	Set up job	2026-10-31T04:15:14.6235126Z ##[endgroup]
+static	Set up job	2026-10-31T04:15:14.6236496Z ##[group]Operating System
+static	Set up job	2026-10-31T04:15:14.6237037Z Ubuntu
+static	Set up job	2026-10-31T04:15:14.6237521Z 24.04.5
+static	Set up job	2026-10-31T04:15:14.6238008Z LTS
+static	Set up job	2026-10-31T04:15:14.6238454Z ##[endgroup]
+static	Set up job	2026-10-31T04:15:14.6238961Z ##[group]Runner Image
+static	Set up job	2026-10-31T04:15:14.6239475Z Image: ubuntu-24.04
+static	Set up job	2026-10-31T04:15:14.6239954Z Version: 20261025.353.1
+static	Set up job	2026-10-31T04:15:14.6240911Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261025.353/images/ubuntu/Ubuntu2404-Readme.md
+static	Set up job	2026-10-31T04:15:14.6242406Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261025.353
+static	Set up job	2026-10-31T04:15:14.6243202Z ##[endgroup]
+static	Set up job	2026-10-31T04:15:14.6244492Z ##[group]GITHUB_TOKEN Permissions
+static	Set up job	2026-10-31T04:15:14.6246077Z Contents: read
+static	Set up job	2026-10-31T04:15:14.6246695Z Metadata: read
+static	Set up job	2026-10-31T04:15:14.6247191Z ##[endgroup]
+static	Set up job	2026-10-31T04:15:14.6248842Z Secret source: Actions
+static	Set up job	2026-10-31T04:15:14.6249714Z Cache mode: write
+static	Set up job	2026-10-31T04:15:14.6250295Z Prepare workflow directory
+static	Set up job	2026-10-31T04:15:14.6513219Z Prepare all required actions
+static	Set up job	2026-10-31T04:15:14.6554070Z Getting action download info
+static	Set up job	2026-10-31T04:15:14.9541912Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+static	Set up job	2026-10-31T04:15:15.0730103Z Download action repository 'actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0' (SHA:6d4fd22b20465ccc0f7354476588e8df7c9ca0e0)
+static	Set up job	2026-10-31T04:15:15.7325715Z Download action repository 'actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9' (SHA:cf430e030ddbb5b0abf93d22962f4752f3646cd9)
+static	Set up job	2026-10-31T04:15:15.9175406Z Complete job name: static
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	﻿2026-10-31T04:15:15.9884659Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:15.9885675Z with:
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:15.9886077Z   persist-credentials: false
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:15.9886557Z   repository: HJY147/t44-dev-trace
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:15.9889799Z   token: ***
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:15.9890193Z   ssh-strict: true
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:15.9890580Z   ssh-user: git
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:15.9890952Z   clean: true
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:15.9891342Z   sparse-checkout-cone-mode: true
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:15.9891798Z   fetch-depth: 1
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:15.9892177Z   fetch-tags: false
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:15.9892573Z   show-progress: true
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:15.9892980Z   lfs: false
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:15.9893356Z   submodules: false
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:15.9893750Z   set-safe-directory: true
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:15.9894324Z   allow-unsafe-pr-checkout: false
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:15.9895062Z ##[endgroup]
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2252142Z Syncing repository: HJY147/t44-dev-trace
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2253724Z ##[group]Getting Git version info
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2254756Z Working directory is '/home/runner/work/t44-dev-trace/t44-dev-trace'
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2255720Z [command]/usr/bin/git version
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2337674Z git version 2.56.0
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2354375Z ##[endgroup]
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2363344Z Temporarily overriding HOME='/home/runner/work/_temp/dcb1da4f-1f2b-4b46-9cb8-b5df9171ba2c' before making global git config changes
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2365498Z Adding repository directory to the temporary git global config as a safe directory
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2369924Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/t44-dev-trace/t44-dev-trace
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2416176Z Deleting the contents of '/home/runner/work/t44-dev-trace/t44-dev-trace'
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2419116Z ##[group]Determining repository object format
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2423475Z ##[endgroup]
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2424390Z ##[group]Initializing the repository
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2444462Z [command]/usr/bin/git init /home/runner/work/t44-dev-trace/t44-dev-trace
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2519524Z hint: Using 'master' as the name for the initial branch. This default branch name
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2521105Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2522552Z hint: to use in all of your new repositories, which will suppress this warning,
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2523708Z hint: call:
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2524524Z hint:
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2525316Z hint: 	git config --global init.defaultBranch <name>
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2526326Z hint:
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2527235Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2528665Z hint: 'development'. The just-created branch can be renamed via this command:
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2529843Z hint:
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2537445Z hint: 	git branch -m <name>
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2538184Z hint:
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2539187Z hint: Disable this message with "git config set advice.defaultBranchName false"
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2540701Z Initialized empty Git repository in /home/runner/work/t44-dev-trace/t44-dev-trace/.git/
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2543431Z [command]/usr/bin/git remote add origin https://github.com/HJY147/t44-dev-trace
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2596309Z ##[endgroup]
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2597456Z ##[group]Disabling automatic garbage collection
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2600203Z [command]/usr/bin/git config --local gc.auto 0
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2629550Z ##[endgroup]
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2630958Z ##[group]Setting up auth
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2631793Z Removing SSH command configuration
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2635790Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.2679700Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.3040749Z Removing HTTP extra header
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.3046511Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.3085756Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.3283444Z Removing includeIf entries pointing to credentials config files
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.3287836Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.3324150Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.3526098Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-696877a2-2760-4449-a368-414333ae2d74.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.3566417Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git.path /home/runner/work/_temp/git-credentials-696877a2-2760-4449-a368-414333ae2d74.config
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.3604184Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-696877a2-2760-4449-a368-414333ae2d74.config
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.3642235Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-696877a2-2760-4449-a368-414333ae2d74.config
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.3682155Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-696877a2-2760-4449-a368-414333ae2d74.config
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.3717185Z ##[endgroup]
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.3717875Z ##[group]Fetching the repository
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:16.3722466Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +dd32059be9cc41784e774fcf4e4f52f3806faa10:refs/remotes/origin/codex/global-latency-repair-20261031
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:18.4706818Z From https://github.com/HJY147/t44-dev-trace
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:18.4708659Z  * [new ref]         dd32059be9cc41784e774fcf4e4f52f3806faa10 -> origin/codex/global-latency-repair-20261031
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:18.4714739Z [command]/usr/bin/git branch --list --remote origin/codex/global-latency-repair-20261031
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:18.4747905Z   origin/codex/global-latency-repair-20261031
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:18.4754324Z [command]/usr/bin/git rev-parse refs/remotes/origin/codex/global-latency-repair-20261031
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:18.4784087Z dd32059be9cc41784e774fcf4e4f52f3806faa10
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:18.4787659Z ##[endgroup]
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:18.4788247Z ##[group]Determining the checkout info
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:18.4788980Z ##[endgroup]
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:18.4792139Z [command]/usr/bin/git sparse-checkout disable
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:18.4847859Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:18.4884080Z ##[group]Checking out the ref
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:18.4887517Z [command]/usr/bin/git checkout --progress --force -B codex/global-latency-repair-20261031 refs/remotes/origin/codex/global-latency-repair-20261031
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.0339196Z Switched to a new branch 'codex/global-latency-repair-20261031'
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.0344595Z branch 'codex/global-latency-repair-20261031' set up to track 'origin/codex/global-latency-repair-20261031'.
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.0372472Z ##[endgroup]
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.0424914Z [command]/usr/bin/git log -1 --format=%H
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.0458689Z dd32059be9cc41784e774fcf4e4f52f3806faa10
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.0469687Z ##[group]Removing auth
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.0469949Z Removing SSH command configuration
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.0470291Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.0509291Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.0721842Z Removing HTTP extra header
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.0725120Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.0761407Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.0971238Z Removing includeIf entries pointing to credentials config files
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.0974298Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.1010568Z includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git.path
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.1011363Z includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git/worktrees/*.path
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.1011843Z includeif.gitdir:/github/workspace/.git.path
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.1012186Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.1018594Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git.path
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.1048113Z /home/runner/work/_temp/git-credentials-696877a2-2760-4449-a368-414333ae2d74.config
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.1060121Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-696877a2\-2760\-4449\-a368\-414333ae2d74\.config
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.1099093Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git/worktrees/*.path
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.1127806Z /home/runner/work/_temp/git-credentials-696877a2-2760-4449-a368-414333ae2d74.config
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.1135218Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/t44-dev-trace/t44-dev-trace/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-696877a2\-2760\-4449\-a368\-414333ae2d74\.config
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.1175536Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.1205361Z /github/runner_temp/git-credentials-696877a2-2760-4449-a368-414333ae2d74.config
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.1210917Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-696877a2\-2760\-4449\-a368\-414333ae2d74\.config
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.1248370Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.1276611Z /github/runner_temp/git-credentials-696877a2-2760-4449-a368-414333ae2d74.config
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.1282522Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-696877a2\-2760\-4449\-a368\-414333ae2d74\.config
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.1320051Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.1536287Z Removing credentials config '/home/runner/work/_temp/git-credentials-696877a2-2760-4449-a368-414333ae2d74.config'
+static	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:19.1537425Z ##[endgroup]
+static	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	﻿2026-10-31T04:15:19.1823436Z ##[group]Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+static	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-31T04:15:19.1823776Z with:
+static	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-31T04:15:19.1824208Z   python-version: 3.12
+static	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-31T04:15:19.1824404Z   check-latest: false
+static	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-31T04:15:19.1826415Z   token: ***
+static	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-31T04:15:19.1826698Z   mirror: https://raw.githubusercontent.com/actions/python-versions/main
+static	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-31T04:15:19.1827018Z   update-environment: true
+static	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-31T04:15:19.1827226Z   allow-prereleases: false
+static	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-31T04:15:19.1827432Z   freethreaded: false
+static	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-31T04:15:19.1827617Z ##[endgroup]
+static	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-31T04:15:19.2800496Z ##[group]Installed versions
+static	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-31T04:15:19.2870493Z Successfully set up CPython (3.12.15)
+static	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-10-31T04:15:19.2871117Z ##[endgroup]
+static	Prepare raw evidence directory	﻿2026-10-31T04:15:19.3015314Z ##[group]Run mkdir -p reports/ci
+static	Prepare raw evidence directory	2026-10-31T04:15:19.3015768Z ^[[36;1mmkdir -p reports/ci^[[0m
+static	Prepare raw evidence directory	2026-10-31T04:15:19.3054372Z shell: /usr/bin/bash -e {0}
+static	Prepare raw evidence directory	2026-10-31T04:15:19.3054722Z env:
+static	Prepare raw evidence directory	2026-10-31T04:15:19.3055046Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+static	Prepare raw evidence directory	2026-10-31T04:15:19.3055591Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+static	Prepare raw evidence directory	2026-10-31T04:15:19.3056115Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+static	Prepare raw evidence directory	2026-10-31T04:15:19.3056580Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+static	Prepare raw evidence directory	2026-10-31T04:15:19.3057046Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+static	Prepare raw evidence directory	2026-10-31T04:15:19.3057524Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+static	Prepare raw evidence directory	2026-10-31T04:15:19.3057929Z ##[endgroup]
+static	Install hash-locked checking tools	﻿2026-10-31T04:15:19.3194763Z ##[group]Run python -m pip install --require-hashes -r scripts/ci/requirements.lock
+static	Install hash-locked checking tools	2026-10-31T04:15:19.3195633Z ^[[36;1mpython -m pip install --require-hashes -r scripts/ci/requirements.lock^[[0m
+static	Install hash-locked checking tools	2026-10-31T04:15:19.3217317Z shell: /usr/bin/bash -e {0}
+static	Install hash-locked checking tools	2026-10-31T04:15:19.3217545Z env:
+static	Install hash-locked checking tools	2026-10-31T04:15:19.3217768Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+static	Install hash-locked checking tools	2026-10-31T04:15:19.3218114Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+static	Install hash-locked checking tools	2026-10-31T04:15:19.3218453Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+static	Install hash-locked checking tools	2026-10-31T04:15:19.3218755Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+static	Install hash-locked checking tools	2026-10-31T04:15:19.3219056Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+static	Install hash-locked checking tools	2026-10-31T04:15:19.3219362Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+static	Install hash-locked checking tools	2026-10-31T04:15:19.3219641Z ##[endgroup]
+static	Install hash-locked checking tools	2026-10-31T04:15:20.1320094Z Collecting attrs==26.1.0 (from -r scripts/ci/requirements.lock (line 3))
+static	Install hash-locked checking tools	2026-10-31T04:15:20.1911230Z   Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+static	Install hash-locked checking tools	2026-10-31T04:15:20.2214977Z Collecting bandit==1.9.4 (from -r scripts/ci/requirements.lock (line 9))
+static	Install hash-locked checking tools	2026-10-31T04:15:20.2318068Z   Downloading bandit-1.9.4-py3-none-any.whl (134 kB)
+static	Install hash-locked checking tools	2026-10-31T04:15:20.5496492Z Collecting coverage==7.17.0 (from -r scripts/ci/requirements.lock (line 13))
+static	Install hash-locked checking tools	2026-10-31T04:15:20.5599859Z   Downloading coverage-7.17.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (261 kB)
+static	Install hash-locked checking tools	2026-10-31T04:15:20.5931303Z Collecting iniconfig==2.3.1 (from -r scripts/ci/requirements.lock (line 134))
+static	Install hash-locked checking tools	2026-10-31T04:15:20.6031367Z   Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+static	Install hash-locked checking tools	2026-10-31T04:15:20.6309440Z Collecting jsonschema==4.26.0 (from -r scripts/ci/requirements.lock (line 138))
+static	Install hash-locked checking tools	2026-10-31T04:15:20.6409612Z   Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+static	Install hash-locked checking tools	2026-10-31T04:15:20.6574616Z Collecting jsonschema-specifications==2025.9.1 (from -r scripts/ci/requirements.lock (line 142))
+static	Install hash-locked checking tools	2026-10-31T04:15:20.6673835Z   Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+static	Install hash-locked checking tools	2026-10-31T04:15:20.6783203Z Collecting markdown-it-py==4.2.0 (from -r scripts/ci/requirements.lock (line 146))
+static	Install hash-locked checking tools	2026-10-31T04:15:20.6903638Z   Downloading markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+static	Install hash-locked checking tools	2026-10-31T04:15:20.7043649Z Collecting mdurl==0.1.2 (from -r scripts/ci/requirements.lock (line 150))
+static	Install hash-locked checking tools	2026-10-31T04:15:20.7144056Z   Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+static	Install hash-locked checking tools	2026-10-31T04:15:20.7254192Z Collecting packaging==26.3 (from -r scripts/ci/requirements.lock (line 154))
+static	Install hash-locked checking tools	2026-10-31T04:15:20.7354107Z   Downloading packaging-26.3-py3-none-any.whl (129 kB)
+static	Install hash-locked checking tools	2026-10-31T04:15:20.7569036Z Collecting pluggy==1.7.0 (from -r scripts/ci/requirements.lock (line 158))
+static	Install hash-locked checking tools	2026-10-31T04:15:20.7670776Z   Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+static	Install hash-locked checking tools	2026-10-31T04:15:20.7794487Z Collecting pygments==2.21.0 (from -r scripts/ci/requirements.lock (line 162))
+static	Install hash-locked checking tools	2026-10-31T04:15:20.7892364Z   Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+static	Install hash-locked checking tools	2026-10-31T04:15:20.8744340Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 15.6 MB/s  0:00:00
+static	Install hash-locked checking tools	2026-10-31T04:15:20.8935624Z Collecting pytest==9.1.1 (from -r scripts/ci/requirements.lock (line 168))
+static	Install hash-locked checking tools	2026-10-31T04:15:20.9038656Z   Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
+static	Install hash-locked checking tools	2026-10-31T04:15:20.9489255Z Collecting pyyaml==6.0.3 (from -r scripts/ci/requirements.lock (line 172))
+static	Install hash-locked checking tools	2026-10-31T04:15:20.9589985Z   Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+static	Install hash-locked checking tools	2026-10-31T04:15:20.9942744Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 807.9/807.9 kB 23.2 MB/s  0:00:00
+static	Install hash-locked checking tools	2026-10-31T04:15:21.0079119Z Collecting referencing==0.37.0 (from -r scripts/ci/requirements.lock (line 249))
+static	Install hash-locked checking tools	2026-10-31T04:15:21.0178962Z   Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+static	Install hash-locked checking tools	2026-10-31T04:15:21.0530777Z Collecting rich==15.0.0 (from -r scripts/ci/requirements.lock (line 255))
+static	Install hash-locked checking tools	2026-10-31T04:15:21.0630772Z   Downloading rich-15.0.0-py3-none-any.whl (310 kB)
+static	Install hash-locked checking tools	2026-10-31T04:15:21.2655761Z Collecting rpds-py==2026.9.1 (from -r scripts/ci/requirements.lock (line 259))
+static	Install hash-locked checking tools	2026-10-31T04:15:21.2758289Z   Downloading rpds_py-2026.9.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (371 kB)
+static	Install hash-locked checking tools	2026-10-31T04:15:21.5075650Z Collecting ruff==0.17.2 (from -r scripts/ci/requirements.lock (line 391))
+static	Install hash-locked checking tools	2026-10-31T04:15:21.5184959Z   Downloading ruff-0.17.2-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (10.5 MB)
+static	Install hash-locked checking tools	2026-10-31T04:15:21.7636750Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.5/10.5 MB 43.7 MB/s  0:00:00
+static	Install hash-locked checking tools	2026-10-31T04:15:21.7842576Z Collecting stevedore==5.9.1 (from -r scripts/ci/requirements.lock (line 411))
+static	Install hash-locked checking tools	2026-10-31T04:15:21.7944152Z   Downloading stevedore-5.9.1-py3-none-any.whl (54 kB)
+static	Install hash-locked checking tools	2026-10-31T04:15:21.8058171Z Collecting typing-extensions==4.16.0 (from -r scripts/ci/requirements.lock (line 415))
+static	Install hash-locked checking tools	2026-10-31T04:15:21.8157999Z   Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+static	Install hash-locked checking tools	2026-10-31T04:15:21.8773599Z Installing collected packages: typing-extensions, stevedore, ruff, rpds-py, pyyaml, pygments, pluggy, packaging, mdurl, iniconfig, coverage, attrs, referencing, pytest, markdown-it-py, rich, jsonschema-specifications, jsonschema, bandit
+static	Install hash-locked checking tools	2026-10-31T04:15:23.4789722Z 
+static	Install hash-locked checking tools	2026-10-31T04:15:23.4806983Z Successfully installed attrs-26.1.0 bandit-1.9.4 coverage-7.17.0 iniconfig-2.3.1 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 markdown-it-py-4.2.0 mdurl-0.1.2 packaging-26.3 pluggy-1.7.0 pygments-2.21.0 pytest-9.1.1 pyyaml-6.0.3 referencing-0.37.0 rich-15.0.0 rpds-py-2026.9.1 ruff-0.17.2 stevedore-5.9.1 typing-extensions-4.16.0
+static	Validate Compose with placeholders and Nginx syntax in official container	﻿2026-10-31T04:15:23.5514576Z ##[group]Run docker compose --env-file deployment/.env.example config --quiet
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:23.5515053Z ^[[36;1mdocker compose --env-file deployment/.env.example config --quiet^[[0m
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:23.5515485Z ^[[36;1mdocker run --rm --network none --add-host api:127.0.0.1 --read-only --tmpfs /tmp \^[[0m
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:23.5515939Z ^[[36;1m  --volume "$PWD/deployment/nginx/nginx.conf:/etc/nginx/nginx.conf:ro" \^[[0m
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:23.5516357Z ^[[36;1m  --volume "$PWD/deployment/nginx/api.conf:/etc/nginx/t44-api.conf:ro" \^[[0m
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:23.5516687Z ^[[36;1m  --entrypoint nginx \^[[0m
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:23.5517060Z ^[[36;1m  nginx:stable-alpine@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951 \^[[0m
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:23.5517462Z ^[[36;1m  -t 2>&1 | tee reports/ci/nginx-syntax.log^[[0m
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:23.5537249Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:23.5537530Z env:
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:23.5537751Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:23.5538138Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:23.5538472Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:23.5538765Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:23.5539052Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:23.5539343Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:23.5539611Z ##[endgroup]
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:23.9230337Z Unable to find image 'nginx:stable-alpine@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951' locally
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:24.4811541Z docker.io/library/nginx@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951: Pulling from library/nginx
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:24.7458999Z 7b229517ed22: Pulling fs layer
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:24.7459436Z 9f0afb44f10e: Pulling fs layer
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:24.7459740Z f19a2d3b6951: Pulling fs layer
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:24.7460017Z 885725a63a7c: Pulling fs layer
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:24.7460314Z e125989d16f0: Pulling fs layer
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:24.7460579Z 81b64ae234ef: Pulling fs layer
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:24.7460768Z bb658a254196: Pulling fs layer
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:24.7460970Z 5b8cb54cfa40: Pulling fs layer
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:24.7461163Z e125989d16f0: Waiting
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:24.7461343Z 81b64ae234ef: Waiting
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:24.7461516Z bb658a254196: Waiting
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:24.7461697Z 5b8cb54cfa40: Waiting
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:24.7461877Z 885725a63a7c: Waiting
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:24.9280248Z f19a2d3b6951: Verifying Checksum
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:24.9281644Z f19a2d3b6951: Download complete
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:24.9428259Z 7b229517ed22: Verifying Checksum
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:24.9428656Z 7b229517ed22: Download complete
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:24.9479133Z 9f0afb44f10e: Verifying Checksum
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:24.9479693Z 9f0afb44f10e: Download complete
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:25.0232233Z 7b229517ed22: Pull complete
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:25.1274977Z 885725a63a7c: Verifying Checksum
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:25.1276266Z 885725a63a7c: Download complete
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:25.1461545Z e125989d16f0: Verifying Checksum
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:25.1461917Z e125989d16f0: Download complete
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:25.1506138Z 81b64ae234ef: Verifying Checksum
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:25.1506404Z 81b64ae234ef: Download complete
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:25.3295985Z bb658a254196: Verifying Checksum
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:25.3296316Z bb658a254196: Download complete
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:25.4549336Z 5b8cb54cfa40: Verifying Checksum
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:25.4550019Z 5b8cb54cfa40: Download complete
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:26.7038355Z 9f0afb44f10e: Pull complete
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:26.7499223Z f19a2d3b6951: Pull complete
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:26.7566394Z 885725a63a7c: Pull complete
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:26.7658572Z e125989d16f0: Pull complete
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:26.7895341Z 81b64ae234ef: Pull complete
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:26.7953466Z bb658a254196: Pull complete
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:27.3977527Z 5b8cb54cfa40: Pull complete
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:27.4021250Z Digest: sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:27.4027732Z Status: Downloaded newer image for nginx@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:27.5202021Z nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+static	Validate Compose with placeholders and Nginx syntax in official container	2026-10-31T04:15:27.5202890Z nginx: configuration file /etc/nginx/nginx.conf test is successful
+static	Check configuration, Python static rules and implementation presence	﻿2026-10-31T04:15:27.5648869Z ##[group]Run python scripts/ci/static.py 2>&1 | tee reports/ci/static-console.log
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:27.5649346Z ^[[36;1mpython scripts/ci/static.py 2>&1 | tee reports/ci/static-console.log^[[0m
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:27.5669267Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:27.5669552Z env:
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:27.5669779Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:27.5670123Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:27.5670469Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:27.5670777Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:27.5671079Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:27.5671382Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:27.5671643Z ##[endgroup]
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:27.5996156Z RUN /opt/hostedtoolcache/Python/3.12.15/x64/bin/python scripts/ci/validate_config.py
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:27.7225523Z Compose schema and deployment invariants passed; Docker/Nginx runtime NOT executed.
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:27.7226400Z RUN /opt/hostedtoolcache/Python/3.12.15/x64/bin/python -m pytest -c backend/pyproject.toml tmp/deployment/997_ops.py tmp/deployment/971_credentials.py tmp/ci/996_gates.py -q
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:28.1441627Z .......................                                                  [100%]
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:28.1442141Z 23 passed in 0.19s
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:28.1442830Z RUN /opt/hostedtoolcache/Python/3.12.15/x64/bin/python -m ruff check --config scripts/ci/ruff.toml deployment scripts/ci tmp/deployment tmp/ci
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:28.1843064Z All checks passed!
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:28.1843743Z RUN /opt/hostedtoolcache/Python/3.12.15/x64/bin/python -m ruff check --config scripts/ci/ruff.toml backend/t44 tmp/backend
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:28.2228537Z All checks passed!
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:28.2229255Z RUN /opt/hostedtoolcache/Python/3.12.15/x64/bin/python -m bandit -r backend/t44 -f json -o /home/runner/work/t44-dev-trace/t44-dev-trace/reports/ci/bandit.json
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:28.7444616Z [main]	INFO	profile include tests: None
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:28.7445002Z [main]	INFO	profile exclude tests: None
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:28.7445250Z [main]	INFO	cli include tests: None
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:28.7445475Z [main]	INFO	cli exclude tests: None
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:28.7445876Z [json]	INFO	JSON output written to file: /home/runner/work/t44-dev-trace/t44-dev-trace/reports/ci/bandit.json
+static	Check configuration, Python static rules and implementation presence	2026-10-31T04:15:28.7505119Z ##[error]Process completed with exit code 1.
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	﻿2026-10-31T04:15:28.7602464Z ##[group]Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:28.7602792Z with:
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:28.7603004Z   name: static-dd32059be9cc41784e774fcf4e4f52f3806faa10
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:28.7603261Z   path: reports/ci/
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:28.7603444Z   if-no-files-found: error
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:28.7603645Z   retention-days: 14
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:28.7603826Z   compression-level: 6
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:28.7604159Z   overwrite: false
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:28.7604348Z   include-hidden-files: false
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:28.7604547Z   archive: true
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:28.7604871Z env:
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:28.7605083Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:28.7605425Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:28.7605752Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:28.7606052Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:28.7606350Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:28.7606697Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:28.7606955Z ##[endgroup]
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:28.8759078Z With the provided path, there will be 10 files uploaded
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:28.8764366Z Artifact name is valid!
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:28.8764692Z Root directory input is valid!
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:29.1941986Z Uploading artifact: static-dd32059be9cc41784e774fcf4e4f52f3806faa10.zip
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:29.1971191Z Beginning upload of artifact content to blob storage
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:29.4401360Z Uploaded bytes 3981
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:29.4940295Z Finished uploading artifact content to blob storage!
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:29.4940933Z SHA256 digest of uploaded artifact is c07e40be83c38d9435a02edef3025005799e9a46e3f6b0683d240db6a9d57ff9
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:29.4941432Z Finalizing artifact upload
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:30.0384204Z Artifact static-dd32059be9cc41784e774fcf4e4f52f3806faa10 successfully finalized. Artifact ID 13029671952
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:30.0385401Z Artifact static-dd32059be9cc41784e774fcf4e4f52f3806faa10 has been successfully uploaded! Final size is 3981 bytes. Artifact ID is 13029671952
+static	Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9	2026-10-31T04:15:30.0387838Z Artifact download URL: https://github.com/HJY147/t44-dev-trace/actions/runs/41167788377/artifacts/13029671952
+static	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	﻿2026-10-31T04:15:30.0552924Z Post job cleanup.
+static	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:30.1285318Z [command]/usr/bin/git version
+static	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:30.1309795Z git version 2.56.0
+static	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:30.1340255Z Temporarily overriding HOME='/home/runner/work/_temp/48f48cb1-0c0a-4ced-9be4-9667e6fcced1' before making global git config changes
+static	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:30.1341015Z Adding repository directory to the temporary git global config as a safe directory
+static	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:30.1344725Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/t44-dev-trace/t44-dev-trace
+static	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:30.1374129Z Removing SSH command configuration
+static	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:30.1379727Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+static	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:30.1411293Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+static	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:30.1642431Z Removing HTTP extra header
+static	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:30.1643078Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+static	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:30.1685539Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+static	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:30.1916009Z Removing includeIf entries pointing to credentials config files
+static	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:30.1922890Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+static	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-31T04:15:30.1965089Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+static	Complete job	﻿2026-10-31T04:15:30.2305656Z Cleaning up orphan processes
