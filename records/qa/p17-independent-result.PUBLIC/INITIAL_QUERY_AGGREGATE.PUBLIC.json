@@ -1,0 +1,55 @@
+{
+  "schema": "P17_INITIAL_QUERY_AGGREGATE_V1",
+  "run_id": "r30posttools17",
+  "source_sha": "bcec3326b40814fdb1922bbfea7c29473b47ba47",
+  "scope": "Authenticated P17 raw initial warmup query responses only; offline",
+  "raw_verified": {
+    "records": 410,
+    "plain_bytes": 2326792,
+    "compressed_bytes": 411433,
+    "complete": true
+  },
+  "query_count": 400,
+  "unique_clients": 400,
+  "clients_with_exactly_one_query": 400,
+  "query_response_status_counts": {
+    "200": 400
+  },
+  "query_error_count": 0,
+  "state_distribution": {
+    "2": 232,
+    "3": 168
+  },
+  "state3_blocked_from_state_distribution": {
+    "2": 168
+  },
+  "owner_counts": {
+    "matches_expected_developer": 400,
+    "does_not_match_expected_developer": 0,
+    "missing": 0,
+    "null": 0
+  },
+  "missing_fields": {
+    "state": 0,
+    "version": 0,
+    "blocked_from_state": 0,
+    "owner_id": 0
+  },
+  "null_fields": {
+    "state": 0,
+    "version": 0,
+    "blocked_from_state": 232,
+    "owner_id": 0
+  },
+  "startup_inventory_comparison": {
+    "state_match": 400,
+    "version_match": 400,
+    "task_identity_match": 400,
+    "state_mismatch": 0,
+    "state_missing": 0,
+    "version_mismatch": 0,
+    "version_missing": 0,
+    "task_identity_mismatch": 0
+  },
+  "causal_inference": "NONE; observed initial conditions only"
+}
