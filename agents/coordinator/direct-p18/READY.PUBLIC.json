@@ -1,5 +1,5 @@
 {
-  "status": "READY_FOR_USER_BOOT",
+  "status": "COMPLETED_CURRENT_DIAGNOSTIC_SCOPE_PASS_NO_REDISPATCH",
   "archive_name": "direct18-ready-20261031.tar.gz",
   "archive_bytes": 161440,
   "archive_sha256": "d010498af9beffdf82e1fd2d39b67d7ad149403447102eac9d645e0b6fb8db0d",
@@ -31,7 +31,7 @@
     "../../../records/qa/direct-p18.PUBLIC/OBSERVE_DIRECT.py": "f102b5da02587feeee1b885f45b45d6cd6efe738790b3a79895f55e6d2bfdde3"
   },
   "preparation_cloud_calls": 0,
-  "actual_cloud_calls": 0,
+  "actual_cloud_calls": "One frozen controller invocation active; no retry",
   "automatic_vm_shutdown": false,
   "controller_check_groups": 11,
   "independent_bootstrap_review": "721c327c",
@@ -60,8 +60,32 @@
     "not_second_full_600s": true
   },
   "Linux_resource_validation": false,
-  "server_state": "USER_CONFIRMED_OFF_AFTER_P17_NO_CONNECTIONS_DURING_P18_PREPARATION",
+  "server_state": "RUN_ENDED_USER_NOTIFIED_CAN_STOP_NO_FURTHER_CONNECTIONS",
   "ready_utc": "2026-10-31T11:51:26.371396+00:00",
-  "next_action": "Notify user preparation complete. User may open original two VMs and provide both current public IPs; run after_boot.py once, no advance SSH or automatic rerun.",
-  "classification": "DIAGNOSTIC_PRESSURE_NOT_FORMAL_ACCEPTANCE"
+  "next_action": "This run is complete; user was notified both VMs can stop. No keepalive, reconnect, rerun or new cloud work.",
+  "classification": "DIAGNOSTIC_PRESSURE_NOT_FORMAL_ACCEPTANCE",
+  "actual_output_directory": "/Users/yang/Desktop/nothing/软件开发大作业/.submission-private/posttools18-20261031T115809Z",
+  "actual_cohort_barrier_utc": "2026-10-31T11:58:41.210925Z",
+  "actual_wrapper_exit_code": 0,
+  "backup_bytes": 274039561,
+  "backup_sha256": "63aaaf6a98ba52a185dacb2dbe3c93e2cbe51a98e1219c57a3cd830e2d8fcc35",
+  "backup_bytes_and_sha_verified": true,
+  "user_told_both_can_stop": true,
+  "independent_actual_result_commit": "9455de68",
+  "actual_result": "PASS_DIRECT_DIAGNOSTIC_PERFORMANCE_AND_400_POSTCHECKS",
+  "full_formal_acceptance_claimed": false,
+  "initial_query_state2_count": 400,
+  "initial_BLOCK_success": 400,
+  "steady_requests": 123535,
+  "steady_errors": 0,
+  "steady_p95_ms": {
+    "query": 58.994292,
+    "contract": 99.951703,
+    "transition": 81.731685,
+    "escalation": 85.548265
+  },
+  "post_final_snapshots": 400,
+  "post_complete_audits": 400,
+  "last_post_response_seconds_after_steady": 29.380077379,
+  "backup_all_20_files_and_raw_authenticated": true
 }

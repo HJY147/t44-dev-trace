@@ -1,0 +1,1 @@
+本轮只执行一次已冻结入口；400 cohort已释放，随后controller退出0并完整回收密文。phase.PUBLIC.json为最后观测投影，不是最终result；退出0也不替代独立验收。密文274039561B/SHA63aaaf6a98ba52a185dacb2dbe3c93e2cbe51a98e1219c57a3cd830e2d8fcc35已在本地核对，立即通知两台可停。后续仅本地独立认证结果，不SSH或复跑。

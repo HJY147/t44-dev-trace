@@ -1,5 +1,7 @@
 # T44 项目协作规则
 
+2026-10-31最新现场结果：P18已真实执行并完整回收274039561B密文/SHA63aaaf6a…fcc35，立即通知两台可停；不再连接保活。全新独立核验9455de68确认本轮direct范围性能及原40s内400后置PASS：原400/60+600，稳态123535请求错误0，query/transition/contract/escalation P95为58.994292/81.731685/99.951703/85.548265ms，十分钟桶全部≥12106，400快照+400完整审计于29.380s完成。400首query均state2且匹配当前inventory/owner/version，400首次BLOCK全成功，原重复初态STATE_CONFLICT修复获现场证据；全148186exchange错误0，148487raw完整、20文件认证。READY已消费，禁止再发本run。此PASS不扩展为原豁免完整全门禁/全部作业验收；P17真实NP及旧轮次保留，文档写作继续暂停。报告records/qa/p18-independent-result.PUBLIC/RESULT.PUBLIC.md。
+
 2026-10-31最新P18交接：用户已明确原两台关闭。新bootstrap c7e77/ebbf9合法UNBLOCK恢复原测量初态，独立18检查限定通过；新P18完整400/60+600本地流程/400后置及新域第二短起步已执行，性能因fixture注入2.5s写延迟CLASS_P95 FAIL/exit1如实保留，不冒性能通过。最终包161440B/SHA d010498a经独立入口及最终50payload闭合核验；READY已锁21项源与包，允许通知用户再次开机并给当前两台公网IP，执行一次已冻结direct-p18/after_boot。无准备期间SSH、自动开机/关机或新轮重试。原P17真实NP/原失败及P16历史均不改。详见records/coordination/p18-offline-preparation-20261031.md。
 
 2026-10-31后续P17实际事实：已用用户提供0mt47.98.176.56/0mu47.96.5.99执行一次准备入口，400cohort已释放，但warmup约1.014秒时原脚本对已state3的任务发action2(block)得到409 STATE_CONFLICT，整轮NP，无steady/post结果；不是新性能通过。20文件/410原始记录认证与494900字节备份完整回收，独立结果见records/qa/p17-independent-result.PUBLIC。已立即通知两台均可停机，未回连核停，不再SSH/盲重试。P17 READY已消费。根因是准备遗漏了重复压测初始状态前置，不能通过吞409或修改产品状态机修分；当前仅本地修P18初始化/重复轮回归与新包准备，未通知新开机。P16性能PASS/后置不全NP仍保持原历史。

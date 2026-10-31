@@ -1,0 +1,22 @@
+{
+  "schema": "753-authorized-public-phase-projection-v1",
+  "run_id": "r30posttools18",
+  "observed_utc": "2026-10-31T12:00:17.000834+00:00",
+  "phase_metadata_exists": true,
+  "actual_trigger_exists": false,
+  "metrics_or_steady_completion_proven": false,
+  "phase": {
+    "schema": "772-v2-stage-v1",
+    "run_id": "r30posttools18",
+    "status": "NP_INCOMPLETE",
+    "phase": "RUNNING",
+    "utc": "2026-10-31T11:58:41.210925Z",
+    "monotonic_ns": 62267682794,
+    "clients_started": 400,
+    "threads_active": 402
+  },
+  "cohort400_barrier_released_observed": true,
+  "seconds_since_public_RUNNING_marker": 95.79,
+  "nominal_interval_only": "steady_expected_subject_to_live_cohort_and_final_evidence",
+  "meaning": "RUNNING400 proves all400client threads crossed readiness barrier; it does not prove400simultaneous HTTP requests, current alive400, steady completion or P95/throughput."
+}
