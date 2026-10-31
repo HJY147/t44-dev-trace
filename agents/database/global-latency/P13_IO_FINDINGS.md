@@ -16,7 +16,7 @@ observer原文件manual13-observe.py SHA67cb55f1d958f2245de464518dcfb6bf545e0755
 ## 写路径与配置的实际证据
 
 - redo容量实104857600字节=100MiB，LSN生成3.237/2.929MB/s，名义容量仅32.4/35.8秒当前redo量；checkpoint age实18.2–38.6/17.2–35.1MB，即容量17–37%/16–33%，**没有观测到逼满或log-space停顿**。
-- 每秒flush1639/1667页，数据文件写33.65/33.39MB/s，os_log_written5.13/4.54MB/s；host块层另约66MB/s。这些不同层/不同含义计数不可相加，页写/redo比也不能直接当物理写放大系数。
+- 每秒flush1639/1667页，`Innodb_data_written`计数速率33.65/33.39MB/s，os_log_written5.13/4.54MB/s；host块层另约66MB/s。这些不同层/不同含义计数不可相加，页写/redo比也不能直接当物理写放大系数。
 - dblwr文件等待事件每窗1099/1037次，总121.36/122.42并行秒，均110.43/118.05ms；data-file均1.008/1.232ms，redo-file均0.125/0.152ms，binlog均0.633/0.729ms。不同文件事件可能并行/重叠，不能相加得到请求延迟或用生命周期max当本窗口P95。FILE_IO写事件总体均值0.504/0.627ms会掩盖dblwr大批次事件。
 - bufferpool8GiB中87–94%页仍free，物理读仅2.8/4.5次每秒，buffer_wait_free增量0，不支持当前主要是读缓存不够。盲目把128GiB主机内存全给DB不会直接修复这些写热点。
 - 行锁wait增量7/5、time103/23ms，相对INSERT累计耗时很小，削弱普通InnoDB行锁是全部主因的解释；不排除未采到瞬时锁、元数据锁/索引latch/redo内部mutex。115种选定wait instrument仅9已enabled+timed，未启用的0不能当无等待。
