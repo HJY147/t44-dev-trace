@@ -1,0 +1,13 @@
+# DirectP16 冷启动修复与总入口审核
+
+准确源码：deployment a7ad6abf365e8bb20fd25c564e6381a1692b4356；root 3d74127a。完全离线，不SSH/云/Docker/产品suite/QA PRIVATE。
+
+原两项启动问题已闭环：先stop两个ownedworker，再start五基础容器，28秒只读SELECT1+严格原CA/SNI、tls-gateway8443 OPTIONS405/AllowGET连接就绪，外层29/30秒终止；仅会话签发前可重试这些无业务副作用探针。之后bootstrap恰一次、原tokenbytes原子轮换、start两个worker。不恢复旧业务工期/scan/horizon等已豁免准备门禁。
+
+新发现阻塞：run.execute轮询先读wrapper退出，再无保护调用可选observe，即使退出已发现也如此。observe异常使execute直接退出，已detach测量不会自动重试，但Mac停止回收。纯本地内存FakeSSH精确复现state.done=true/exit1，observe抛OPTIONAL_OBSERVATION_FAILED，backup_downloads=0。应优先处理done并隔离可选观察错误为UNKNOWN，继续等待/回收，不二次发压或seal。已发root。
+
+其余源级核对：APP初始化与LOAD安装并行；同LOAD收件key产生CMS新cert、原固定CMS代码；Mac仅中继cert/密文、无session/RSA私钥取回；APP五件取确定本地已验source/bundle原件，不猜远端镜像归档；SSH argv逐项shlex.join，不将口令放命令行；INIT失败不launch；launch channel排他、workerdetach且日志在workspace外；NP/nonzero退出原设计仍下载backup与receipt并核全密文SHA/bytes后才声明可手动停机；无VM stop或重发压。
+
+builder核三类owner清单/固定CMS/source/bundle，tar逐文件回读；实际最终archive仍未交审，不宣称已验包。Mac run.py依赖仓库相邻manualp15-preparation/ssh/update_ssh_addresses.py；需要交付明确仓库入口，不能误称仅解包云kit即可在Mac运行其coordinator/run.py。此点已请root确认正式路径。
+
+原第一次完整本地演练60+600完成但post失败、无backup的历史据实保留；第二次完整演练本岗尚未收取结束证据，不称通过。现阶段为源码审核等待上述回收修正与最终archive，不是正式性能结论。
