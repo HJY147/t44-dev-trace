@@ -113,6 +113,55 @@ def initialize(ssh, host, raw, archive_sha, contract):
     return {"status": "LOAD_READY"}
 
 
+def require_ready(kit_sha):
+    here = Path(__file__).resolve().parent
+    ready = json.loads((here / "READY.PUBLIC.json").read_bytes())
+    if ready.get("status") != "READY_FOR_USER_BOOT" or ready.get("archive_sha256") != kit_sha:
+        raise ValueError("OFFLINE_PREPARATION_NOT_COMPLETE_DO_NOT_CONNECT")
+    for name, expected in ready["local_files_sha256"].items():
+        if sha(here / name) != expected:
+            raise ValueError("PREPARED_LOCAL_SOURCE_CHANGED_DO_NOT_CONNECT")
+
+
+def wrapper_state(ssh):
+    probe = "from pathlib import Path;import json;p=Path(" + repr(REMOTE + "/controller/wrapper-exit.PUBLIC.json") + ");print(json.dumps({'done':p.is_file(),'value':json.loads(p.read_bytes())if p.is_file()else None}))"
+    return json.loads(ssh.run("load", ["python3", "-c", probe], timeout=30))
+
+
+def recover_backup(ssh, contract, local, state, notify=print, suffix=""):
+    if state.get("done") is not True or type(state.get("value", {}).get("exit_code")) is not int:
+        raise RuntimeError("PRODUCER_EXIT_NOT_PROVEN_NO_SEAL_OR_STOP_CLAIM")
+    archive = local / (RUN + suffix + ".753backup")
+    receipt = local / (RUN + suffix + ".753backup.receipt.json")
+    ssh.get("load", contract["backup_receipt_path"], receipt)
+    ssh.get("load", contract["backup_path"], archive, timeout=1800)
+    value = json.loads(receipt.read_bytes())
+    if archive.stat().st_size != value["cipher_bytes"] or sha(archive) != value["cipher_sha256"]:
+        raise RuntimeError("BACKUP_BYTES_OR_SHA_MISMATCH")
+    result = {"status": "EVIDENCE_RECOVERED_CAN_STOP_BOTH_SERVERS", "run_id": RUN,
+              "classification": "DIAGNOSTIC_PRESSURE_NOT_FORMAL_ACCEPTANCE",
+              "backup_bytes": archive.stat().st_size, "backup_sha256": sha(archive),
+              "backup_path": str(archive), "backup_receipt_path": str(receipt),
+              "measurement_wrapper_exit_code": state["value"]["exit_code"],
+              "automatic_vm_shutdown": False, "performance_pass_claimed": False}
+    (local / "RECOVERY.PUBLIC.json").write_text(json.dumps(result, indent=2) + "\n")
+    notify(result)
+    return result
+
+
+def recover_after_failure(ssh, contract, local, notify=print):
+    # Read-only fallback: never launch, retry a write, seal active writers or stop a VM.
+    state = wrapper_state(ssh)
+    if state.get("done") is not True:
+        value = {"status": "RECOVERY_PENDING_PRODUCER_EXIT_NOT_PROVEN",
+                 "can_stop_load_claimed": False, "automatic_vm_shutdown": False}
+        (local / "RECOVERY_PENDING.PUBLIC.json").write_text(json.dumps(value) + "\n")
+        notify(value)
+        return None
+    (local / "wrapper-exit.PUBLIC.json").write_text(json.dumps(state["value"]) + "\n")
+    return recover_backup(ssh, contract, local, state, notify, suffix=".fallback")
+
+
 def execute(ssh, raw, archive_sha, contract, local, notify=print, sleep=time.sleep):
     with ThreadPoolExecutor(max_workers=2) as pool:
         app = pool.submit(initialize, ssh, "app", raw, archive_sha, contract)
@@ -153,6 +202,7 @@ def execute(ssh, raw, archive_sha, contract, local, notify=print, sleep=time.sle
         "--cert-sha256", digest, "--key", RSA, "--output", opened])
     direct_sha = contract["direct_shell_sha256"]
     channel = REMOTE + "/controller"
+    (local / "DISPATCH_ATTEMPTED.PUBLIC.json").write_text(json.dumps({"run_id": RUN, "not_proof_of_barrier": True}) + "\n")
     ssh.run("load", ["python3", KIT + "/coordinator/launch.py", "--workspace", W,
         "--inputs", opened + "/inputs/session.private.json", "--channel", channel,
         "--shell-sha256", direct_sha])
@@ -209,22 +259,8 @@ def execute(ssh, raw, archive_sha, contract, local, notify=print, sleep=time.sle
     notify({"status": "APP_EVIDENCE_RECOVERED_CAN_STOP_APP",
             "load_must_stay_on_until_backup_download_verified": True,
             "automatic_vm_shutdown": False})
-    # Recover even when the original measurement reports NP/nonzero.
-    archive = local / (RUN + ".753backup")
-    receipt = local / (RUN + ".753backup.receipt.json")
-    ssh.get("load", contract["backup_receipt_path"], receipt)
-    ssh.get("load", contract["backup_path"], archive, timeout=1800)
-    value = json.loads(receipt.read_bytes())
-    if archive.stat().st_size != value["cipher_bytes"] or sha(archive) != value["cipher_sha256"]:
-        raise RuntimeError("BACKUP_BYTES_OR_SHA_MISMATCH")
-    result = {"status": "EVIDENCE_RECOVERED_CAN_STOP_BOTH_SERVERS", "run_id": RUN,
-              "classification": "DIAGNOSTIC_PRESSURE_NOT_FORMAL_ACCEPTANCE",
-              "backup_bytes": archive.stat().st_size, "backup_sha256": sha(archive),
-              "measurement_wrapper_exit_code": state["value"]["exit_code"],
-              "automatic_vm_shutdown": False, "performance_pass_claimed": False}
-    (local / "RECOVERY.PUBLIC.json").write_text(json.dumps(result, indent=2) + "\n")
-    notify(result)
-    return result
+    # Recover even when measurement/postconditions report nonzero.
+    return recover_backup(ssh, contract, local, state, notify)
 
 
 def main():
@@ -238,6 +274,7 @@ def main():
     p.add_argument("--output", type=Path, required=True)
     a = p.parse_args()
     os.umask(0o077)
+    require_ready(a.kit_sha256)
     for address in (a.app_ip, a.load_ip):
         if not ipaddress.IPv4Address(address).is_global:
             raise ValueError("PUBLIC_IPV4_REQUIRED")
@@ -264,8 +301,17 @@ def main():
                 notify=lambda x: print(json.dumps(x) if isinstance(x, dict) else x, flush=True))
         return 0 if recovered["measurement_wrapper_exit_code"] == 0 else 2
     except Exception as error:
+        recovered = None
+        recovery_error = None
+        if (a.output / "DISPATCH_ATTEMPTED.PUBLIC.json").is_file():
+            try:
+                recovered = recover_after_failure(ssh, contract, a.output,
+                    notify=lambda x: print(json.dumps(x), flush=True))
+            except Exception as backup_error:
+                recovery_error = type(backup_error).__name__
         value = {"status": "DIRECT_RUN_FAILED_NO_RETRY", "kind": type(error).__name__,
-                 "automatic_vm_shutdown": False, "manual_stop_review_needed": True}
+                 "automatic_vm_shutdown": False, "manual_stop_review_needed": recovered is None,
+                 "sealed_backup_recovered": recovered is not None, "recovery_error_type": recovery_error}
         (a.output / "FAILED.PUBLIC.json").write_text(json.dumps(value) + "\n")
         print(json.dumps(value), flush=True)
         raise SystemExit(1) from None

@@ -12,6 +12,6 @@ python3 /Users/yang/Desktop/nothing/软件开发大作业/.agent-worktrees/globa
 
 本轮测量400客户端、60秒预热、600秒稳态，四类P95≤270ms，每个完成分钟≥1000、稳态零错误；另要求400最终快照和400完整历史审计在原40秒预算内完成。额外30秒只清理，不能补算成功；总退出码反映完整结果。旧direct准备豁免保留，因此不冒称课程全部业务门禁正式验收。v1.2有效运行身份绑定原runtime+post+compiled+BOOT，不把整个工具说成原字节。
 
-新run r30posttools17，新远端/root/t44-direct-p17，新LOAD工作区/root/t44-final-20261101/QA753_POSTTOOLS_V12_P17，均独占创建。启动写入不重试。失败也回收已有认证密文；Mac只转公开证书/密文，不读测试PRIVATE、原始响应或明文Token/密钥。
+新run r30posttools17，新远端/root/t44-direct-p17，新LOAD工作区/root/t44-final-20261101/QA753_POSTTOOLS_V12_P17，均独占创建。启动写入不重试。发生异常时先只读确认远端wrapper已退出，再尝试回收已封存密文；未证明退出则明确记录待回收，不强制封存/停机；Mac只转公开证书/密文，不读测试PRIVATE、原始响应或明文Token/密钥。
 
 APP观察回收后立即通知用户可停APP；LOAD完整密文下载并核bytes/SHA后立即通知用户可停两台。随后独立解密判读在本地进行。没有VM关机命令、倒计时或自动新轮次。

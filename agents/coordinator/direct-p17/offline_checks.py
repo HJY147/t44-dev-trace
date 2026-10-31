@@ -90,5 +90,37 @@ def main():
  print('PASS exact new run/workspace/source/backup contract; 5 stale or incomplete contracts refused')
  assert result['measurement_wrapper_exit_code']==1
  print('PASS measurement NP remains nonzero status after evidence recovery')
- print('ALL 8 CONTROLLER CHECK GROUPS PASS; actual SSH/VM calls=0')
+ with tempfile.TemporaryDirectory() as tmp:
+  here=Path(tmp);(here/'run.py').write_text('synthetic source')
+  ready=here/'READY.PUBLIC.json'
+  ready.write_text(json.dumps({'status':'PREPARING_DO_NOT_START_SERVERS'}))
+  with patch.object(m,'__file__',str(here/'run.py')):
+   must_fail(lambda:m.require_ready('a'*64))
+   ready.write_text(json.dumps({'status':'READY_FOR_USER_BOOT','archive_sha256':'a'*64,'local_files_sha256':{'run.py':hashlib.sha256((here/'run.py').read_bytes()).hexdigest()}}))
+   m.require_ready('a'*64)
+   must_fail(lambda:m.require_ready('b'*64))
+   (here/'run.py').write_text('changed')
+   must_fail(lambda:m.require_ready('a'*64))
+ print('PASS shared READY gate refuses pending, archive mismatch and changed local source')
+ with tempfile.TemporaryDirectory()as tmp:
+  ssh=FakeSSH();r=m.recover_after_failure(ssh,CONTRACT,Path(tmp),notify=lambda x:None)
+  assert r['status']=='EVIDENCE_RECOVERED_CAN_STOP_BOTH_SERVERS'and r['measurement_wrapper_exit_code']==1
+  assert not any(any('launch.py'in str(x) for x in c[1])for c in ssh.calls)
+  assert r['backup_path'].endswith('.fallback.753backup')
+ class StillRunning(FakeSSH):
+  def run(self,host,argv,data=None,timeout=180):
+   if any('wrapper-exit.PUBLIC.json'in str(x)for x in argv):return b'{"done":false,"value":null}'
+   raise AssertionError('No other remote action allowed when producer exit unknown')
+ with tempfile.TemporaryDirectory()as tmp:
+  ssh=StillRunning();assert m.recover_after_failure(ssh,CONTRACT,Path(tmp),notify=lambda x:None)is None
+  assert not(Path(tmp)/'RECOVERY.PUBLIC.json').exists()
+ with tempfile.TemporaryDirectory()as tmp:
+  must_fail(lambda:m.recover_after_failure(FakeSSH(bad_backup=True),CONTRACT,Path(tmp),notify=lambda x:None))
+  assert not(Path(tmp)/'RECOVERY.PUBLIC.json').exists()
+ print('PASS failure recovery only fetches sealed evidence after wrapper exit; active/unknown not sealed; digest mismatch refuses stop claim')
+ argv=['run','--app-ip','8.8.8.8','--load-ip','1.1.1.1','--kit','/does-not-exist','--kit-sha256','a'*64,'--identity','/does-not-exist','--known-hosts','/does-not-exist','--output','/does-not-exist']
+ with patch.object(sys,'argv',argv),patch.object(m.SSH,'run')as net:
+  must_fail(m.main);net.assert_not_called()
+ print('PASS direct CLI also refuses PREPARING before any SSH')
+ print('ALL 11 CONTROLLER CHECK GROUPS PASS; actual SSH/VM calls=0')
 if __name__=='__main__':main()

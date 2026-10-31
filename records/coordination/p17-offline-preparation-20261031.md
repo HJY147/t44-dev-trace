@@ -9,3 +9,6 @@
 部署岗49114a86已核完整中文producer与原真实router集成；总协调8组本地控制流检查已过，含旧身份拒绝、失败不dispatch、不重试、非零仍备份、坏hash不宣称回收、外置控制日志。原product CI不因工具改动重复运行。当前尚待QA具体接口/环境复核与最终总包独立审核，READY仍PREPARING_DO_NOT_START_SERVERS。
 
 操作者均为AI实际角色，研究报告不冒充学生本人，需规/设计继续暂停。本文件仅工程记录。
+
+
+首次新入口独立审核12ac2c18明确BLOCKED：可直接CLI绕READY、监控超时缺少回收路径。两个问题均由root修复：run.py本身也校READY/包hash/本地源；dispatch前落仅表示尝试的marker，异常后只读确认wrapper退出，才下载已封存密文并验hash，未知/活动状态不封存、不重发、不谎称可停LOAD。正常非零仍回收；fallback另名保留原失败。新增门禁/异常/活动状态/坏hash回归，控制流11组通过。原拒绝报告不改写。首次本地SSH配置演练因macOS /var临时目录不是canonical路径失败；只将合成临时路径resolve后重跑，通过两原hostpin/永久key元数据及本地生成，零连接。
