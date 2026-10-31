@@ -136,8 +136,22 @@ def validate_new_source(auth, old, manifests):
     require(bundle['source_manifest_sha256'] == receipt['source_manifest_sha256'] == identity['source_manifest_sha256'], 'NEW_SOURCE_BINDING_REQUIRED')
     require(receipt['bundle_manifest_sha256'] == identity['backend_bundle_manifest_sha256'], 'NEW_IMPORT_BUNDLE_BINDING_REQUIRED')
     config = bundle['images']['backend']['image_id']
-    require(config == identity['sut_image_config_digest'] == auth['expected_api_image_id'], 'NEW_ACTUAL_CONFIG_REQUIRED')
-    require(receipt['identity']['config_id'] == config and receipt['identity']['actual_id'] == config and receipt['identity']['success'] is True, 'ACTUAL_IMPORT_CONFIG_PROOF_REQUIRED')
+    require(config == identity['sut_image_config_digest'], 'NEW_ACTUAL_CONFIG_REQUIRED')
+    proof = receipt['identity']
+    require(proof['config_id'] == config and proof['success'] is True
+            and proof['actual_id'] == auth['expected_api_image_id']
+            and re.fullmatch('sha256:[0-9a-f]{64}', proof['actual_id']),
+            'ACTUAL_IMPORT_CONFIG_PROOF_REQUIRED')
+    if proof['actual_id'] != config:
+        require(receipt.get('identities', {}).get('backend') == proof
+                and proof.get('identity_kind') == 'oci-descriptor-to-original-config'
+                and all(proof.get(k) is True for k in (
+                    'actual_descriptor_sha256_recomputed_from_archive',
+                    'all_config_and_layer_descriptors_sha256_size_verified',
+                    'labels_architecture_rootfs_checked'))
+                and type(proof.get('ordered_layer_count')) is int
+                and proof['ordered_layer_count'] > 0,
+                'STRICT_OCI_DESCRIPTOR_CONFIG_CHAIN_REQUIRED')
     require(timestamp(receipt['observed_utc']) <= datetime.now(timezone.utc), 'NONFUTURE_UTC_IMPORT_OBSERVATION_REQUIRED')
     ref=auth['loaded_receipt_reference']
     require(ref['original_path'] != old.get('loaded_receipt_reference', {}).get('original_path'), 'NEW_IMPORT_PATH_NOT_HISTORY_REQUIRED')
