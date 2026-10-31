@@ -1,0 +1,128 @@
+{
+  "scope": "owned local socket-only MySQL correctness, not SUT/HTTP/performance acceptance",
+  "checks": {},
+  "runtime_sha256": "84309825b2e0a214130a0871cd493773aab07f36721dddf45311c9312e68345a",
+  "ddl_sha256": "c0e740b203a85117fb125c578ab61401275bbe46ea80c629869c6cff39424bc4",
+  "server": [
+    "8.4.11",
+    "REPEATABLE-READ",
+    1,
+    1
+  ],
+  "effective_isolation": "READ-COMMITTED",
+  "http_requests": [
+    {
+      "phase": "getTask",
+      "client_wall_ns": 31372667,
+      "server_timing": "app;dur=3.993, diag-business-dispatch-calls;desc=\"1\", diag-business-dispatch-cpu;dur=0.377, diag-business-dispatch-wall;dur=0.424, diag-db-acquire-calls;desc=\"9\", diag-db-acquire-cpu;dur=0.054, diag-db-acquire-wall;dur=0.055, diag-db-close-calls;desc=\"1\", diag-db-close-cpu;dur=0.008, diag-db-close-wall;dur=0.008, diag-db-commit-calls;desc=\"1\", diag-db-commit-cpu;dur=0.063, diag-db-commit-wall;dur=0.081, diag-db-execute_fetch-calls;desc=\"9\", diag-db-execute_fetch-cpu;dur=1.934, diag-db-execute_fetch-wall;dur=2.331, diag-db-statements;desc=\"9\", diag-dispatch_wait-wall;dur=0.683, diag-handle-calls;desc=\"1\", diag-handle-cpu;dur=3.617, diag-handle-wall;dur=4.033, diag-request-validate-calls;desc=\"1\", diag-request-validate-cpu;dur=0.185, diag-request-validate-wall;dur=0.185, diag-response-encode-calls;desc=\"1\", diag-response-encode-cpu;dur=0.029, diag-response-encode-wall;dur=0.029, diag-runtime-execute-calls;desc=\"1\", diag-runtime-execute-cpu;dur=2.876, diag-runtime-execute-wall;dur=3.292, diag-schema-validate-calls;desc=\"3\", diag-schema-validate-cpu;dur=0.764, diag-schema-validate-wall;dur=0.763"
+    },
+    {
+      "phase": "getTask",
+      "client_wall_ns": 4230875,
+      "server_timing": "app;dur=2.277, diag-business-dispatch-calls;desc=\"1\", diag-business-dispatch-cpu;dur=0.210, diag-business-dispatch-wall;dur=0.246, diag-db-acquire-calls;desc=\"9\", diag-db-acquire-cpu;dur=0.043, diag-db-acquire-wall;dur=0.044, diag-db-close-calls;desc=\"1\", diag-db-close-cpu;dur=0.007, diag-db-close-wall;dur=0.007, diag-db-commit-calls;desc=\"1\", diag-db-commit-cpu;dur=0.053, diag-db-commit-wall;dur=0.066, diag-db-execute_fetch-calls;desc=\"9\", diag-db-execute_fetch-cpu;dur=0.932, diag-db-execute_fetch-wall;dur=1.156, diag-db-statements;desc=\"9\", diag-dispatch_wait-wall;dur=0.227, diag-handle-calls;desc=\"1\", diag-handle-cpu;dur=2.072, diag-handle-wall;dur=2.310, diag-request-validate-calls;desc=\"1\", diag-request-validate-cpu;dur=0.063, diag-request-validate-wall;dur=0.063, diag-response-encode-calls;desc=\"1\", diag-response-encode-cpu;dur=0.025, diag-response-encode-wall;dur=0.025, diag-runtime-execute-calls;desc=\"1\", diag-runtime-execute-cpu;dur=1.614, diag-runtime-execute-wall;dur=1.852, diag-schema-validate-calls;desc=\"3\", diag-schema-validate-cpu;dur=0.431, diag-schema-validate-wall;dur=0.431"
+    },
+    {
+      "phase": "getTask",
+      "client_wall_ns": 4241333,
+      "server_timing": "app;dur=2.260, diag-business-dispatch-calls;desc=\"1\", diag-business-dispatch-cpu;dur=0.195, diag-business-dispatch-wall;dur=0.241, diag-db-acquire-calls;desc=\"9\", diag-db-acquire-cpu;dur=0.037, diag-db-acquire-wall;dur=0.037, diag-db-close-calls;desc=\"1\", diag-db-close-cpu;dur=0.006, diag-db-close-wall;dur=0.006, diag-db-commit-calls;desc=\"1\", diag-db-commit-cpu;dur=0.063, diag-db-commit-wall;dur=0.091, diag-db-execute_fetch-calls;desc=\"9\", diag-db-execute_fetch-cpu;dur=0.925, diag-db-execute_fetch-wall;dur=1.159, diag-db-statements;desc=\"9\", diag-dispatch_wait-wall;dur=0.291, diag-handle-calls;desc=\"1\", diag-handle-cpu;dur=2.029, diag-handle-wall;dur=2.291, diag-request-validate-calls;desc=\"1\", diag-request-validate-cpu;dur=0.060, diag-request-validate-wall;dur=0.060, diag-response-encode-calls;desc=\"1\", diag-response-encode-cpu;dur=0.023, diag-response-encode-wall;dur=0.023, diag-runtime-execute-calls;desc=\"1\", diag-runtime-execute-cpu;dur=1.586, diag-runtime-execute-wall;dur=1.848, diag-schema-validate-calls;desc=\"3\", diag-schema-validate-cpu;dur=0.423, diag-schema-validate-wall;dur=0.423"
+    },
+    {
+      "phase": "getTask",
+      "client_wall_ns": 3909375,
+      "server_timing": "app;dur=2.203, diag-business-dispatch-calls;desc=\"1\", diag-business-dispatch-cpu;dur=0.199, diag-business-dispatch-wall;dur=0.241, diag-db-acquire-calls;desc=\"9\", diag-db-acquire-cpu;dur=0.033, diag-db-acquire-wall;dur=0.034, diag-db-close-calls;desc=\"1\", diag-db-close-cpu;dur=0.005, diag-db-close-wall;dur=0.005, diag-db-commit-calls;desc=\"1\", diag-db-commit-cpu;dur=0.053, diag-db-commit-wall;dur=0.079, diag-db-execute_fetch-calls;desc=\"9\", diag-db-execute_fetch-cpu;dur=0.869, diag-db-execute_fetch-wall;dur=1.202, diag-db-statements;desc=\"9\", diag-dispatch_wait-wall;dur=0.179, diag-handle-calls;desc=\"1\", diag-handle-cpu;dur=1.870, diag-handle-wall;dur=2.231, diag-request-validate-calls;desc=\"1\", diag-request-validate-cpu;dur=0.054, diag-request-validate-wall;dur=0.054, diag-response-encode-calls;desc=\"1\", diag-response-encode-cpu;dur=0.020, diag-response-encode-wall;dur=0.020, diag-runtime-execute-calls;desc=\"1\", diag-runtime-execute-cpu;dur=1.467, diag-runtime-execute-wall;dur=1.828, diag-schema-validate-calls;desc=\"3\", diag-schema-validate-cpu;dur=0.384, diag-schema-validate-wall;dur=0.384"
+    },
+    {
+      "phase": "getTask",
+      "client_wall_ns": 4062167,
+      "server_timing": "app;dur=2.174, diag-business-dispatch-calls;desc=\"1\", diag-business-dispatch-cpu;dur=0.192, diag-business-dispatch-wall;dur=0.243, diag-db-acquire-calls;desc=\"9\", diag-db-acquire-cpu;dur=0.035, diag-db-acquire-wall;dur=0.036, diag-db-close-calls;desc=\"1\", diag-db-close-cpu;dur=0.005, diag-db-close-wall;dur=0.005, diag-db-commit-calls;desc=\"1\", diag-db-commit-cpu;dur=0.052, diag-db-commit-wall;dur=0.075, diag-db-execute_fetch-calls;desc=\"9\", diag-db-execute_fetch-cpu;dur=0.873, diag-db-execute_fetch-wall;dur=1.148, diag-db-statements;desc=\"9\", diag-dispatch_wait-wall;dur=0.282, diag-handle-calls;desc=\"1\", diag-handle-cpu;dur=1.903, diag-handle-wall;dur=2.203, diag-request-validate-calls;desc=\"1\", diag-request-validate-cpu;dur=0.055, diag-request-validate-wall;dur=0.055, diag-response-encode-calls;desc=\"1\", diag-response-encode-cpu;dur=0.021, diag-response-encode-wall;dur=0.021, diag-runtime-execute-calls;desc=\"1\", diag-runtime-execute-cpu;dur=1.493, diag-runtime-execute-wall;dur=1.793, diag-schema-validate-calls;desc=\"3\", diag-schema-validate-cpu;dur=0.391, diag-schema-validate-wall;dur=0.390"
+    },
+    {
+      "phase": "validateContractPayload",
+      "client_wall_ns": 3038208,
+      "server_timing": "app;dur=1.166, diag-business-dispatch-calls;desc=\"1\", diag-business-dispatch-cpu;dur=0.023, diag-business-dispatch-wall;dur=0.023, diag-db-acquire-calls;desc=\"4\", diag-db-acquire-cpu;dur=0.026, diag-db-acquire-wall;dur=0.026, diag-db-close-calls;desc=\"1\", diag-db-close-cpu;dur=0.005, diag-db-close-wall;dur=0.005, diag-db-commit-calls;desc=\"1\", diag-db-commit-cpu;dur=0.054, diag-db-commit-wall;dur=0.077, diag-db-execute_fetch-calls;desc=\"4\", diag-db-execute_fetch-cpu;dur=0.375, diag-db-execute_fetch-wall;dur=0.506, diag-db-statements;desc=\"4\", diag-dispatch_wait-wall;dur=0.467, diag-handle-calls;desc=\"1\", diag-handle-cpu;dur=1.031, diag-handle-wall;dur=1.186, diag-request-validate-calls;desc=\"1\", diag-request-validate-cpu;dur=0.173, diag-request-validate-wall;dur=0.173, diag-response-encode-calls;desc=\"1\", diag-response-encode-cpu;dur=0.012, diag-response-encode-wall;dur=0.012, diag-runtime-execute-calls;desc=\"1\", diag-runtime-execute-cpu;dur=0.891, diag-runtime-execute-wall;dur=1.046, diag-schema-validate-calls;desc=\"3\", diag-schema-validate-cpu;dur=0.228, diag-schema-validate-wall;dur=0.228"
+    },
+    {
+      "phase": "validateContractPayload",
+      "client_wall_ns": 2563000,
+      "server_timing": "app;dur=1.187, diag-business-dispatch-calls;desc=\"1\", diag-business-dispatch-cpu;dur=0.009, diag-business-dispatch-wall;dur=0.009, diag-db-acquire-calls;desc=\"4\", diag-db-acquire-cpu;dur=0.023, diag-db-acquire-wall;dur=0.024, diag-db-close-calls;desc=\"1\", diag-db-close-cpu;dur=0.004, diag-db-close-wall;dur=0.004, diag-db-commit-calls;desc=\"1\", diag-db-commit-cpu;dur=0.048, diag-db-commit-wall;dur=0.069, diag-db-execute_fetch-calls;desc=\"4\", diag-db-execute_fetch-cpu;dur=0.381, diag-db-execute_fetch-wall;dur=0.499, diag-db-statements;desc=\"4\", diag-dispatch_wait-wall;dur=0.188, diag-handle-calls;desc=\"1\", diag-handle-cpu;dur=1.068, diag-handle-wall;dur=1.208, diag-request-validate-calls;desc=\"1\", diag-request-validate-cpu;dur=0.156, diag-request-validate-wall;dur=0.156, diag-response-encode-calls;desc=\"1\", diag-response-encode-cpu;dur=0.013, diag-response-encode-wall;dur=0.013, diag-runtime-execute-calls;desc=\"1\", diag-runtime-execute-cpu;dur=0.856, diag-runtime-execute-wall;dur=0.997, diag-schema-validate-calls;desc=\"3\", diag-schema-validate-cpu;dur=0.206, diag-schema-validate-wall;dur=0.205"
+    },
+    {
+      "phase": "validateContractPayload",
+      "client_wall_ns": 2374708,
+      "server_timing": "app;dur=1.039, diag-business-dispatch-calls;desc=\"1\", diag-business-dispatch-cpu;dur=0.006, diag-business-dispatch-wall;dur=0.006, diag-db-acquire-calls;desc=\"4\", diag-db-acquire-cpu;dur=0.020, diag-db-acquire-wall;dur=0.020, diag-db-close-calls;desc=\"1\", diag-db-close-cpu;dur=0.005, diag-db-close-wall;dur=0.005, diag-db-commit-calls;desc=\"1\", diag-db-commit-cpu;dur=0.048, diag-db-commit-wall;dur=0.069, diag-db-execute_fetch-calls;desc=\"4\", diag-db-execute_fetch-cpu;dur=0.363, diag-db-execute_fetch-wall;dur=0.470, diag-db-statements;desc=\"4\", diag-dispatch_wait-wall;dur=0.179, diag-handle-calls;desc=\"1\", diag-handle-cpu;dur=0.927, diag-handle-wall;dur=1.056, diag-request-validate-calls;desc=\"1\", diag-request-validate-cpu;dur=0.147, diag-request-validate-wall;dur=0.147, diag-response-encode-calls;desc=\"1\", diag-response-encode-cpu;dur=0.010, diag-response-encode-wall;dur=0.010, diag-runtime-execute-calls;desc=\"1\", diag-runtime-execute-cpu;dur=0.802, diag-runtime-execute-wall;dur=0.932, diag-schema-validate-calls;desc=\"3\", diag-schema-validate-cpu;dur=0.200, diag-schema-validate-wall;dur=0.200"
+    },
+    {
+      "phase": "validateContractPayload",
+      "client_wall_ns": 2547458,
+      "server_timing": "app;dur=1.234, diag-business-dispatch-calls;desc=\"1\", diag-business-dispatch-cpu;dur=0.006, diag-business-dispatch-wall;dur=0.006, diag-db-acquire-calls;desc=\"4\", diag-db-acquire-cpu;dur=0.025, diag-db-acquire-wall;dur=0.025, diag-db-close-calls;desc=\"1\", diag-db-close-cpu;dur=0.005, diag-db-close-wall;dur=0.005, diag-db-commit-calls;desc=\"1\", diag-db-commit-cpu;dur=0.049, diag-db-commit-wall;dur=0.069, diag-db-execute_fetch-calls;desc=\"4\", diag-db-execute_fetch-cpu;dur=0.403, diag-db-execute_fetch-wall;dur=0.534, diag-db-statements;desc=\"4\", diag-dispatch_wait-wall;dur=0.159, diag-handle-calls;desc=\"1\", diag-handle-cpu;dur=1.100, diag-handle-wall;dur=1.252, diag-request-validate-calls;desc=\"1\", diag-request-validate-cpu;dur=0.155, diag-request-validate-wall;dur=0.155, diag-response-encode-calls;desc=\"1\", diag-response-encode-cpu;dur=0.011, diag-response-encode-wall;dur=0.011, diag-runtime-execute-calls;desc=\"1\", diag-runtime-execute-cpu;dur=0.889, diag-runtime-execute-wall;dur=1.041, diag-schema-validate-calls;desc=\"3\", diag-schema-validate-cpu;dur=0.216, diag-schema-validate-wall;dur=0.216"
+    },
+    {
+      "phase": "validateContractPayload",
+      "client_wall_ns": 2431541,
+      "server_timing": "app;dur=1.067, diag-business-dispatch-calls;desc=\"1\", diag-business-dispatch-cpu;dur=0.006, diag-business-dispatch-wall;dur=0.006, diag-db-acquire-calls;desc=\"4\", diag-db-acquire-cpu;dur=0.021, diag-db-acquire-wall;dur=0.021, diag-db-close-calls;desc=\"1\", diag-db-close-cpu;dur=0.005, diag-db-close-wall;dur=0.005, diag-db-commit-calls;desc=\"1\", diag-db-commit-cpu;dur=0.049, diag-db-commit-wall;dur=0.070, diag-db-execute_fetch-calls;desc=\"4\", diag-db-execute_fetch-cpu;dur=0.372, diag-db-execute_fetch-wall;dur=0.485, diag-db-statements;desc=\"4\", diag-dispatch_wait-wall;dur=0.177, diag-handle-calls;desc=\"1\", diag-handle-cpu;dur=0.951, diag-handle-wall;dur=1.087, diag-request-validate-calls;desc=\"1\", diag-request-validate-cpu;dur=0.149, diag-request-validate-wall;dur=0.149, diag-response-encode-calls;desc=\"1\", diag-response-encode-cpu;dur=0.012, diag-response-encode-wall;dur=0.012, diag-runtime-execute-calls;desc=\"1\", diag-runtime-execute-cpu;dur=0.824, diag-runtime-execute-wall;dur=0.959, diag-schema-validate-calls;desc=\"3\", diag-schema-validate-cpu;dur=0.203, diag-schema-validate-wall;dur=0.203"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 12526417,
+      "server_timing": "app;dur=10.478, diag-business-dispatch-calls;desc=\"1\", diag-business-dispatch-cpu;dur=0.381, diag-business-dispatch-wall;dur=0.507, diag-db-acquire-calls;desc=\"24\", diag-db-acquire-cpu;dur=0.150, diag-db-acquire-wall;dur=0.168, diag-db-close-calls;desc=\"2\", diag-db-close-cpu;dur=0.014, diag-db-close-wall;dur=0.014, diag-db-commit-calls;desc=\"2\", diag-db-commit-cpu;dur=0.126, diag-db-commit-wall;dur=0.510, diag-db-execute_fetch-calls;desc=\"24\", diag-db-execute_fetch-cpu;dur=4.985, diag-db-execute_fetch-wall;dur=6.723, diag-db-statements;desc=\"24\", diag-dispatch_wait-wall;dur=0.394, diag-handle-calls;desc=\"1\", diag-handle-cpu;dur=8.330, diag-handle-wall;dur=10.521, diag-request-validate-calls;desc=\"1\", diag-request-validate-cpu;dur=0.248, diag-request-validate-wall;dur=0.248, diag-response-encode-calls;desc=\"1\", diag-response-encode-cpu;dur=0.031, diag-response-encode-wall;dur=0.031, diag-runtime-claim-calls;desc=\"1\", diag-runtime-claim-cpu;dur=2.147, diag-runtime-claim-wall;dur=2.892, diag-runtime-execute-calls;desc=\"1\", diag-runtime-execute-cpu;dur=7.703, diag-runtime-execute-wall;dur=9.894, diag-runtime-locked_scope-calls;desc=\"1\", diag-runtime-locked_scope-cpu;dur=1.490, diag-runtime-locked_scope-wall;dur=1.762, diag-runtime-prepare-calls;desc=\"1\", diag-runtime-prepare-cpu;dur=3.068, diag-runtime-prepare-wall;dur=4.157, diag-schema-validate-calls;desc=\"6\", diag-schema-validate-cpu;dur=1.168, diag-schema-validate-wall;dur=1.206"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 9467542,
+      "server_timing": "app;dur=7.421, diag-business-dispatch-calls;desc=\"1\", diag-business-dispatch-cpu;dur=0.332, diag-business-dispatch-wall;dur=0.439, diag-db-acquire-calls;desc=\"27\", diag-db-acquire-cpu;dur=0.149, diag-db-acquire-wall;dur=0.158, diag-db-close-calls;desc=\"2\", diag-db-close-cpu;dur=0.011, diag-db-close-wall;dur=0.011, diag-db-commit-calls;desc=\"2\", diag-db-commit-cpu;dur=0.108, diag-db-commit-wall;dur=0.339, diag-db-execute_fetch-calls;desc=\"27\", diag-db-execute_fetch-cpu;dur=2.987, diag-db-execute_fetch-wall;dur=4.079, diag-db-statements;desc=\"27\", diag-dispatch_wait-wall;dur=0.200, diag-handle-calls;desc=\"1\", diag-handle-cpu;dur=6.124, diag-handle-wall;dur=7.459, diag-request-validate-calls;desc=\"1\", diag-request-validate-cpu;dur=0.203, diag-request-validate-wall;dur=0.203, diag-response-encode-calls;desc=\"1\", diag-response-encode-cpu;dur=0.027, diag-response-encode-wall;dur=0.027, diag-runtime-claim-calls;desc=\"1\", diag-runtime-claim-cpu;dur=1.278, diag-runtime-claim-wall;dur=1.455, diag-runtime-execute-calls;desc=\"1\", diag-runtime-execute-cpu;dur=5.582, diag-runtime-execute-wall;dur=6.917, diag-runtime-locked_scope-calls;desc=\"1\", diag-runtime-locked_scope-cpu;dur=1.700, diag-runtime-locked_scope-wall;dur=2.205, diag-runtime-prepare-calls;desc=\"1\", diag-runtime-prepare-cpu;dur=2.210, diag-runtime-prepare-wall;dur=2.616, diag-schema-validate-calls;desc=\"6\", diag-schema-validate-cpu;dur=1.009, diag-schema-validate-wall;dur=1.008"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8296291,
+      "server_timing": "app;dur=6.381, diag-business-dispatch-calls;desc=\"1\", diag-business-dispatch-cpu;dur=0.239, diag-business-dispatch-wall;dur=0.358, diag-db-acquire-calls;desc=\"24\", diag-db-acquire-cpu;dur=0.133, diag-db-acquire-wall;dur=0.140, diag-db-close-calls;desc=\"2\", diag-db-close-cpu;dur=0.011, diag-db-close-wall;dur=0.011, diag-db-commit-calls;desc=\"2\", diag-db-commit-cpu;dur=0.095, diag-db-commit-wall;dur=0.354, diag-db-execute_fetch-calls;desc=\"24\", diag-db-execute_fetch-cpu;dur=2.430, diag-db-execute_fetch-wall;dur=3.295, diag-db-statements;desc=\"24\", diag-dispatch_wait-wall;dur=0.200, diag-handle-calls;desc=\"1\", diag-handle-cpu;dur=5.279, diag-handle-wall;dur=6.418, diag-request-validate-calls;desc=\"1\", diag-request-validate-cpu;dur=0.206, diag-request-validate-wall;dur=0.206, diag-response-encode-calls;desc=\"1\", diag-response-encode-cpu;dur=0.025, diag-response-encode-wall;dur=0.025, diag-runtime-claim-calls;desc=\"1\", diag-runtime-claim-cpu;dur=1.230, diag-runtime-claim-wall;dur=1.427, diag-runtime-execute-calls;desc=\"1\", diag-runtime-execute-cpu;dur=4.788, diag-runtime-execute-wall;dur=5.927, diag-runtime-locked_scope-calls;desc=\"1\", diag-runtime-locked_scope-cpu;dur=1.055, diag-runtime-locked_scope-wall;dur=1.284, diag-runtime-prepare-calls;desc=\"1\", diag-runtime-prepare-cpu;dur=2.122, diag-runtime-prepare-wall;dur=2.563, diag-schema-validate-calls;desc=\"6\", diag-schema-validate-cpu;dur=0.956, diag-schema-validate-wall;dur=0.955"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 9132792,
+      "server_timing": "app;dur=7.155, diag-business-dispatch-calls;desc=\"1\", diag-business-dispatch-cpu;dur=0.362, diag-business-dispatch-wall;dur=0.481, diag-db-acquire-calls;desc=\"27\", diag-db-acquire-cpu;dur=0.141, diag-db-acquire-wall;dur=0.149, diag-db-close-calls;desc=\"2\", diag-db-close-cpu;dur=0.013, diag-db-close-wall;dur=0.013, diag-db-commit-calls;desc=\"2\", diag-db-commit-cpu;dur=0.101, diag-db-commit-wall;dur=0.418, diag-db-execute_fetch-calls;desc=\"27\", diag-db-execute_fetch-cpu;dur=2.751, diag-db-execute_fetch-wall;dur=3.629, diag-db-statements;desc=\"27\", diag-dispatch_wait-wall;dur=0.235, diag-handle-calls;desc=\"1\", diag-handle-cpu;dur=5.981, diag-handle-wall;dur=7.190, diag-request-validate-calls;desc=\"1\", diag-request-validate-cpu;dur=0.187, diag-request-validate-wall;dur=0.187, diag-response-encode-calls;desc=\"1\", diag-response-encode-cpu;dur=0.025, diag-response-encode-wall;dur=0.025, diag-runtime-claim-calls;desc=\"1\", diag-runtime-claim-cpu;dur=1.287, diag-runtime-claim-wall;dur=1.479, diag-runtime-execute-calls;desc=\"1\", diag-runtime-execute-cpu;dur=5.487, diag-runtime-execute-wall;dur=6.696, diag-runtime-locked_scope-calls;desc=\"1\", diag-runtime-locked_scope-cpu;dur=1.488, diag-runtime-locked_scope-wall;dur=1.727, diag-runtime-prepare-calls;desc=\"1\", diag-runtime-prepare-cpu;dur=2.148, diag-runtime-prepare-wall;dur=2.564, diag-schema-validate-calls;desc=\"6\", diag-schema-validate-cpu;dur=0.974, diag-schema-validate-wall;dur=0.974"
+    },
+    {
+      "phase": "transitionTask",
+      "client_wall_ns": 8020916,
+      "server_timing": "app;dur=6.171, diag-business-dispatch-calls;desc=\"1\", diag-business-dispatch-cpu;dur=0.202, diag-business-dispatch-wall;dur=0.281, diag-db-acquire-calls;desc=\"24\", diag-db-acquire-cpu;dur=0.142, diag-db-acquire-wall;dur=0.149, diag-db-close-calls;desc=\"2\", diag-db-close-cpu;dur=0.015, diag-db-close-wall;dur=0.017, diag-db-commit-calls;desc=\"2\", diag-db-commit-cpu;dur=0.085, diag-db-commit-wall;dur=0.350, diag-db-execute_fetch-calls;desc=\"24\", diag-db-execute_fetch-cpu;dur=2.322, diag-db-execute_fetch-wall;dur=3.020, diag-db-statements;desc=\"24\", diag-dispatch_wait-wall;dur=0.198, diag-handle-calls;desc=\"1\", diag-handle-cpu;dur=5.229, diag-handle-wall;dur=6.208, diag-request-validate-calls;desc=\"1\", diag-request-validate-cpu;dur=0.209, diag-request-validate-wall;dur=0.209, diag-response-encode-calls;desc=\"1\", diag-response-encode-cpu;dur=0.026, diag-response-encode-wall;dur=0.026, diag-runtime-claim-calls;desc=\"1\", diag-runtime-claim-cpu;dur=1.235, diag-runtime-claim-wall;dur=1.405, diag-runtime-execute-calls;desc=\"1\", diag-runtime-execute-cpu;dur=4.766, diag-runtime-execute-wall;dur=5.746, diag-runtime-locked_scope-calls;desc=\"1\", diag-runtime-locked_scope-cpu;dur=1.098, diag-runtime-locked_scope-wall;dur=1.266, diag-runtime-prepare-calls;desc=\"1\", diag-runtime-prepare-cpu;dur=2.142, diag-runtime-prepare-wall;dur=2.535, diag-schema-validate-calls;desc=\"6\", diag-schema-validate-cpu;dur=0.922, diag-schema-validate-wall;dur=0.921"
+    }
+  ],
+  "artificial_pool_wait": {
+    "db.acquire.wall_ns": 52873084,
+    "db.acquire.cpu_ns": 92084,
+    "db.acquire.calls": 1,
+    "db.statements": 1,
+    "db.execute_fetch.wall_ns": 525458,
+    "db.execute_fetch.cpu_ns": 323709,
+    "db.execute_fetch.calls": 1,
+    "db.commit.wall_ns": 106375,
+    "db.commit.cpu_ns": 76750,
+    "db.commit.calls": 1,
+    "db.close.wall_ns": 9208,
+    "db.close.cpu_ns": 9208,
+    "db.close.calls": 1
+  },
+  "artificial_sql_sleep": {
+    "db.acquire.wall_ns": 46459,
+    "db.acquire.cpu_ns": 38708,
+    "db.acquire.calls": 1,
+    "db.statements": 1,
+    "db.execute_fetch.wall_ns": 55419709,
+    "db.execute_fetch.cpu_ns": 311291,
+    "db.execute_fetch.calls": 1,
+    "db.commit.wall_ns": 131917,
+    "db.commit.cpu_ns": 88417,
+    "db.commit.calls": 1,
+    "db.close.wall_ns": 9750,
+    "db.close.cpu_ns": 9792,
+    "db.close.calls": 1
+  },
+  "clock_fault_http_success": true,
+  "clock_fault_successful_commit_preserved": true,
+  "default_off_no_diag": true,
+  "http_total_requests": 17,
+  "driver_errors": [],
+  "status": "NATIVE_HTTP_SEGMENTS_AND_ARTIFICIAL_CALIBRATION_PASS",
+  "owned_server_shutdown_exit": 0,
+  "socket_absent": true
+}

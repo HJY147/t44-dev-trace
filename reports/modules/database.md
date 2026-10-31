@@ -108,3 +108,5 @@
 2026-10-31 global DB latency: disabled-by-default acquire/execute_fetch/commit/rollback/close wall+CPU spans;69 existing SQLite+5 synthetic boundaries pass, real P95/root cause unproven. No cloud/durability change. See agents/database/global-latency/REPORT.md.
 
 2026-10-31 GET dc556cd3 native MySQL8.4.11 actualRC four auth/expiry/validation priority checks passed; own socket server shutdown0, no cloud/HTTP/P95 proof. Raw getrc1.PUBLIC.json retained.
+
+2026-10-31 bf1+e07 short native HTTP:17schema-checked requests, artificial pool/SQLwait calibration and diagnostic self-fault preservation PASS; owned server stopped; not production root cause/P95 proof. See getsegments1.PUBLIC.json/sourceSHA.
