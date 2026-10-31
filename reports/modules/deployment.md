@@ -678,3 +678,5 @@ DB证据支持APP64CPU128GiB/PL1唯一40GiB候选调优入口已离线准备，r
 P15离线物料已准备，路径agents/deployment/p15-ready；新准确bcec镜像build41171011125与身份、创建/启动分阶段、diag1、PL1profile和backend5c真实pins均可核；APP实际image导入/调优/maintenance09/material09/完整scan/独立许可仍未运行，不把离线完成当性能通过。
 
 2026-10-31 DIRECT初始化补充：`agents/deployment/direct-start`是用户变更后直接诊断入口，不代表原完整准入验收。只启动既有容器，调用backend53ac真实bootstrap，然后保原CLI字节原子轮换凭据，立即启动两worker输出路径；任何失败停链保私密证据。5组本地mock/真实临时文件检查及Python3.10AST通过，无服务器调用，真实启动及性能仍未验证。准确CLI与限制见该目录README，提示词与MANIFEST同存。
+
+DIRECT冷启动审核修复：停止两个可能随VM自动启动的既有worker后，基础5容器仅执行最多30s无会话只读连接等待，保证bootstrap首次运行前DB和原TLS/API路由已应答。OPTIONS405/AllowGET规避GET401审计写入；无token，无旧业务准入。7组本地检查/AST310通过，仍未连接服务器或做压力测量。

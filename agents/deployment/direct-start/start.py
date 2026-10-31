@@ -1,5 +1,6 @@
 """APP-local direct initialization. No SSH, image change, scan gate or benchmark."""
 import argparse
+import base64
 import hashlib
 import json
 import os
@@ -114,8 +115,8 @@ def rotate(source, target, backup_dir):
     return result
 
 
-def command(argv, output, label, runner):
-    result = runner(argv, capture_output=True, check=False)
+def command(argv, output, label, runner, **kwargs):
+    result = runner(argv, capture_output=True, check=False, **kwargs)
     write(output / (label + '.stdout.private'), result.stdout)
     write(output / (label + '.stderr.private'), result.stderr)
     need(result.returncode == 0, label.upper() + '_FAILED_NO_RETRY')
@@ -128,11 +129,24 @@ def execute(backend, run_id, output, runner=subprocess.run, target=TOKEN):
     for name, expected in PINS.items():
         need(digest(read(backend / name)[0]) == expected, 'BACKEND_TOOL_SHA_MISMATCH')
     output.mkdir(mode=0o700, exist_ok=False)
-    phase = 'infra'
+    phase = 'workers-stop'
     try:
+        command(['docker', '--context', 'default', 'stop', IDS['consumer'], IDS['scheduler']],
+                output, 'workers-stop', runner)
+        phase = 'infra'
         command(['docker', '--context', 'default', 'start'] +
                 [IDS[k] for k in ('mysql', 'rabbitmq', 'tls', 'api', 'web')],
                 output, 'infra-start', runner)
+        phase = 'readiness'
+        environment = json.loads(read(P09 / 'P-packet/output/packet/inputs/session.private.json')[0])['environment']
+        ca = read(P09 / 'P-packet/output/packet/inputs/ca.pem')[0]
+        need(digest(ca) == environment['ca_sha256'], 'ORIGINAL_CA_SHA_REQUIRED')
+        payload = json.dumps({'origin': environment['origin'], 'ca_sha256': environment['ca_sha256'],
+                              'ca_b64': base64.b64encode(ca).decode()}).encode()
+        code = (Path(__file__).resolve().parent / 'readiness.py').read_text()
+        command(['docker', '--context', 'default', 'exec', '-i', IDS['api'],
+                 'timeout', '--signal=TERM', '--kill-after=1s', '29s', 'python', '-B', '-c', code],
+                output, 'readiness', runner, input=payload, timeout=30)
         phase = 'bootstrap'
         bootstrap = output / 'bootstrap'
         command([sys.executable, '-B', str(backend / 'bootstrap.py'),
@@ -168,7 +182,7 @@ def execute(backend, run_id, output, runner=subprocess.run, target=TOKEN):
     except BaseException:
         public(output / 'FAILED.PUBLIC.json', {'status': 'FAILED_STOP_CHAIN', 'phase': phase,
                'automatic_retry': False, 'partial_changes_retained': True,
-               'credentials_may_have_been_issued': phase != 'infra', 'benchmark_started': False})
+               'credentials_may_have_been_issued': phase in ('bootstrap', 'rotation', 'workers'), 'benchmark_started': False})
         raise
 
 

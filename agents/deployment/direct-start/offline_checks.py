@@ -1,5 +1,11 @@
 """No Docker/SSH: fake subprocess results; real temporary atomic filesystem writes."""
 import importlib.util
+import json
+import hashlib
+import http.server
+import ssl
+import threading
+import time
 from pathlib import Path
 import stat
 import subprocess
@@ -16,6 +22,12 @@ BACKEND = HERE.parents[1] / 'backend/fast-bootstrap'
 
 class Checks(unittest.TestCase):
     def setup_run(self, folder, failure=None):
+        m.P09 = folder / 'P09'
+        inputs = m.P09 / 'P-packet/output/packet/inputs'
+        inputs.mkdir(parents=True)
+        (inputs / 'ca.pem').write_bytes(b'SYNTHETIC-CA')
+        (inputs / 'session.private.json').write_text(json.dumps({'environment': {
+            'origin': 'https://original.test', 'ca_sha256': hashlib.sha256(b'SYNTHETIC-CA').hexdigest()}}))
         target = folder / 'scheduler-token.json'
         m.write(target, b'{"access_token":"OLD-SYNTHETIC"}\n')
         calls = []
@@ -23,7 +35,10 @@ class Checks(unittest.TestCase):
 
         def runner(argv, **kwargs):
             calls.append(argv)
-            label = 'bootstrap' if '--old-packet' in argv else ('workers' if m.IDS['consumer'] in argv else 'infra')
+            label = ('bootstrap' if '--old-packet' in argv else
+                     'stop' if 'stop' in argv else
+                     'readiness' if 'exec' in argv else
+                     'workers' if m.IDS['consumer'] in argv else 'infra')
             if label == failure:
                 return subprocess.CompletedProcess(argv, 3, b'PRIVATE-FAIL', b'PRIVATE-ERR')
             if label == 'bootstrap':
@@ -45,10 +60,11 @@ class Checks(unittest.TestCase):
             output = folder / 'run'
             result = m.execute(BACKEND, 'direct-test', output, runner, target)
             self.assertEqual(result['status'], 'INIT_DONE')
-            self.assertEqual(len(calls), 3)
-            self.assertEqual(calls[0][:4], ['docker', '--context', 'default', 'start'])
-            self.assertEqual(calls[0][4:], [m.IDS[k] for k in ('mysql','rabbitmq','tls','api','web')])
-            self.assertEqual(calls[2][4:], [m.IDS['consumer'], m.IDS['scheduler']])
+            self.assertEqual(len(calls), 5)
+            self.assertEqual(calls[0], ['docker', '--context', 'default', 'stop', m.IDS['consumer'], m.IDS['scheduler']])
+            self.assertEqual(calls[1][:4], ['docker', '--context', 'default', 'start'])
+            self.assertEqual(calls[1][4:], [m.IDS[k] for k in ('mysql','rabbitmq','tls','api','web')])
+            self.assertEqual(calls[4][4:], [m.IDS['consumer'], m.IDS['scheduler']])
             self.assertEqual(target.read_bytes(), new)
             self.assertNotEqual(target.stat().st_ino, before.st_ino)
             self.assertEqual((target.stat().st_uid, target.stat().st_gid), (before.st_uid, before.st_gid))
@@ -60,7 +76,7 @@ class Checks(unittest.TestCase):
             self.assertFalse(result['benchmark_started'])
 
     def test_subprocess_failure_stops_no_retry(self):
-        for label, expected in [('infra',1),('bootstrap',2),('workers',3)]:
+        for label, expected in [('stop',1),('infra',2),('readiness',3),('bootstrap',4),('workers',5)]:
             with self.subTest(label=label), tempfile.TemporaryDirectory() as tmp:
                 folder = Path(tmp).resolve()
                 target, calls, _, runner = self.setup_run(folder, label)
@@ -78,7 +94,7 @@ class Checks(unittest.TestCase):
             target, calls, _, runner = self.setup_run(folder)
             with patch.object(m.os, 'replace', side_effect=OSError('injected')), self.assertRaises(OSError):
                 m.execute(BACKEND, 'direct-test', folder/'run', runner, target)
-            self.assertEqual(len(calls), 2)
+            self.assertEqual(len(calls), 4)
             self.assertIn(b'OLD-SYNTHETIC', target.read_bytes())
             self.assertFalse(list(folder.glob('.direct-token-*')))
             self.assertTrue((folder/'run/rotation/scheduler-token.original.private.json').exists())
@@ -95,7 +111,7 @@ class Checks(unittest.TestCase):
                 return result
             with self.assertRaises(ValueError):
                 m.execute(BACKEND, 'direct-test', folder/'run', swapped, target)
-            self.assertEqual(len(calls), 2)
+            self.assertEqual(len(calls), 4)
 
     def test_pin_and_existing_output_reject_before_docker(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -108,6 +124,88 @@ class Checks(unittest.TestCase):
             with self.assertRaises(ValueError):
                 m.execute(folder, 'direct-test', folder/'new', runner, target)
             self.assertEqual(calls, [])
+
+
+class ConnectivityChecks(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        spec = importlib.util.spec_from_file_location('direct_readiness', HERE / 'readiness.py')
+        cls.r = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cls.r)
+
+    def test_real_tls_delayed_ready_and_db_failure_then_success(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)
+            key, cert = folder/'key.pem', folder/'cert.pem'
+            subprocess.run(['openssl', 'req', '-x509', '-newkey', 'rsa:2048', '-nodes',
+                '-keyout', str(key), '-out', str(cert), '-days', '1', '-subj', '/CN=localhost',
+                '-addext', 'subjectAltName=DNS:localhost'], capture_output=True, check=True)
+            ready = threading.Event()
+            paths = []
+            behavior = {'status': 405, 'allow': 'GET'}
+            class Handler(http.server.BaseHTTPRequestHandler):
+                def do_OPTIONS(self):
+                    paths.append((self.command, self.path, self.headers.get('Host'), self.headers.get('Authorization')))
+                    self.send_response(behavior['status'] if ready.is_set() else 503)
+                    self.send_header('Allow', behavior['allow'])
+                    self.send_header('X-Request-ID', 'local-read-only-probe')
+                    self.send_header('Content-Length', '0')
+                    self.end_headers()
+                def log_message(self, *unused):
+                    pass
+            server = http.server.ThreadingHTTPServer(('127.0.0.1', 0), Handler)
+            context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+            context.load_cert_chain(cert, key)
+            server.socket = context.wrap_socket(server.socket, server_side=True)
+            thread = threading.Thread(target=server.serve_forever, daemon=True)
+            thread.start()
+            tries = []
+            def db():
+                tries.append('SELECT 1')
+                if len(tries) == 1:
+                    raise ConnectionRefusedError('synthetic DB unready')
+            timer = threading.Timer(0.25, ready.set)
+            timer.start()
+            try:
+                result = self.r.wait_ready(db, lambda: self.r.tls_probe('https://localhost',
+                    cert.read_text(), '127.0.0.1', server.server_port), budget=2)
+                self.assertEqual(result['status'], 'CONNECTIONS_READY')
+                self.assertGreaterEqual(len(tries), 3)
+                self.assertTrue(paths)
+                self.assertTrue(all(p == ('OPTIONS', '/api/v1/projects', 'localhost', None) for p in paths))
+                for status, allow in [(404, 'GET'), (405, ''), (405, 'POST')]:
+                    behavior.update(status=status, allow=allow)
+                    with self.assertRaises(RuntimeError):
+                        self.r.tls_probe('https://localhost', cert.read_text(),
+                                         '127.0.0.1', server.server_port)
+                with self.assertRaises(ssl.SSLCertVerificationError):
+                    self.r.tls_probe('https://wrong-host.invalid', cert.read_text(),
+                                     '127.0.0.1', server.server_port)
+            finally:
+                timer.cancel()
+                server.shutdown()
+                server.server_close()
+                thread.join()
+
+    def test_failure_deadline_and_late_success_rejected_without_sessions(self):
+        now = [0.0]
+        calls = []
+        def sleep(seconds):
+            now[0] += seconds
+        def fail():
+            calls.append('SELECT 1')
+            raise ConnectionRefusedError('not logged')
+        with self.assertRaises(RuntimeError):
+            self.r.wait_ready(fail, lambda: calls.append('HTTPS'), budget=0.5,
+                              clock=lambda: now[0], sleep=sleep)
+        self.assertEqual(now[0], 0.5)
+        self.assertNotIn('HTTPS', calls)
+        now[0] = 0.0
+        def late():
+            now[0] = 1.1
+        with self.assertRaises(RuntimeError):
+            self.r.wait_ready(lambda: None, late, budget=1,
+                              clock=lambda: now[0], sleep=sleep)
 
 
 if __name__ == '__main__':

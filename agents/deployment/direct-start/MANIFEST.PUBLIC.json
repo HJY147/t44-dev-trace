@@ -9,18 +9,24 @@
       "bytes": 1976
     },
     "README.md": {
-      "sha256": "68ff73432ed1b8861c4a55385b0fb456cb013883a9db0cfb05105a162b67a6a4",
-      "bytes": 4241
+      "sha256": "9b306d64c3bc4fcb21a37c89c16f10f0239f8c6f799e77f7f3d5407cc06eca98",
+      "bytes": 5740
     },
     "offline_checks.py": {
-      "sha256": "e4a1352321121f81b574d89f29d4807e209f261096b250344695d4e0f535341f",
-      "bytes": 6037
+      "sha256": "adbd75cd134f7683be974533f22bee404d28f658e1dc69ff8ad5cbc3bbcea782",
+      "bytes": 10927
+    },
+    "readiness.py": {
+      "sha256": "503a6398c64606ca553a877d3676c2fbea3d02ea730d3623f5a819ad9d80712a",
+      "bytes": 3340
     },
     "start.py": {
-      "sha256": "1ffd8bdf6f572ce1c40f4396b10f62f7cdda16f8c3580eab0b5900319362541a",
-      "bytes": 8607
+      "sha256": "bdf867f7187b7026d63bffb8d0f2cae4e81581cb248332dd8836d32d4069de39",
+      "bytes": 9647
     }
   },
   "live_executed": false,
-  "offline_check_groups": 5
+  "offline_check_groups": 7,
+  "cold_start_probe": "readonly SELECT1 + original CA/SNI TLS OPTIONS405 AllowGET, <=30seconds before session issuance",
+  "workers_stopped_before_initialization": true
 }
