@@ -14,7 +14,11 @@ cohort_start为2026-10-31T11:09:54.477064Z，400客户端各有query记录，说
 
 首次失败是transition HTTP 409，业务code `STATE_CONFLICT`、message `State conflict`，模板 `POST /api/v1/projects/{project_id}/tasks/{task_id}/transitions`。请求从11:09:54.615034Z至11:09:54.665249Z；expected_version=2086，响应current_version=null、current_state=3；前一query state=3/version=2086。实际请求action=2；冻结工具runtime.py::client将该action当作block，并在成功响应断言目标state=3（源码第313、318行）。因此该请求发送前已经观察到state=3；这里仅确定请求及工具预期，未将重复操作是否合法或409是否符合业务冻结规则作无证推断。随后11:09:54.665305Z记录client_stop `ValueError:ValueError:HTTP_409`，并设置全局stop。
 
-冻结工具源码对应路径为 `post_runtime.py::_call_post` 第124行HTTP状态断言，第134–142行捕获、记录并重抛；继承的 `runtime.py::client` 第335–336行设置stop并记录client_stop。此为原始错误记录与源码控制流映射；备份中没有Python traceback文件，不把映射冒充实际回收的异常栈。没有SUT内部诊断证据，无法判断更深层业务状态来源或产品缺陷归因。
+冻结工具源码对应路径为 `runtime.py::call` 第267行HTTP状态断言，第275–276行捕获并设置全局stop，第283行重抛；`runtime.py::client` 第335–336行再次设置stop并记录client_stop。此为原始错误记录与源码控制流映射；备份没有Python traceback文件，不把静态映射冒充已回收堆栈。初次中间反馈误将同结构 `_call_post` 映射为warmup错误来源；经完整分派检查后在最终报告纠正。没有SUT内部诊断证据，无法判断更深层业务状态来源或产品缺陷归因。
+
+分派检查：`direct_boot.py:48`实例化 `post_runtime.Run`，该类继承 `original.Run`，未覆盖 `client` 或 `call`；原client第320行使用 `self.call`，故测量HTTP、状态断言、schema校验、metrics记录和原始exchange记录均来自摘要已匹配的原runtime.py第254–284行。候选 `_call_post` 仅在候选 `_postcheck_task` 第78/81行调用，其入路为原client第334行 `if not self.stop.is_set(): self._postcheck_bounded(...)`。候选 `_call_post` 的phase校验分支在第126–127行，但它本身没有限制调用者只能postcheck，限定来自上述调用图。不能把通用参数phase误认为本轮warmup调入了此方法。
+
+实际raw证据说明warmup确实执行、错误后有client_stop、没有postcheck；原始记录不含Python函数调用追踪，因此具体方法定位是冻结源码的静态可达性分析。候选替换了执行编排/清理及后置实现，但本轮测量请求分派仍保留原测量实现；未发现warmup/steady请求被候选 `_call_post` 替代的依据。此限定结论依赖已认证的实际四件源码绑定，不是以同名函数或函数对象相等证明整体行为等价。
 
 DRAIN_START monotonic_ns=150707129429，ALL_OWNERS_DRAINED=151532619849，GLOBAL_CONNECTIONS_CLOSED=151532643598。结果实际观测1.013942096秒。FINISHED仅表示工具清理结束；外层exit=2、clients_started=400均不是完整测量成功。
 
