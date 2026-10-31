@@ -680,3 +680,5 @@ P15离线物料已准备，路径agents/deployment/p15-ready；新准确bcec镜�
 2026-10-31 DIRECT初始化补充：`agents/deployment/direct-start`是用户变更后直接诊断入口，不代表原完整准入验收。只启动既有容器，调用backend53ac真实bootstrap，然后保原CLI字节原子轮换凭据，立即启动两worker输出路径；任何失败停链保私密证据。5组本地mock/真实临时文件检查及Python3.10AST通过，无服务器调用，真实启动及性能仍未验证。准确CLI与限制见该目录README，提示词与MANIFEST同存。
 
 DIRECT冷启动审核修复：停止两个可能随VM自动启动的既有worker后，基础5容器仅执行最多30s无会话只读连接等待，保证bootstrap首次运行前DB和原TLS/API路由已应答。OPTIONS405/AllowGET规避GET401审计写入；无token，无旧业务准入。7组本地检查/AST310通过，仍未连接服务器或做压力测量。
+
+DIRECT首次现场误拒修正：bcec项目路径POST先GET后，FastAPI405只报告首个部分匹配方法，旧GET-only假定错误。仅修readiness为405/合法POST或GETAllow/标准body，原TLS和超时不变；真实bcec TestClient与双顺序回归3组及7原组均通过，无Runtime执行，无远程重测。原现场readiness失败保留，未转述成性能结果。

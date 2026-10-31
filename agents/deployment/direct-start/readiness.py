@@ -22,7 +22,7 @@ def wait_ready(database, https, *, budget=28, clock=time.monotonic, sleep=time.s
                 break
             return {'status': 'CONNECTIONS_READY', 'attempts': attempts,
                     'session_operations': 0, 'sql': 'SELECT 1',
-                    'http': 'OPTIONS /api/v1/projects expected405 AllowGET'}
+                    'http': 'OPTIONS /api/v1/projects expected405 AllowPOSTorGET'}
         except Exception:
             pass  # Driver exceptions can contain credentials. Never print them.
         left = deadline - clock()
@@ -41,6 +41,20 @@ def database_probe():
         cursor.execute('SELECT 1')
         if cursor.fetchone() != (1,):
             raise RuntimeError('SELECT1_FAILED')
+
+
+def validate_router_response(status, allow, body):
+    # Starlette reports the first PARTIAL route match's method, not their union.
+    # bcec registers POST before GET at this path; either registration order is valid.
+    methods = {value.strip() for value in (allow or '').split(',') if value.strip()}
+    if status != 405 or not methods or not methods <= {'POST', 'GET'} or len(body) > 65536:
+        raise RuntimeError('API_ROUTER_OPTIONS_READBACK_REQUIRED')
+    try:
+        valid = json.loads(body) == {'detail': 'Method Not Allowed'}
+    except (ValueError, UnicodeError):
+        valid = False
+    if not valid:
+        raise RuntimeError('API_ROUTER_OPTIONS_BODY_REQUIRED')
 
 
 def tls_probe(origin, ca_pem, host='tls-gateway', port=8443):
@@ -63,8 +77,7 @@ def tls_probe(origin, ca_pem, host='tls-gateway', port=8443):
         conn.request('OPTIONS', '/api/v1/projects', headers={'Host': target.netloc})
         response = conn.getresponse()
         body = response.read(65537)
-        if response.status != 405 or 'GET' not in {v.strip() for v in (response.getheader('Allow') or '').split(',')} or len(body) > 65536:
-            raise RuntimeError('API_ROUTER_OPTIONS_READBACK_REQUIRED')
+        validate_router_response(response.status, response.getheader('Allow'), body)
     finally:
         conn.close()
 

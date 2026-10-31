@@ -3035,7 +3035,7 @@
       "python3 -B agents/deployment/direct-start/offline_checks.py",
       "ast.parse feature_version(3,10)"
     ],
-    "results": "7 local groups PASS including delayed real local TLS/DB mock and pre-session <=30s readiness; no actual Docker/SSH/cloud",
+    "results": "7 local groups plus3 real bcec FastAPI router groups PASS; AllowPOST false-rejection fixed offline; original live failure retained by root; no deployment-agent Docker/SSH/cloud",
     "unverified": [
       "live startup readiness",
       "real bootstrap/rotation/worker use",

@@ -5,20 +5,24 @@
   "source": "bcec3326b40814fdb1922bbfea7c29473b47ba47",
   "files": {
     "PROMPT.md": {
-      "sha256": "39d4285462ee27fe23e3b95270ce130caf17d3027ecb1263fa4d72b68c8d0478",
-      "bytes": 1976
+      "sha256": "7b94de2cbd9c5e895e67d9724df9d27b4fcec85fd4326e05abd41692f0b7adcf",
+      "bytes": 3085
     },
     "README.md": {
-      "sha256": "9b306d64c3bc4fcb21a37c89c16f10f0239f8c6f799e77f7f3d5407cc06eca98",
-      "bytes": 5740
+      "sha256": "bb58d1759ba030b2ede8fa879e5e46d388f818e538fbab46f4dd50300a66bb52",
+      "bytes": 7768
     },
     "offline_checks.py": {
-      "sha256": "adbd75cd134f7683be974533f22bee404d28f658e1dc69ff8ad5cbc3bbcea782",
-      "bytes": 10927
+      "sha256": "5f92a5e04b25e596a2327414bd615db5795c7ed8da0f7802559a4becda73709e",
+      "bytes": 11256
     },
     "readiness.py": {
-      "sha256": "503a6398c64606ca553a877d3676c2fbea3d02ea730d3623f5a819ad9d80712a",
-      "bytes": 3340
+      "sha256": "bcf6d3565c6259946c91594ce24f0b81c1f1a7520ed14da52e218f6c79a95db4",
+      "bytes": 3905
+    },
+    "router_checks.py": {
+      "sha256": "007615d3318a04398d7731703cab632a4d323d2b7fe1eebb3d425427fee8e1cc",
+      "bytes": 2839
     },
     "start.py": {
       "sha256": "bdf867f7187b7026d63bffb8d0f2cae4e81581cb248332dd8836d32d4069de39",
@@ -27,6 +31,8 @@
   },
   "live_executed": false,
   "offline_check_groups": 7,
-  "cold_start_probe": "readonly SELECT1 + original CA/SNI TLS OPTIONS405 AllowGET, <=30seconds before session issuance",
-  "workers_stopped_before_initialization": true
+  "cold_start_probe": "readonly SELECT1 + original CA/SNI TLS OPTIONS405 nonempty Allow subset POST/GET + exact router detail, <=30seconds before session issuance",
+  "workers_stopped_before_initialization": true,
+  "actual_fastapi_router_check_groups": 3,
+  "first_live_attempt": "root reported readiness false rejection AllowPOST before bootstrap/benchmark; original failure retained; no deployment agent remote retry"
 }

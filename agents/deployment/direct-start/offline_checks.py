@@ -149,8 +149,10 @@ class ConnectivityChecks(unittest.TestCase):
                     self.send_response(behavior['status'] if ready.is_set() else 503)
                     self.send_header('Allow', behavior['allow'])
                     self.send_header('X-Request-ID', 'local-read-only-probe')
-                    self.send_header('Content-Length', '0')
+                    body = b'{"detail":"Method Not Allowed"}'
+                    self.send_header('Content-Length', str(len(body)))
                     self.end_headers()
+                    self.wfile.write(body)
                 def log_message(self, *unused):
                     pass
             server = http.server.ThreadingHTTPServer(('127.0.0.1', 0), Handler)
@@ -173,7 +175,10 @@ class ConnectivityChecks(unittest.TestCase):
                 self.assertGreaterEqual(len(tries), 3)
                 self.assertTrue(paths)
                 self.assertTrue(all(p == ('OPTIONS', '/api/v1/projects', 'localhost', None) for p in paths))
-                for status, allow in [(404, 'GET'), (405, ''), (405, 'POST')]:
+                behavior.update(status=405, allow='POST')
+                self.r.tls_probe('https://localhost', cert.read_text(),
+                                 '127.0.0.1', server.server_port)
+                for status, allow in [(404, 'GET'), (405, ''), (503, 'POST'), (405, 'DELETE')]:
                     behavior.update(status=status, allow=allow)
                     with self.assertRaises(RuntimeError):
                         self.r.tls_probe('https://localhost', cert.read_text(),
