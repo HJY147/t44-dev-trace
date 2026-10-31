@@ -1,0 +1,11 @@
+# P17实际执行失败及本地后续
+
+用户提供0mt47.98.176.56、0mu47.96.5.99后，总协调仅执行一次已冻结after_boot入口，无临时改码、构建、下载或重新授权。cohort 400已释放，warmup实际406exchange（400query/5transition/1contract）、其中1次STATE_CONFLICT，实际约1.014秒；没有steady或postcheck，不得报告本轮P95通过或后置超时。已完整回收494900B密文/SHA1af91c64a99169f5ea12c0fce2a20872fb941e33cea6cf4115a26e12aaec2ae8，并第一时间告知两台可停机，不继续SSH占用时间。
+
+新fresh独立结果实例认证20文件+410raw完整，报告集成cd10800b→39af62f3→69e2e34e。首次请求action2(block)，前query state3/version2086，409 STATE_CONFLICT/current_state3；原规则要求合法状态出口，不能重复把已阻塞任务再block。中间将失败映射到post_call的静态反馈错误已由独立岗更正：本次warmup确实走原runtime.call，候选post尚未入路。原误反馈及修正都保留，不把它当工具改了测量的证据。
+
+准备曾按direct模式跳过状态前置；上一轮可运行不代表下一轮原400task仍符合首动作。总协调把准备齐备说成可以运行，没有覆盖重复运行初态，是应修准备遗漏。原用户取消工期/horizon不应扩大为允许错误首动作；同一冻结业务规则/原测量/原800ID必须保留。状态3如何形成的逐任务历史来源本轮未独立溯源，不编造。
+
+只本地启动后端P18最小归一化工具：state3且blocked_from_state2时用原冻结API/真实developer/expected_version/合法依据UNBLOCK，保留审计与幂等；state2直接保留，其他不适用状态清楚拒绝，捕获新的真实CAS再发DIRECT。产品/DDL/原测量不改、不SQL强制改状态、不吞409、不盲重试写入。QA新RUN r30posttools18/W20261101/QA753_DIRECT_P18、独立新密钥和BOOT身份，并须做一次完整本地400/60+600/post及第二轮准备/短预热回归。部署与总协调仅复制新独占入口，不复用已消费P17。服务器无需保活；新READY尚未形成，不自动新轮次。
+
+所有操作者为AI；需规/设计与本人研究报告继续不在本轮写作范围。

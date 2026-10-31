@@ -1,5 +1,5 @@
 {
-  "status": "READY_FOR_USER_BOOT",
+  "status": "CONSUMED_EARLY_FAILURE_NO_REDISPATCH",
   "archive_name": "direct17-ready-20261031.tar.gz",
   "archive_bytes": 173353,
   "archive_sha256": "42a4fa69527c475f4374f3f57ad8ed88c16ff0bb4e95303acb311ef2ee2ceba3",
@@ -30,7 +30,7 @@
     "../../../records/qa/direct-p17.PUBLIC/transport-key.rsa-oaep-sha256": "fb210978784659b79015e587ba8ed8cac3ada63788d10279b0069a8549f7a215",
     "../../../records/qa/direct-p17.PUBLIC/OBSERVE_DIRECT.py": "f102b5da02587feeee1b885f45b45d6cd6efe738790b3a79895f55e6d2bfdde3"
   },
-  "actual_cloud_calls": 0,
+  "actual_cloud_calls": "Executed one prepared controller invocation; no retry",
   "automatic_vm_shutdown": false,
   "controller_check_groups": 11,
   "real_local_TLS": {
@@ -44,10 +44,14 @@
   },
   "Linux_resource_validation": false,
   "server_state": "USER_REPORTED_STOPPED_NOT_CONNECTED",
-  "next_action": "User may boot original 0mt APP and 0mu LOAD and supply their current public IPs; run prepared after_boot.py once. No server connection before user boot.",
+  "next_action": "Offline independent authenticated result analysis; no SSH, rerun or server keepalive.",
   "classification": "DIAGNOSTIC_PRESSURE_NOT_FORMAL_ACCEPTANCE",
   "independent_entry_review": "eed5491605c40efa7045155158ec7cdad72bcc7b",
   "independent_private_tool_review": "27f1afb1",
   "QA_binding_semantic_confirmation": "Original fields unchanged; only three truthful transport-consumption scope metadata fields added; no allow/current-environment approval changed.",
-  "ready_utc": "2026-10-31T10:57:04.740413+00:00"
+  "ready_utc": "2026-10-31T10:57:04.740413+00:00",
+  "actual_result": "EARLY_INCOMPLETE_NOT_STEADY_MEASUREMENT",
+  "recovered_backup_sha256": "1af91c64a99169f5ea12c0fce2a20872fb941e33cea6cf4115a26e12aaec2ae8",
+  "recovered_backup_bytes": 494900,
+  "user_told_both_can_stop": true
 }
