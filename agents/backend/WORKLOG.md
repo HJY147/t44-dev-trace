@@ -831,3 +831,5 @@ ROLE-backend-COMMON-LATENCY-DIAGNOSTIC-v1: opt-in numeric spans plus15boundedSQL
 ROLE-backend-DIAGNOSTIC-BANDIT-FIX-v1: isolateddd320 one-file observation-only suppress boundaries fix3B110. Local7diagnostic+fullstatic config/23ops/Ruff/recursiveBandit1.9.4 all PASS; no fullCI-green/performance claim, pending root uniqueoff/onCI. See agents/backend/diagnostic-bandit-fix.
 
 ROLE-backend-BCEC-MATERIAL-P15-v1: tools adapted as explicit PREPARING template awaiting realbundle freeze.5local groups+3.10 AST+normalized originalguard bytes pass; source comparison archived, no product/server/SUT change. See agents/backend/bcec-material.
+
+Bcec material09 actual freeze completed against newsource52d741.../bundle3e09.../config479c...; original54-scope refusal preserved, fixed fulloriginalproducer61scope and allfilesmatch.5localgroups+allsource/releaseAST+actualreleaseSHAbytes pass.7runtimepy source8incltests. OFFLINE_RELEASE_FROZEN_LIVE_ADMISSION_PENDING, no live facts/session/grant claimed.

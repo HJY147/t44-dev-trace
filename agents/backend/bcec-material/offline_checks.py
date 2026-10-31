@@ -13,7 +13,7 @@ REPO=Path(__file__).resolve().parents[3]
 class Checks(unittest.TestCase):
  def setUp(self):
   self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup);self.root=Path(self.tmp.name).resolve()
-  raw=subprocess.check_output(['git','-C',str(REPO),'archive',f.SOURCE,'backend/t44','backend/requirements.lock','backend/pyproject.toml'])
+  raw=subprocess.check_output(['git','-C',str(REPO),'archive',f.SOURCE,'backend/t44','backend/requirements.lock','backend/pyproject.toml','specs/contracts','specs/database','deployment/runtime_probe.py','deployment/credential_admin.py'])
   with tarfile.open(fileobj=io.BytesIO(raw)) as tar:
    files=[{'path':m.name,'bytes':m.size,'sha256':f.sha(tar.extractfile(m).read()),'mode':0o755 if m.mode&0o111 else 0o644} for m in tar.getmembers() if m.isfile()]
   self.source={'source_sha':f.SOURCE,'backend_runtime_files':files}

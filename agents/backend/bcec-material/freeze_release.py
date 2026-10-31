@@ -28,7 +28,7 @@ def freeze(source_path,bundle_path,output,repo):
            and bundle['files']['source-manifest.json']['sha256']==sha(source_raw)
            and bundle['files']['source-manifest.json']['bytes']==len(source_raw)):
         raise ValueError('EXACT_NEW_SOURCE_BUNDLE_BYTES_REQUIRED')
-    archive=subprocess.run(['git','-C',str(repo),'archive',SOURCE,'backend/t44','backend/requirements.lock','backend/pyproject.toml'],capture_output=True,check=True,timeout=20).stdout
+    archive=subprocess.run(['git','-C',str(repo),'archive',SOURCE,'backend/t44','backend/requirements.lock','backend/pyproject.toml','specs/contracts','specs/database','deployment/runtime_probe.py','deployment/credential_admin.py'],capture_output=True,check=True,timeout=20).stdout
     with tarfile.open(fileobj=io.BytesIO(archive)) as tar:
         expected={m.name:{'sha256':sha(tar.extractfile(m).read()),'bytes':m.size,'mode':0o755 if m.mode & 0o111 else 0o644} for m in tar.getmembers() if m.isfile()}
     rows=source['backend_runtime_files']
@@ -46,7 +46,7 @@ def freeze(source_path,bundle_path,output,repo):
     replacements={'__SOURCE_MANIFEST_SHA256__':sha(source_raw),'__BUNDLE_MANIFEST_SHA256__':sha(bundle_raw)}
     files={}
     for path in sorted(HERE.iterdir()):
-        if path.suffix!='.py' and path.name!='authorization.TEMPLATE.json':continue
+        if path.suffix!='.py' and path.name not in {'authorization.TEMPLATE.json','RUNBOOK.md'}:continue
         if path.name in {'offline_checks.py'}:continue
         raw=path.read_bytes()
         if path.name=='refresh_core.py':
@@ -57,6 +57,10 @@ def freeze(source_path,bundle_path,output,repo):
             raw=text.encode()
         with (output/path.name).open('xb') as f:f.write(raw)
         files[path.name]={'bytes':len(raw),'sha256':sha(raw)}
+    comparison={'source_sha':SOURCE,'source_manifest_sha256':sha(source_raw),'complete_backend_runtime_files':expected,'mode_semantics':'Git executable-bit normalized to0755/0644; actual source-manifest mode must match'}
+    raw=(json.dumps(comparison,sort_keys=True,indent=2)+'\n').encode()
+    with (output/'SOURCE_COMPARISON.PUBLIC.json').open('xb') as f:f.write(raw)
+    files['SOURCE_COMPARISON.PUBLIC.json']={'bytes':len(raw),'sha256':sha(raw)}
     receipt={'status':'OFFLINE_RELEASE_FROZEN_LIVE_ADMISSION_PENDING','source_sha':SOURCE,'source_manifest_sha256':sha(source_raw),'bundle_manifest_sha256':sha(bundle_raw),'backend_config':image['image_id'],'files':files,'cloud_calls':0,'sessions_issued':False,'grant_allow':False}
     with (output/'RELEASE.PUBLIC.json').open('x') as f:json.dump(receipt,f,indent=2);f.write('\n')
     return receipt
