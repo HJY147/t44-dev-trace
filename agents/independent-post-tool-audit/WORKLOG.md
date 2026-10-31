@@ -1,0 +1,1 @@
+Independent offline auditor: checklist frozen before implementation inspection. Executed source hashes, replay differential, exit and postcondition negative checks and frozen-schema ID reuse reproduction. Conclusion BLOCKED. No network or developer artifacts read. Internal tests retained outside publication.
