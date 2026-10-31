@@ -1,0 +1,50 @@
+{
+  "status": "LOCAL_RAW_AND_FULL_BACKUP_AUTHENTICATED_NOT_PRODUCT_ACCEPTANCE",
+  "raw": {
+    "records": 182916,
+    "plain_bytes": 824761978,
+    "compressed_bytes": 84009566,
+    "complete": true
+  },
+  "backup": {
+    "backup_file": "full-p18.753backup",
+    "cipher_bytes": 84892925,
+    "cipher_sha256": "8b27119fae2fda194d5eafb4d125b33a033fe53f143d5fd803449f756bac5f46",
+    "compressed_tar_sha256": "061be1e063498e301b398f34b61221c9c71de13c425d1b7841e9295605f483e3",
+    "files": 14,
+    "status": "ENCRYPTED_BACKUP_CREATED_REQUIRES_LOCAL_DECRYPT_VERIFY"
+  },
+  "backup_verified": {
+    "cipher_sha256": "8b27119fae2fda194d5eafb4d125b33a033fe53f143d5fd803449f756bac5f46",
+    "compressed_tar_sha256": "061be1e063498e301b398f34b61221c9c71de13c425d1b7841e9295605f483e3",
+    "files": 14,
+    "status": "LOCAL_BACKUP_DECRYPT_AND_ALL_FILE_HASHES_VERIFIED"
+  },
+  "all_400_original_first_BLOCKs_state2_to3": true,
+  "normalization_first": {
+    "checked": 400,
+    "unblocked": 200,
+    "already_developing": 200,
+    "http_writes": 200,
+    "authoritative_reads": 200,
+    "retry": false
+  },
+  "normalization_second_distinct_run": {
+    "checked": 400,
+    "unblocked": 70,
+    "already_developing": 330,
+    "http_writes": 70,
+    "authoritative_reads": 70,
+    "retry": false
+  },
+  "full_actual_seconds": 673.7215205,
+  "post_exchange_window_seconds": 13.526477375,
+  "post_steady_end_to_all_owners_drained_seconds": 13.665105167,
+  "HTTP_errors_all_exchange": {},
+  "exchange_count": 182268,
+  "source_five_unchanged_from_initial_frozen_P18": true,
+  "Docker_SQL_and_serviceCLI_are_synthetic_adapters": true,
+  "frozen_bcec_domain_state_machine_models_executed": true,
+  "contract_SPEC_loaded_from_frozen_OpenAPI_fixture_adapter": true,
+  "not_full_FastAPI_MySQL_or_Linux_cgroup_validation": true
+}

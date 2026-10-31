@@ -1,0 +1,80 @@
+{
+  "status": "LOCAL_FULL_ORIGINAL_DURATION_PLUS_SECOND_PREPARATION_SMOKE",
+  "run_id": "r30posttools18",
+  "started_utc": "2026-10-31T11:30:49.756126+00:00",
+  "finished_utc": "2026-10-31T11:42:47.453021+00:00",
+  "full_original_warmup_seconds": 60,
+  "full_original_steady_seconds": 600,
+  "first_preparation": {
+    "checked": 400,
+    "unblocked": 200,
+    "already_developing": 200,
+    "http_writes": 200,
+    "authoritative_reads": 200,
+    "retry": false
+  },
+  "negative_repeat_block_witness": "409 STATE_CONFLICT while state3/from2 before normalization",
+  "all400_first_blocks_from2_to3": true,
+  "full_cohort": true,
+  "metrics_verdict": "FAIL",
+  "original_metrics_reasons": [
+    "CLASS_P95"
+  ],
+  "full_postconditions": {
+    "final_task_snapshot": 400,
+    "audit_complete_clients": 400
+  },
+  "writer_finalized": true,
+  "pool_stopped": true,
+  "combined_exit": 1,
+  "raw_verification": {
+    "records": 182916,
+    "plain_bytes": 824761978,
+    "compressed_bytes": 84009566,
+    "complete": true
+  },
+  "backup_receipt": {
+    "backup_file": "full-p18.753backup",
+    "cipher_bytes": 84892925,
+    "cipher_sha256": "8b27119fae2fda194d5eafb4d125b33a033fe53f143d5fd803449f756bac5f46",
+    "compressed_tar_sha256": "061be1e063498e301b398f34b61221c9c71de13c425d1b7841e9295605f483e3",
+    "files": 14,
+    "status": "ENCRYPTED_BACKUP_CREATED_REQUIRES_LOCAL_DECRYPT_VERIFY"
+  },
+  "backup_verification": {
+    "cipher_sha256": "8b27119fae2fda194d5eafb4d125b33a033fe53f143d5fd803449f756bac5f46",
+    "compressed_tar_sha256": "061be1e063498e301b398f34b61221c9c71de13c425d1b7841e9295605f483e3",
+    "files": 14,
+    "status": "LOCAL_BACKUP_DECRYPT_AND_ALL_FILE_HASHES_VERIFIED"
+  },
+  "tail_states_before_second_prepare": {
+    "2": 330,
+    "3": 70
+  },
+  "second_preparation": {
+    "checked": 400,
+    "unblocked": 70,
+    "already_developing": 330,
+    "http_writes": 70,
+    "authoritative_reads": 70,
+    "retry": false
+  },
+  "second_run_id": "local-r30posttools19-smoke",
+  "second_idempotency_domain_distinct": true,
+  "second_smoke_actual_seconds": 3,
+  "second_smoke_is_not_complete_measurement": true,
+  "second400_first_blocks_from2": true,
+  "second_smoke_postconditions": {
+    "final_task_snapshot": 400,
+    "audit_complete_clients": 400,
+    "validation_pending_at_shutdown": 0
+  },
+  "second_smoke_raw_complete": true,
+  "second_all_workers_stopped": true,
+  "frozen_domain_source_executed": true,
+  "domain_contract_SPEC_fixture_injected": true,
+  "Docker_SQL_serviceCLI_adapters_synthetic": true,
+  "Linux_cgroup_verified": false,
+  "cloud_calls": 0,
+  "production_SUT_requests": 0
+}

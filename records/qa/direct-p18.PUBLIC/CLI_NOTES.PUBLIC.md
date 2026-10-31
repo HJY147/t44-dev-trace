@@ -5,3 +5,5 @@
 生产者c7e77/ebbf9原件只通过冻结API合法UNBLOCK归一化state3/from2，state2零写；其他前置拒绝，不改计划/测量/800ID。DIRECT schema不变，producer V2。profile/approval仅兼容物料，默认false且DIRECT不使用旧准入。安装/启动/观察/封存路径见CLI契约；单入口输入FILE，自动封存且非零也回收，不自动重跑。
 
 本地真实TLS混合准备→原400/60+600→后置/认证整轮正在运行。第二轮另local-r30posttools19-smoke/new workspace，不改生产BOOT18，不算第二完整测量。未完成这些证据前不得声称READY或通知开机。Linux/cgroup未验证，不下载新环境，不访问原VM。P17真实失败/旧材料全部保留。
+
+完整本地轮与独立LOCAL19短起步已收尾，见FINAL_LOCAL_EVIDENCE.PUBLIC.md。原指标CLASS_P95 FAIL/combined1保留，不能把本地完整流程观察写成性能PASS；生产/现场尚未运行P18。

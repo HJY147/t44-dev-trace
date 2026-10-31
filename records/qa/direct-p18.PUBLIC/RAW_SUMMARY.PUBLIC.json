@@ -1,0 +1,181 @@
+{
+  "run_id": "r30posttools18",
+  "classification": "LOCAL_SYNTHETIC_FULL_FLOW_METRICS_FAIL_NOT_PRODUCT_ACCEPTANCE",
+  "metrics_verdict": "FAIL",
+  "original_metric_reasons": [
+    "CLASS_P95"
+  ],
+  "combined_exit": 1,
+  "original_classes": {
+    "query": {
+      "count": 31661,
+      "p95_ms": 4.496
+    },
+    "transition": {
+      "count": 63252,
+      "p95_ms": 2527.887459
+    },
+    "contract": {
+      "count": 31591,
+      "p95_ms": 4.402917
+    },
+    "escalation": {
+      "count": 31579,
+      "p95_ms": 2529.936375
+    }
+  },
+  "minute_buckets": [
+    {
+      "index": 0,
+      "completed": 15587,
+      "classes": {
+        "query": 3200,
+        "escalation": 3015,
+        "transition": 6172,
+        "contract": 3200
+      }
+    },
+    {
+      "index": 1,
+      "completed": 15638,
+      "classes": {
+        "transition": 6145,
+        "escalation": 3200,
+        "query": 3200,
+        "contract": 3093
+      }
+    },
+    {
+      "index": 2,
+      "completed": 15735,
+      "classes": {
+        "transition": 6262,
+        "contract": 3073,
+        "escalation": 3200,
+        "query": 3200
+      }
+    },
+    {
+      "index": 3,
+      "completed": 15694,
+      "classes": {
+        "transition": 6283,
+        "contract": 3093,
+        "escalation": 3159,
+        "query": 3159
+      }
+    },
+    {
+      "index": 4,
+      "completed": 15684,
+      "classes": {
+        "transition": 6393,
+        "escalation": 3048,
+        "query": 3048,
+        "contract": 3195
+      }
+    },
+    {
+      "index": 5,
+      "completed": 15926,
+      "classes": {
+        "escalation": 3171,
+        "query": 3171,
+        "transition": 6392,
+        "contract": 3192
+      }
+    },
+    {
+      "index": 6,
+      "completed": 15845,
+      "classes": {
+        "escalation": 3135,
+        "query": 3135,
+        "transition": 6387,
+        "contract": 3188
+      }
+    },
+    {
+      "index": 7,
+      "completed": 15854,
+      "classes": {
+        "escalation": 3174,
+        "query": 3174,
+        "transition": 6316,
+        "contract": 3190
+      }
+    },
+    {
+      "index": 8,
+      "completed": 15938,
+      "classes": {
+        "transition": 6369,
+        "contract": 3191,
+        "escalation": 3189,
+        "query": 3189
+      }
+    },
+    {
+      "index": 9,
+      "completed": 15782,
+      "classes": {
+        "transition": 6236,
+        "contract": 3176,
+        "escalation": 3185,
+        "query": 3185
+      }
+    }
+  ],
+  "full_cohort": true,
+  "actual_warmup_seconds": 60.0,
+  "actual_steady_seconds": 600.0,
+  "actual_observed_runtime_seconds": 673.7215205,
+  "post_budget_seconds": 40,
+  "post_exchange_window_seconds": 13.526477375,
+  "steady_end_to_last_post_exchange_seconds": 13.653344542,
+  "steady_end_to_all_owners_drained_seconds": 13.665105167,
+  "steady_end_to_global_connections_closed_seconds": 13.665125292,
+  "exchange_phase_counts": {
+    "warmup": 15785,
+    "steady": 158083,
+    "postcheck": 8400
+  },
+  "phase_class_counts": {
+    "warmup:query": 3200,
+    "warmup:transition": 6400,
+    "warmup:contract": 3200,
+    "warmup:escalation": 2985,
+    "steady:query": 31661,
+    "steady:escalation": 31579,
+    "steady:transition": 63252,
+    "steady:contract": 31591,
+    "postcheck:query": 8400
+  },
+  "all_exchange_errors": {},
+  "HTTP_status_counts": {
+    "200": 147704,
+    "202": 34564
+  },
+  "postconditions": {
+    "final_task_snapshot": 400,
+    "audit_complete_clients": 400
+  },
+  "post_jobs": 8400,
+  "post_states": {
+    "COMPLETE": 400
+  },
+  "writer_finalized": true,
+  "post_pool_stopped": true,
+  "effective_runtime": {
+    "base_sha256": "9cf747e308969ceba37e2cfcfa6591def45e118ad928c4f310f57b6ecf37542a",
+    "post_sha256": "feffb80fe4074204d88f63c5ca7ebdecfae4b613caf16d1985ac7aeb7dad726e",
+    "compiled_schema_sha256": "ff95056243b315f6e12a5e2e163b40fe0c45302e2b7563489af8c4d5eade8d6d",
+    "boot_sha256": "7e9bfc429873da7c4cc7a04ac5e34b0cfd4978f5952696b3e3de5a42be0df42a"
+  },
+  "effective_runtime_binding_sha256": "af93a6ffd956c0a2ae86362a6a0e13db9be589e8cfde7335195020cc3a7401b7",
+  "result_sha256": "89f826dc1ff20dae2f589e7e14144a97b434fdb8f46ed2b4b1bf98a763ab0dba",
+  "raw_sha256": "18067780b1da6318f03e6e567acc6c0afe647bc4106c45ef29ca3d9730dbf3bf",
+  "fixture_injected_write_latency_seconds": 2.5,
+  "fixture_delay_scope": "measurement-phase transition and escalation POSTs; purposely retained as CLASS_P95 FAIL, not removed from metrics",
+  "formal_or_production_performance_acceptance": false
+}
