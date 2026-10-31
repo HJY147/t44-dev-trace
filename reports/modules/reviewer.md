@@ -619,3 +619,5 @@ CAS审核9fb99864已push/远端匹配，GitHub插件Issue3 COMMENT6494709568按I
 2026-10-31 Direct16 finalr2 exact148424B SHA377ffc/manifestc548/37payload allhash+ownerexact+CMS/source/helper/AST pass; source no blocker, localstub CLASS_P95 NP accurately preserved/not product acceptance. Prompt-Ref review_p13_preparation/direct-p16-final-r2; FINAL-R2-REVIEW.md.
 
 2026-10-31 DirectP16 readiness9d0d: actualPOST-first405 compatibility reviewed, local3positive8negative predicate+manifest pass, TLS/deadline intact; actualr3archive/path pending, READY not granted. Prompt-Ref review_p13_preparation/direct16-readiness-route-fix; READINESS-ROUTE-FIX.md.
+
+2026-10-31 Direct16 finalr3 exact151147B SHAcc06/manifest82fd/38payload+39members/allownerGit+SHA/newexclusivepaths/readiness9d0d verified; no technical blocker for newREADY after root record, oldr2withdrawal retained. Prompt-Ref review_p13_preparation/direct16-final-r3; FINAL-R3-REVIEW.md.
