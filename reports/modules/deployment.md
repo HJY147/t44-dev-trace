@@ -682,3 +682,5 @@ P15离线物料已准备，路径agents/deployment/p15-ready；新准确bcec镜�
 DIRECT冷启动审核修复：停止两个可能随VM自动启动的既有worker后，基础5容器仅执行最多30s无会话只读连接等待，保证bootstrap首次运行前DB和原TLS/API路由已应答。OPTIONS405/AllowGET规避GET401审计写入；无token，无旧业务准入。7组本地检查/AST310通过，仍未连接服务器或做压力测量。
 
 DIRECT首次现场误拒修正：bcec项目路径POST先GET后，FastAPI405只报告首个部分匹配方法，旧GET-only假定错误。仅修readiness为405/合法POST或GETAllow/标准body，原TLS和超时不变；真实bcec TestClient与双顺序回归3组及7原组均通过，无Runtime执行，无远程重测。原现场readiness失败保留，未转述成性能结果。
+
+UTF8交付同步：start.py正式pin改为backenddfef9a82/cc94bea2，保原完整UTF8 canonical+newline绑定与原文件rawSHA。现场成功属于root独占utf8-tools正确pin派生入口，非旧包直接成功。2中文完整packet/实际hostbootstrap集成检查、7原检查、3真实路由检查通过；原子轮换不变，全程本地，不升级运行准入。

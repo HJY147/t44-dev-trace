@@ -24,7 +24,7 @@ IDS = {
 P09 = Path('/root/t44-final-20261029/P09')
 TOKEN = P09 / 'campaign/p/scheduler-secrets/scheduler-token.json'
 PINS = {
-    'bootstrap.py': 'ba0c8ab216dd643ed83a27d2ce4479b459ad998451c9530238f2134658dbd72d',
+    'bootstrap.py': 'cc94bea2ba0699cf0c81b3cf5ac6c5ffe3277ee2a6b78e100885cee7c5475d27',
     'runtime_support.py': 'bec01e4038ef4ca5d6ba6d048e96fb8c7cb32933f705fd65a6995d24d9753170',
 }
 

@@ -1,16 +1,16 @@
 {
   "schema": "T44_DIRECT_START_RELEASE_V1",
   "mode": "DIAGNOSTIC_PRESSURE_NOT_FORMAL_ACCEPTANCE",
-  "backend_commit": "53acbb289a0237fe022188a09141b2a93c094aa9",
+  "backend_commit": "dfef9a825ed2622f894a77187b686164bf162ecf",
   "source": "bcec3326b40814fdb1922bbfea7c29473b47ba47",
   "files": {
     "PROMPT.md": {
-      "sha256": "7b94de2cbd9c5e895e67d9724df9d27b4fcec85fd4326e05abd41692f0b7adcf",
-      "bytes": 3085
+      "sha256": "bad35fd95ea79dd6a8d787a6c062e192804f739a7130aef97ba9f8a50c88fac2",
+      "bytes": 4218
     },
     "README.md": {
-      "sha256": "bb58d1759ba030b2ede8fa879e5e46d388f818e538fbab46f4dd50300a66bb52",
-      "bytes": 7768
+      "sha256": "ca79ee88cfeffced0597b0fef36a55336489655ba376f9e0f9b4147ac4f2b788",
+      "bytes": 9622
     },
     "offline_checks.py": {
       "sha256": "5f92a5e04b25e596a2327414bd615db5795c7ed8da0f7802559a4becda73709e",
@@ -25,8 +25,12 @@
       "bytes": 2839
     },
     "start.py": {
-      "sha256": "bdf867f7187b7026d63bffb8d0f2cae4e81581cb248332dd8836d32d4069de39",
+      "sha256": "4ae008fb11814a3c7ff08a5141279cbc46881652e844a1be3c88ab8b23191646",
       "bytes": 9647
+    },
+    "unicode_checks.py": {
+      "sha256": "10f3cc28a21ce52f87967633cb09c4c7863fdbc98e8b6198668e43c028ec37ac",
+      "bytes": 5813
     }
   },
   "live_executed": false,
@@ -34,5 +38,7 @@
   "cold_start_probe": "readonly SELECT1 + original CA/SNI TLS OPTIONS405 nonempty Allow subset POST/GET + exact router detail, <=30seconds before session issuance",
   "workers_stopped_before_initialization": true,
   "actual_fastapi_router_check_groups": 3,
-  "first_live_attempt": "root reported readiness false rejection AllowPOST before bootstrap/benchmark; original failure retained; no deployment agent remote retry"
+  "first_live_attempt": "root reported readiness false rejection AllowPOST before bootstrap/benchmark; original failure retained; no deployment agent remote retry",
+  "bootstrap_sha256": "cc94bea2ba0699cf0c81b3cf5ac6c5ffe3277ee2a6b78e100885cee7c5475d27",
+  "chinese_packet_host_integration_groups": 2
 }

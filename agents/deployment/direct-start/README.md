@@ -2,7 +2,7 @@
 
 This is **DIAGNOSTIC_PRESSURE_NOT_FORMAL_ACCEPTANCE**, explicitly authorized by the user's changed workflow. It does not claim original full preparation, eligibility, horizon or scanner admission. Production source/authentication/business dates and the independent 400-client, 60-second warmup + 600-second steady measurements remain unchanged.
 
-Transport this directory plus `agents/backend/fast-bootstrap/{bootstrap.py,runtime_support.py}` from backend commit53acbb28 to APP. The entry hashes those two exact files before any Docker command. No image import, pull, rebuild, configuration/PL1 change, seven-role reinspection, maintenance, full-scan wait or cloud/SSH operation is implemented. Existing IDs are the actual bcec deployment IDs retained from the previous run. This entry is only for that retained deployment.
+Transport this directory plus `agents/backend/fast-bootstrap/{bootstrap.py,runtime_support.py}` from corrected backend commitdfef9a825ed2622f894a77187b686164bf162ecf to APP. The entry hashes those two exact files before any Docker command. No image import, pull, rebuild, configuration/PL1 change, seven-role reinspection, maintenance, full-scan wait or cloud/SSH operation is implemented. Existing IDs are the actual bcec deployment IDs retained from the previous run. This entry is only for that retained deployment.
 
 As root on APP, after normal host boot:
 
@@ -46,3 +46,12 @@ python3 -B agents/deployment/direct-start/offline_checks.py
 ```
 
 No SSH, real Docker/VM, bootstrap/session issuance, production mutation or benchmark was executed. API/identity/thresholds remain unchanged. These checks fix the reproduced readiness false rejection; they do not claim a successful live restart.
+
+
+## Canonical UTF-8 helper synchronization
+
+The first live legacy helper failed historical packet binding when Chinese data was encoded with its ASCII-escaping canonical serializer. Root's subsequent successful run used a new exclusive `utf8-tools` start.py derivation pinned to the corrected helper. It was not the unchanged original deployment package succeeding directly. Original failure and successful derived-tool evidence remain under root's actual run records.
+
+The formal entry now pins corrected backenddfef9a82 `bootstrap.py` SHA256 `cc94bea2ba0699cf0c81b3cf5ac6c5ffe3277ee2a6b78e100885cee7c5475d27`; runtime support stays byte-identical. Historical canonical binding remains UTF-8 `ensure_ascii=False`, sorted compact JSON plus trailing newline; the separately recorded original_packet_sha256 hashes the entire original file bytes including its binding field. Neither check is removed or substituted.
+
+`python3 -B agents/deployment/direct-start/unicode_checks.py` passes two integration tests: real direct entry→real corrected host bootstrap main using a complete synthetic historical400-client packet containing Chinese→one mocked container execution→actual host output rawhash→actual temporary-file atomic token rotation. A Chinese-text mutation with unchanged binding fails before any container/session invocation, retains failure prefixes and does not rotate/start workers. Only the external container execution is mocked; this is not live authentication or benchmark evidence. The backend's existing public complete fixture is used locally by this regression, not QA private data. Existing seven direct-entry groups and three actual bcec router groups pass with the new pin. AST Python3.10 parsing passes. No SSH/cloud/real Docker operation or request to boot was made for this change.
