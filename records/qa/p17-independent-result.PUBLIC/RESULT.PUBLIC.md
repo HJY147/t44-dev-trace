@@ -12,7 +12,7 @@ RUN `r30posttools17`。source manifest、backend bundle manifest、import receip
 
 cohort_start为2026-10-31T11:09:54.477064Z，400客户端各有query记录，说明已释放cohort并实际进入预热。406 exchange全部在warmup：400 query、5 transition、1 contract；其中1次错误。没有steady或postcheck exchange。
 
-首次失败是transition HTTP 409，业务code `STATE_CONFLICT`、message `State conflict`，模板 `POST /api/v1/projects/{project_id}/tasks/{task_id}/transitions`。请求从11:09:54.615034Z至11:09:54.665249Z；expected_version=2086，响应current_version=null、current_state=3；前一query state=3/version=2086。随后11:09:54.665305Z记录client_stop `ValueError:ValueError:HTTP_409`，并设置全局stop。
+首次失败是transition HTTP 409，业务code `STATE_CONFLICT`、message `State conflict`，模板 `POST /api/v1/projects/{project_id}/tasks/{task_id}/transitions`。请求从11:09:54.615034Z至11:09:54.665249Z；expected_version=2086，响应current_version=null、current_state=3；前一query state=3/version=2086。实际请求action=2；冻结工具runtime.py::client将该action当作block，并在成功响应断言目标state=3（源码第313、318行）。因此该请求发送前已经观察到state=3；这里仅确定请求及工具预期，未将重复操作是否合法或409是否符合业务冻结规则作无证推断。随后11:09:54.665305Z记录client_stop `ValueError:ValueError:HTTP_409`，并设置全局stop。
 
 冻结工具源码对应路径为 `post_runtime.py::_call_post` 第124行HTTP状态断言，第134–142行捕获、记录并重抛；继承的 `runtime.py::client` 第335–336行设置stop并记录client_stop。此为原始错误记录与源码控制流映射；备份中没有Python traceback文件，不把映射冒充实际回收的异常栈。没有SUT内部诊断证据，无法判断更深层业务状态来源或产品缺陷归因。
 
