@@ -1,0 +1,35 @@
+name: proxy-timing-syntax
+on:
+  push:
+    branches: [codex/deployment-global-latency-20261031]
+    paths: [deployment/diagnostics/proxy_timing.py, .github/workflows/proxy-timing-syntax.yml]
+permissions:
+  contents: read
+jobs:
+  syntax:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Derive both configs from source bytes without running SUT
+        run: |
+          mkdir -p /tmp/proxy-diag-qa/tls
+          python3 - <<'PY'
+          import ast, hashlib, importlib.util
+          from pathlib import Path
+          spec=importlib.util.spec_from_file_location('d','deployment/diagnostics/proxy_timing.py')
+          d=importlib.util.module_from_spec(spec);spec.loader.exec_module(d)
+          tree=ast.parse(Path('deployment/cloud-reuse/app-campaign.py').read_text())
+          fn=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='nginx')
+          namespace={};exec(compile(ast.Module(body=[fn],type_ignores=[]),'nginx-fixture','exec'),namespace)
+          for hop,raw in [('web',Path('deployment/nginx/nginx.conf').read_bytes()),('tls',namespace['nginx']().encode())]:
+              Path('/tmp/proxy-diag-qa/'+hop+'.conf').write_bytes(d.derive(raw,hashlib.sha256(raw).hexdigest(),hop))
+          PY
+          openssl req -x509 -newkey rsa:2048 -nodes -keyout /tmp/proxy-diag-qa/tls/server.key -out /tmp/proxy-diag-qa/tls/server.pem -days 1 -subj /CN=syntax-only.invalid >/dev/null 2>&1
+      - name: Official pinned Nginx syntax only, no listeners or application
+        run: |
+          for hop in web tls; do
+            docker run --rm --network none --read-only --tmpfs /tmp --add-host api:127.0.0.1 --add-host web:127.0.0.1 --mount type=bind,src=/tmp/proxy-diag-qa/$hop.conf,dst=/etc/nginx/nginx.conf,readonly --mount type=bind,src=$PWD/deployment/nginx/api.conf,dst=/etc/nginx/t44-api.conf,readonly --mount type=bind,src=/tmp/proxy-diag-qa/tls,dst=/run/t44-tls,readonly --entrypoint nginx nginx:stable-alpine@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951 -t
+          done
