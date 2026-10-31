@@ -1,0 +1,7 @@
+# 长期SSH连接准备
+
+用户已明确授权长期SSH。01_INSTALL_PERSISTENT_SSH.sh在原APP或LOAD云助手运行：核原私网IP和原ed25519主机指纹、既有SSH策略，再幂等添加同一原公钥的restrict无expiry条目，并启用既有ssh.service。保留原有authorized_keys内容，不涉及密码、端口、防火墙或VM停机。仅公钥在本包；私钥保留在本机原cloud-access目录。
+
+运行结果只含公开receipt，不含私钥；安装未在离线阶段执行。两个实例各执行一次即可长期使用；开机后若原长期密钥已可连接，无须重复授权。永久指无自动过期，实例释放或手动删除该公钥后自然失效。
+
+收到开机后的当前APP/LOAD公网IP后，update_ssh_addresses.py以原known_hosts和原identity生成新exclusive配置；StrictHostKeyChecking=yes，保持原HostKeyAlias，禁止跳过指纹。ssh -G只作本地解析，不证明已能连接。实际SSH返回、host/资源/磁盘/容器再现场核验。旧check_ssh_window.py和两小时临时授权入口不纳入本轮。
