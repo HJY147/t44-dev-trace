@@ -21,3 +21,11 @@ TLS代码保留原 hostname SNI/Host、CA证书与主机名校验，JSON UTF8字
 控制器通道在 W 外，退出记录仅在直接shell结束后写；shell等 docker 退出才封存，封存进一步检查容器、writer_finalized/未启producer和资源边界，异常未知状态不强制seal。回收不重跑、不自动关VM。APP在wrapper结束与观察回收后可先通知停；LOAD需备份长度/SHA核验后立即通知双机可停。现场可用性、Linux资源限制和实际 producer 退出链未在此次macOS本地运行证明。
 
 最终交付需要在总协调提供最终包后，重跑归档闭合和源一致检查，保存最终bytes/SHA结果，再由总协调生成绑定全部实际执行源的READY。
+
+## 最终包补核
+
+已按同一独立脚本重跑最终包并成功：`direct18-ready-20261031.tar.gz`，161440 bytes，SHA256 `d010498af9beffdf82e1fd2d39b67d7ad149403447102eac9d645e0b6fb8db0d`，50 payload + MANIFEST。详细限定结论在 FINAL_ARCHIVE.PUBLIC.json，CHECKS.PUBLIC.json更新为此次真实最终包运行结果。
+
+全部9项执行源哈希仍与最初冻结一致；最终包和临时包的执行源、胶囊、密钥封装字节不变，所有成员及三级owner manifest哈希闭合。CLI契约仅 current_preparation_status 元数据更新，执行参数/身份/判据均不变。新增证据仅作归档字节哈希，不读取或采用作者结果预期。READY观察值仍PREPARING_DO_NOT_START_SERVERS。
+
+最终包入口及身份限定审核通过，无本岗新增阻断；总协调应在其他独立职责完成后绑定精确包及完整本地依赖清单再生成READY。本补核不验证新增660秒证据语义、不将离线fixture性能结果转成现场性能结论，不包含SSH/HTTP/Linux现场验证。
