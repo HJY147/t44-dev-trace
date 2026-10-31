@@ -1,0 +1,1 @@
+ROLE-backend-DIAGNOSTIC-BANDIT-FIX-v1: Root reports3 real B110 findings in finaldd320 static artifact, requests minimal observer-only suppress boundaries preserving business errors and failopen,7 discovered checks and exact full recursive CI Bandit command. No business/GET changes, no skip/nosec/threshold changes, no cloud.

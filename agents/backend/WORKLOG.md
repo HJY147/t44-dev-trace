@@ -827,3 +827,5 @@ CI completion audit: exact69dff6f4 run41109743811 static/frontend PASS; complete
 Reviewed defect correction: a60 new receipt reference path/future observation gap fixed with actual APP canonical path+producer stat observation, local copy explicit remote path and UTC/nonfuture check.9local synthetic checks pass; original7log preserved. No actualAPP stat or live material claim.
 
 ROLE-backend-COMMON-LATENCY-DIAGNOSTIC-v1: opt-in numeric spans plus15boundedSQLiteHTTP samples;140originalHTTP+4diagnostic checks pass. Production root cause unresolved; no cloud or performance acceptance claim. See agents/backend/common-latency/FINDINGS.md.
+
+ROLE-backend-DIAGNOSTIC-BANDIT-FIX-v1: isolateddd320 one-file observation-only suppress boundaries fix3B110. Local7diagnostic+fullstatic config/23ops/Ruff/recursiveBandit1.9.4 all PASS; no fullCI-green/performance claim, pending root uniqueoff/onCI. See agents/backend/diagnostic-bandit-fix.

@@ -1,0 +1,68 @@
+{
+  "missing": [],
+  "commands": [
+    {
+      "command": [
+        "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+        "scripts/ci/validate_config.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "tmp/deployment/997_ops.py",
+        "tmp/deployment/971_credentials.py",
+        "tmp/ci/996_gates.py",
+        "-q"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+        "-m",
+        "ruff",
+        "check",
+        "--config",
+        "scripts/ci/ruff.toml",
+        "deployment",
+        "scripts/ci",
+        "tmp/deployment",
+        "tmp/ci"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+        "-m",
+        "ruff",
+        "check",
+        "--config",
+        "scripts/ci/ruff.toml",
+        "backend/t44",
+        "tmp/backend"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/.runtime/database-scale-r29-venv/bin/python",
+        "-m",
+        "bandit",
+        "-r",
+        "backend/t44",
+        "-f",
+        "json",
+        "-o",
+        "/Users/yang/Desktop/nothing/\u8f6f\u4ef6\u5f00\u53d1\u5927\u4f5c\u4e1a/.agent-worktrees/backend-diagnostic-bandit-fix-20261031/agents/backend/diagnostic-bandit-fix/static/bandit.json"
+      ],
+      "exit_code": 0
+    }
+  ]
+}
