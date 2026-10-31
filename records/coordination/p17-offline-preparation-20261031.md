@@ -12,3 +12,10 @@
 
 
 首次新入口独立审核12ac2c18明确BLOCKED：可直接CLI绕READY、监控超时缺少回收路径。两个问题均由root修复：run.py本身也校READY/包hash/本地源；dispatch前落仅表示尝试的marker，异常后只读确认wrapper退出，才下载已封存密文并验hash，未知/活动状态不封存、不重发、不谎称可停LOAD。正常非零仍回收；fallback另名保留原失败。新增门禁/异常/活动状态/坏hash回归，控制流11组通过。原拒绝报告不改写。首次本地SSH配置演练因macOS /var临时目录不是canonical路径失败；只将合成临时路径resolve后重跑，通过两原hostpin/永久key元数据及本地生成，零连接。
+
+
+最终可执行源577a75e1经全新入口审核eed54916限定离线PASS，root集成93a9fe83。总包173353字节/62payload，SHA42a4fa69527c475f4374f3f57ad8ed88c16ff0bb4e95303acb311ef2ee2ceba3，独立逐项核bytes/hash和执行源一致。审核提出的FRESH_RUN_BINDING语义例外由root确认：原字段逐值不变，仅新增3个本地/远端消费边界说明，allow/current_environment_approved/run_consumed仍false；交付manifest全部hash再次通过。READY最终绑定21个本地入口/构建/SSH helper/初始化依赖/工具与CLI文件及精确总包，允许用户开两原VM后提供当前IP，执行一次after_boot；准备阶段零SSH/云/SUT。
+
+QA必要离线证据ef228be1已集成807bfdd1：真实本地TLS400连接、8582次后置HTTP、29.452932秒完成400最终快照+400完整审计，raw609229172字节完整认证，7文件74819093字节备份认证/全hash通过；pinned producer83次本地TLS接入实际BOOT，中文原绑定、CAS及RUN对应通过。5092相同页孤立schema校验原28.804846s、新18.714388s；不算整体云加速倍率。
+
+本机8CPU/24GiB，没有Linux容器/VM runtime。官方Lima下载超时后已停止，未安装系统软件或使用付费VM；Linux8CPU/8GiB与28GiB封存资源未在本机验证，不能伪称验证完成。新开机轮次的目的就是实际现场性能/资源与400后置验收；原Direct16 NP、准备豁免与所有旧失败均保留。正常或非零结果回收完整后立即通知用户手动停机，无自动关机和继任轮次。
