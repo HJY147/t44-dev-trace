@@ -1,0 +1,155 @@
+{
+  "status": "DIAGNOSTIC_METRICS_PASS_OVERALL_NP_POSTCONDITIONS_INCOMPLETE",
+  "run_id": "r30directp16",
+  "workspace": "/root/t44-final-20261031/QA753_DIRECT_P16_R3",
+  "measurement_runtime_sha256": "9cf747e308969ceba37e2cfcfa6591def45e118ad928c4f310f57b6ecf37542a",
+  "observed_elapsed_seconds": 700.07100787,
+  "classes": {
+    "query": {
+      "count": 25806,
+      "p95_ms": 57.388297
+    },
+    "transition": {
+      "count": 51597,
+      "p95_ms": 77.296637
+    },
+    "contract": {
+      "count": 25801,
+      "p95_ms": 99.256754
+    },
+    "escalation": {
+      "count": 25785,
+      "p95_ms": 81.441719
+    }
+  },
+  "minute_buckets": [
+    {
+      "index": 0,
+      "completed": 12709,
+      "classes": {
+        "query": 2549,
+        "contract": 2538,
+        "transition": 5084,
+        "escalation": 2538
+      }
+    },
+    {
+      "index": 1,
+      "completed": 12966,
+      "classes": {
+        "query": 2591,
+        "escalation": 2593,
+        "contract": 2598,
+        "transition": 5184
+      }
+    },
+    {
+      "index": 2,
+      "completed": 12906,
+      "classes": {
+        "transition": 5163,
+        "contract": 2583,
+        "escalation": 2581,
+        "query": 2579
+      }
+    },
+    {
+      "index": 3,
+      "completed": 12906,
+      "classes": {
+        "transition": 5154,
+        "query": 2580,
+        "contract": 2585,
+        "escalation": 2587
+      }
+    },
+    {
+      "index": 4,
+      "completed": 12878,
+      "classes": {
+        "contract": 2577,
+        "transition": 5164,
+        "escalation": 2568,
+        "query": 2569
+      }
+    },
+    {
+      "index": 5,
+      "completed": 12912,
+      "classes": {
+        "query": 2591,
+        "escalation": 2581,
+        "contract": 2578,
+        "transition": 5162
+      }
+    },
+    {
+      "index": 6,
+      "completed": 12899,
+      "classes": {
+        "transition": 5164,
+        "contract": 2566,
+        "query": 2591,
+        "escalation": 2578
+      }
+    },
+    {
+      "index": 7,
+      "completed": 12888,
+      "classes": {
+        "transition": 5151,
+        "escalation": 2577,
+        "contract": 2593,
+        "query": 2567
+      }
+    },
+    {
+      "index": 8,
+      "completed": 12934,
+      "classes": {
+        "transition": 5162,
+        "escalation": 2599,
+        "contract": 2591,
+        "query": 2582
+      }
+    },
+    {
+      "index": 9,
+      "completed": 12980,
+      "classes": {
+        "query": 2604,
+        "transition": 5207,
+        "contract": 2591,
+        "escalation": 2578
+      }
+    }
+  ],
+  "full_cohort": true,
+  "clients": 400,
+  "warmup_seconds": 60,
+  "steady_seconds": 600,
+  "steady_errors": {},
+  "all_phase_exchange_errors": {
+    "postcheck:TimeoutError:": 2,
+    "postcheck:RemoteDisconnected:Remote end closed connection without response": 13,
+    "postcheck:AttributeError:'NoneType' object has no attribute 'close'": 1
+  },
+  "postconditions": {
+    "final_task_snapshot": 243,
+    "audit_complete_clients": 227,
+    "post_budget_not_observed": 157
+  },
+  "writer_finalized": true,
+  "post_validator_pool_stopped": true,
+  "metrics_verdict": "PASS",
+  "independent_conclusion": "NP",
+  "formal_acceptance": false,
+  "user_waived_preparation_does_not_waive_measurement_or_postconditions": true,
+  "result_sha256": "67c50a428a5ac7f6a60d4db86b6b3b9b2c0c4ef1ca6d29cad7ab7f4c3c68f4d8",
+  "raw_sha256": "6fbfdb4ef37e83561b97b792219b0a6640a8d04dec040c86e18fe8825bca2a8a",
+  "backup_bytes": 238736009,
+  "backup_sha256": "36fd706bf7fed1d5c2028238b86690ea7f5f5ef7edcedaaedf8aba05a7ce5e9a",
+  "backup_authenticated_files": 19,
+  "offline_only_after_recovery": true,
+  "new_SUT_requests": 0
+}

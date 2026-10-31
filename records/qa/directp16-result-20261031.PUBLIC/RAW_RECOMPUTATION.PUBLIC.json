@@ -1,0 +1,154 @@
+{
+  "status": "RAW_METRICS_RECOMPUTED_EXACTLY_MATCH_RESULT",
+  "result_sha256": "67c50a428a5ac7f6a60d4db86b6b3b9b2c0c4ef1ca6d29cad7ab7f4c3c68f4d8",
+  "raw_sha256": "6fbfdb4ef37e83561b97b792219b0a6640a8d04dec040c86e18fe8825bca2a8a",
+  "classes": {
+    "query": {
+      "count": 25806,
+      "p95_ms": 57.388297
+    },
+    "transition": {
+      "count": 51597,
+      "p95_ms": 77.296637
+    },
+    "contract": {
+      "count": 25801,
+      "p95_ms": 99.256754
+    },
+    "escalation": {
+      "count": 25785,
+      "p95_ms": 81.441719
+    }
+  },
+  "minute_buckets": [
+    {
+      "index": 0,
+      "completed": 12709,
+      "classes": {
+        "transition": 5084,
+        "query": 2549,
+        "escalation": 2538,
+        "contract": 2538
+      }
+    },
+    {
+      "index": 1,
+      "completed": 12966,
+      "classes": {
+        "escalation": 2593,
+        "contract": 2598,
+        "transition": 5184,
+        "query": 2591
+      }
+    },
+    {
+      "index": 2,
+      "completed": 12906,
+      "classes": {
+        "transition": 5163,
+        "escalation": 2581,
+        "query": 2579,
+        "contract": 2583
+      }
+    },
+    {
+      "index": 3,
+      "completed": 12906,
+      "classes": {
+        "query": 2580,
+        "transition": 5154,
+        "contract": 2585,
+        "escalation": 2587
+      }
+    },
+    {
+      "index": 4,
+      "completed": 12878,
+      "classes": {
+        "escalation": 2568,
+        "transition": 5164,
+        "contract": 2577,
+        "query": 2569
+      }
+    },
+    {
+      "index": 5,
+      "completed": 12912,
+      "classes": {
+        "escalation": 2581,
+        "query": 2591,
+        "contract": 2578,
+        "transition": 5162
+      }
+    },
+    {
+      "index": 6,
+      "completed": 12899,
+      "classes": {
+        "escalation": 2578,
+        "transition": 5164,
+        "contract": 2566,
+        "query": 2591
+      }
+    },
+    {
+      "index": 7,
+      "completed": 12888,
+      "classes": {
+        "query": 2567,
+        "escalation": 2577,
+        "contract": 2593,
+        "transition": 5151
+      }
+    },
+    {
+      "index": 8,
+      "completed": 12934,
+      "classes": {
+        "contract": 2591,
+        "query": 2582,
+        "transition": 5162,
+        "escalation": 2599
+      }
+    },
+    {
+      "index": 9,
+      "completed": 12980,
+      "classes": {
+        "query": 2604,
+        "transition": 5207,
+        "contract": 2591,
+        "escalation": 2578
+      }
+    }
+  ],
+  "steady_errors": {},
+  "all_exchange_count": 149517,
+  "phase_exchange_counts": {
+    "warmup": 15422,
+    "steady": 128989,
+    "postcheck": 5106
+  },
+  "all_exchange_errors": {
+    "postcheck:TimeoutError:": 2,
+    "postcheck:RemoteDisconnected:Remote end closed connection without response": 13,
+    "postcheck:AttributeError:'NoneType' object has no attribute 'close'": 1
+  },
+  "client_stop_errors": {
+    "ValueError:TimeoutError:": 2,
+    "ValueError:RemoteDisconnected:Remote end closed connection without response": 13,
+    "ValueError:AttributeError:'NoneType' object has no attribute 'close'": 1
+  },
+  "steady_client_completion_min": 272,
+  "steady_client_completion_max": 377,
+  "full_cohort": true,
+  "postconditions": {
+    "final_task_snapshot": 243,
+    "audit_complete_clients": 227,
+    "post_budget_not_observed": 157
+  },
+  "metrics_verdict": "PASS",
+  "independent_conclusion": "NP",
+  "classification": "DIAGNOSTIC_PRESSURE_NOT_FORMAL_ACCEPTANCE",
+  "formal_acceptance": false
+}

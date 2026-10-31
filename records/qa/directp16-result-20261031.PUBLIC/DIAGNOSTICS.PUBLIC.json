@@ -1,0 +1,478 @@
+{
+  "status": "SEPARATE_OBSERVATIONAL_DIAGNOSTICS_NOT_MEASUREMENT_FILTER",
+  "universe_steady_requests": 128989,
+  "missing_is": "UNKNOWN_NOT_ZERO",
+  "unknown_counts": {},
+  "diag_incomplete_values": {
+    "0": 128989
+  },
+  "worker_pid_counts": {
+    "36": 22363,
+    "72": 26201,
+    "31": 16273,
+    "26": 1093,
+    "14": 7706,
+    "10": 7074,
+    "43": 486,
+    "38": 20324,
+    "63": 11785,
+    "56": 109,
+    "49": 111,
+    "15": 8457,
+    "13": 3679,
+    "44": 2390,
+    "42": 729,
+    "12": 207,
+    "46": 1,
+    "34": 1
+  },
+  "app_ms": {
+    "count": 128989,
+    "min": 3.228,
+    "p50": 14.08,
+    "p95": 32.08,
+    "max": 138.314,
+    "mean": 14.183453976695686
+  },
+  "paired_e2e_minus_app_ms": {
+    "count": 128989,
+    "min": 1.034757,
+    "p50": 43.737039,
+    "p95": 88.951085,
+    "max": 126.452923,
+    "mean": 35.81964204946933
+  },
+  "paired_e2e_ms": {
+    "count": 128989,
+    "min": 4.573889,
+    "p50": 56.064922,
+    "p95": 94.211498,
+    "max": 190.525936,
+    "mean": 50.003096026165025
+  },
+  "spans": {
+    "app": {
+      "count": 128989,
+      "min": 3.228,
+      "p50": 14.08,
+      "p95": 32.08,
+      "max": 138.314,
+      "mean": 14.183453976695686,
+      "missing_unknown_count": 0,
+      "unit": "ms"
+    },
+    "diag-business-dispatch-calls": {
+      "count": 128989,
+      "min": 1.0,
+      "p50": 1.0,
+      "p95": 1.0,
+      "max": 1.0,
+      "mean": 1.0,
+      "missing_unknown_count": 0,
+      "unit": "numeric_desc_count"
+    },
+    "diag-business-dispatch-cpu": {
+      "count": 128989,
+      "min": 0.383,
+      "p50": 0.539,
+      "p95": 3.067,
+      "max": 30.165,
+      "mean": 1.0276059664002357,
+      "missing_unknown_count": 0,
+      "unit": "ms"
+    },
+    "diag-business-dispatch-wall": {
+      "count": 128989,
+      "min": 0.431,
+      "p50": 0.819,
+      "p95": 4.665,
+      "max": 41.138,
+      "mean": 1.4807594368512045,
+      "missing_unknown_count": 0,
+      "unit": "ms"
+    },
+    "diag-db-acquire-calls": {
+      "count": 128989,
+      "min": 5.0,
+      "p50": 24.0,
+      "p95": 27.0,
+      "max": 27.0,
+      "mean": 17.798347145880655,
+      "missing_unknown_count": 0,
+      "unit": "numeric_desc_count"
+    },
+    "diag-db-acquire-cpu": {
+      "count": 128989,
+      "min": 0.105,
+      "p50": 0.4,
+      "p95": 0.567,
+      "max": 29.411,
+      "mean": 0.3388032390358868,
+      "missing_unknown_count": 0,
+      "unit": "ms"
+    },
+    "diag-db-acquire-wall": {
+      "count": 128989,
+      "min": 0.108,
+      "p50": 0.439,
+      "p95": 2.172,
+      "max": 88.219,
+      "mean": 0.689883377652358,
+      "missing_unknown_count": 0,
+      "unit": "ms"
+    },
+    "diag-db-close-calls": {
+      "count": 128989,
+      "min": 1.0,
+      "p50": 2.0,
+      "p95": 2.0,
+      "max": 2.0,
+      "mean": 1.5999116203707293,
+      "missing_unknown_count": 0,
+      "unit": "numeric_desc_count"
+    },
+    "diag-db-close-cpu": {
+      "count": 128989,
+      "min": 0.009,
+      "p50": 0.024,
+      "p95": 0.03,
+      "max": 0.08,
+      "mean": 0.020207335509229468,
+      "missing_unknown_count": 0,
+      "unit": "ms"
+    },
+    "diag-db-close-wall": {
+      "count": 128989,
+      "min": 0.009,
+      "p50": 0.024,
+      "p95": 0.03,
+      "max": 0.079,
+      "mean": 0.0202165766073076,
+      "missing_unknown_count": 0,
+      "unit": "ms"
+    },
+    "diag-db-commit-calls": {
+      "count": 128989,
+      "min": 1.0,
+      "p50": 2.0,
+      "p95": 2.0,
+      "max": 2.0,
+      "mean": 1.5999116203707293,
+      "missing_unknown_count": 0,
+      "unit": "numeric_desc_count"
+    },
+    "diag-db-commit-cpu": {
+      "count": 128989,
+      "min": 0.1,
+      "p50": 0.208,
+      "p95": 0.336,
+      "max": 0.741,
+      "mean": 0.20419441192659837,
+      "missing_unknown_count": 0,
+      "unit": "ms"
+    },
+    "diag-db-commit-wall": {
+      "count": 128989,
+      "min": 0.114,
+      "p50": 1.347,
+      "p95": 3.128,
+      "max": 33.299,
+      "mean": 1.308739078526076,
+      "missing_unknown_count": 0,
+      "unit": "ms"
+    },
+    "diag-db-execute_fetch-calls": {
+      "count": 128989,
+      "min": 5.0,
+      "p50": 24.0,
+      "p95": 27.0,
+      "max": 27.0,
+      "mean": 17.798347145880655,
+      "missing_unknown_count": 0,
+      "unit": "numeric_desc_count"
+    },
+    "diag-db-execute_fetch-cpu": {
+      "count": 128989,
+      "min": 1.162,
+      "p50": 5.504,
+      "p95": 7.385,
+      "max": 41.748,
+      "mean": 4.414900673700858,
+      "missing_unknown_count": 0,
+      "unit": "ms"
+    },
+    "diag-db-execute_fetch-wall": {
+      "count": 128989,
+      "min": 1.303,
+      "p50": 6.815,
+      "p95": 20.226,
+      "max": 83.559,
+      "mean": 7.7508414360914495,
+      "missing_unknown_count": 0,
+      "unit": "ms"
+    },
+    "diag-db-statements": {
+      "count": 128989,
+      "min": 5.0,
+      "p50": 24.0,
+      "p95": 27.0,
+      "max": 27.0,
+      "mean": 17.798347145880655,
+      "missing_unknown_count": 0,
+      "unit": "numeric_desc_count"
+    },
+    "diag-dispatch_wait-wall": {
+      "count": 128989,
+      "min": 0.149,
+      "p50": 0.207,
+      "p95": 0.532,
+      "max": 32.481,
+      "mean": 0.2672804735287505,
+      "missing_unknown_count": 0,
+      "unit": "ms"
+    },
+    "diag-handle-calls": {
+      "count": 128989,
+      "min": 1.0,
+      "p50": 1.0,
+      "p95": 1.0,
+      "max": 1.0,
+      "mean": 1.0,
+      "missing_unknown_count": 0,
+      "unit": "numeric_desc_count"
+    },
+    "diag-handle-cpu": {
+      "count": 128989,
+      "min": 3.118,
+      "p50": 11.491,
+      "p95": 14.882,
+      "max": 50.914,
+      "mean": 9.337506973462853,
+      "missing_unknown_count": 0,
+      "unit": "ms"
+    },
+    "diag-handle-wall": {
+      "count": 128989,
+      "min": 3.275,
+      "p50": 14.141,
+      "p95": 32.145,
+      "max": 138.384,
+      "mean": 14.245408763537975,
+      "missing_unknown_count": 0,
+      "unit": "ms"
+    },
+    "diag-request-validate-calls": {
+      "count": 128989,
+      "min": 1.0,
+      "p50": 1.0,
+      "p95": 1.0,
+      "max": 1.0,
+      "mean": 1.0,
+      "missing_unknown_count": 0,
+      "unit": "numeric_desc_count"
+    },
+    "diag-request-validate-cpu": {
+      "count": 128989,
+      "min": 0.11,
+      "p50": 0.417,
+      "p95": 0.792,
+      "max": 28.793,
+      "mean": 0.43466160680368093,
+      "missing_unknown_count": 0,
+      "unit": "ms"
+    },
+    "diag-request-validate-wall": {
+      "count": 128989,
+      "min": 0.11,
+      "p50": 0.417,
+      "p95": 0.792,
+      "max": 28.793,
+      "mean": 0.4347295428292335,
+      "missing_unknown_count": 0,
+      "unit": "ms"
+    },
+    "diag-response-encode-calls": {
+      "count": 128989,
+      "min": 1.0,
+      "p50": 1.0,
+      "p95": 1.0,
+      "max": 1.0,
+      "mean": 1.0,
+      "missing_unknown_count": 0,
+      "unit": "numeric_desc_count"
+    },
+    "diag-response-encode-cpu": {
+      "count": 128989,
+      "min": 0.024,
+      "p50": 0.042,
+      "p95": 0.053,
+      "max": 0.411,
+      "mean": 0.039853313073207795,
+      "missing_unknown_count": 0,
+      "unit": "ms"
+    },
+    "diag-response-encode-wall": {
+      "count": 128989,
+      "min": 0.024,
+      "p50": 0.042,
+      "p95": 0.053,
+      "max": 0.411,
+      "mean": 0.03985446821046756,
+      "missing_unknown_count": 0,
+      "unit": "ms"
+    },
+    "diag-runtime-claim-calls": {
+      "count": 77382,
+      "min": 1.0,
+      "p50": 1.0,
+      "p95": 1.0,
+      "max": 1.0,
+      "mean": 1.0,
+      "missing_unknown_count": 51607,
+      "unit": "numeric_desc_count"
+    },
+    "diag-runtime-claim-cpu": {
+      "count": 77382,
+      "min": 2.152,
+      "p50": 2.671,
+      "p95": 3.583,
+      "max": 36.972,
+      "mean": 2.783382272363082,
+      "missing_unknown_count": 51607,
+      "unit": "ms"
+    },
+    "diag-runtime-claim-wall": {
+      "count": 77382,
+      "min": 2.385,
+      "p50": 3.052,
+      "p95": 9.491,
+      "max": 42.603,
+      "mean": 4.2661655294512935,
+      "missing_unknown_count": 51607,
+      "unit": "ms"
+    },
+    "diag-runtime-execute-calls": {
+      "count": 128989,
+      "min": 1.0,
+      "p50": 1.0,
+      "p95": 1.0,
+      "max": 1.0,
+      "mean": 1.0,
+      "missing_unknown_count": 0,
+      "unit": "numeric_desc_count"
+    },
+    "diag-runtime-execute-cpu": {
+      "count": 128989,
+      "min": 2.814,
+      "p50": 10.755,
+      "p95": 13.92,
+      "max": 49.898,
+      "mean": 8.554753870485081,
+      "missing_unknown_count": 0,
+      "unit": "ms"
+    },
+    "diag-runtime-execute-wall": {
+      "count": 128989,
+      "min": 2.973,
+      "p50": 13.37,
+      "p95": 31.225,
+      "max": 137.353,
+      "mean": 13.462311235841817,
+      "missing_unknown_count": 0,
+      "unit": "ms"
+    },
+    "diag-runtime-locked_scope-calls": {
+      "count": 77382,
+      "min": 1.0,
+      "p50": 1.0,
+      "p95": 1.0,
+      "max": 1.0,
+      "mean": 1.0,
+      "missing_unknown_count": 51607,
+      "unit": "numeric_desc_count"
+    },
+    "diag-runtime-locked_scope-cpu": {
+      "count": 77382,
+      "min": 1.946,
+      "p50": 2.645,
+      "p95": 3.813,
+      "max": 36.309,
+      "mean": 2.749267180998165,
+      "missing_unknown_count": 51607,
+      "unit": "ms"
+    },
+    "diag-runtime-locked_scope-wall": {
+      "count": 77382,
+      "min": 2.174,
+      "p50": 3.249,
+      "p95": 9.258,
+      "max": 49.274,
+      "mean": 4.137414036856117,
+      "missing_unknown_count": 51607,
+      "unit": "ms"
+    },
+    "diag-runtime-prepare-calls": {
+      "count": 77382,
+      "min": 1.0,
+      "p50": 1.0,
+      "p95": 1.0,
+      "max": 1.0,
+      "mean": 1.0,
+      "missing_unknown_count": 51607,
+      "unit": "numeric_desc_count"
+    },
+    "diag-runtime-prepare-cpu": {
+      "count": 77382,
+      "min": 3.747,
+      "p50": 4.797,
+      "p95": 6.246,
+      "max": 40.08,
+      "mean": 4.924952896022331,
+      "missing_unknown_count": 51607,
+      "unit": "ms"
+    },
+    "diag-runtime-prepare-wall": {
+      "count": 77382,
+      "min": 4.53,
+      "p50": 6.072,
+      "p95": 16.705,
+      "max": 105.351,
+      "mean": 8.044204634152646,
+      "missing_unknown_count": 51607,
+      "unit": "ms"
+    },
+    "diag-schema-validate-calls": {
+      "count": 128989,
+      "min": 3.0,
+      "p50": 6.0,
+      "p95": 7.0,
+      "max": 7.0,
+      "mean": 4.999635627844235,
+      "missing_unknown_count": 0,
+      "unit": "numeric_desc_count"
+    },
+    "diag-schema-validate-cpu": {
+      "count": 128989,
+      "min": 0.833,
+      "p50": 1.637,
+      "p95": 2.065,
+      "max": 29.768,
+      "mean": 1.5010424067168517,
+      "missing_unknown_count": 0,
+      "unit": "ms"
+    },
+    "diag-schema-validate-wall": {
+      "count": 128989,
+      "min": 0.833,
+      "p50": 1.637,
+      "p95": 2.065,
+      "max": 29.797,
+      "mean": 1.50065041205064,
+      "missing_unknown_count": 0,
+      "unit": "ms"
+    }
+  },
+  "all_measurement_requests_retained": true,
+  "no_independent_percentile_subtraction": true,
+  "missing_span_interpretation": "Absent span is UNKNOWN/not observed; do not impute 0 or infer execution. Durations overlap and are not additive."
+}
