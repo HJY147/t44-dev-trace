@@ -4,7 +4,7 @@
   "producer_schema": "T44_FAST_BOOTSTRAP_V1",
   "output_schema": "DIRECT_INPUTS_V1",
   "pressure_classification": "DIAGNOSTIC_PRESSURE_NOT_FORMAL_ACCEPTANCE",
-  "local_tests": 7,
+  "local_tests": 8,
   "synthetic_http_requests": 123,
   "synthetic_task_rows": 8000,
   "synthetic_current_cohort_ids": 800,
@@ -14,16 +14,16 @@
   "product_source_changed": false,
   "files": {
     "bootstrap.py": {
-      "sha256": "ba0c8ab216dd643ed83a27d2ce4479b459ad998451c9530238f2134658dbd72d",
-      "bytes": 14234
+      "sha256": "cc94bea2ba0699cf0c81b3cf5ac6c5ffe3277ee2a6b78e100885cee7c5475d27",
+      "bytes": 14254
     },
     "runtime_support.py": {
       "sha256": "bec01e4038ef4ca5d6ba6d048e96fb8c7cb32933f705fd65a6995d24d9753170",
       "bytes": 9336
     },
     "offline_checks.py": {
-      "sha256": "c0b69af265dba97e81270fcbf2ea08820c2c61126de9736c0a9dba27be53d08b",
-      "bytes": 14159
+      "sha256": "21fd2c97d673ca01a493cd8062999edc5c14096ed59278e4b291d3b0cb98adf5",
+      "bytes": 15192
     },
     "OFFLINE.log": {
       "sha256": "39be1b9019b48c3e9cc5046c06af983fe5bdcdd680de6a8e2d0dacbf2d1e2f37",
@@ -32,11 +32,16 @@
     "INTERFACE.md": {
       "sha256": "c12c3667e9a17645c312e94c52a7f71f4f69aece18b227d843ba71982cb26988",
       "bytes": 5035
+    },
+    "CANONICAL_FIX.log": {
+      "sha256": "d627e8f3ee372e3d842084c2cac565235b04841b2239f04abfe28ab4892fa42b",
+      "bytes": 1136
     }
   },
   "network_routing": {
     "gateway_dns": "tls-gateway",
     "container_tls_port": 8443,
     "origin_sni_and_ca": "unchanged original packet origin/CA"
-  }
+  },
+  "canonical_encoding": "UTF-8 ensure_ascii=False, original frozen binding algorithm; old ASCII failure preserved"
 }

@@ -26,7 +26,7 @@ def need(value, code):
 
 
 def canonical(value):
-    return (json.dumps(value, sort_keys=True, separators=(',', ':'), allow_nan=False) + '\n').encode()
+    return (json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(',', ':'), allow_nan=False) + '\n').encode()
 
 
 def sha(raw):
