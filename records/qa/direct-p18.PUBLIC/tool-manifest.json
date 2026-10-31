@@ -1,0 +1,41 @@
+{
+  "schema": "753-tool-capsule-v1",
+  "tool_revision": "posttools-v1.2-p18-identity-offline-candidate",
+  "source_candidate": "bcec3326b40814fdb1922bbfea7c29473b47ba47",
+  "spec_freeze_sha256": "00e52d9c774a43679071deea5bb14c6e1f654b3529f811faa5b409aa94bd805e",
+  "release_freeze_sha256": "495c35d47e8caeb00ae18636028de50ab1a414d218d678dfa9339a6c5eaa94c2",
+  "archive_sha256": "ac24f7f6371c0c06a39480a0e526cae09e3f3f826d257bf6b920208ae750796c",
+  "capsule_sha256": "b310bff2d917c8905a180dc727c01a762ccca461781a56cd44b13adae6974481",
+  "capsule_bytes": 84674,
+  "files": {
+    "runtime.py": "9cf747e308969ceba37e2cfcfa6591def45e118ad928c4f310f57b6ecf37542a",
+    "functional.py": "0e9245fc9cbc1f801907a47ec0aa8a00695358f09f5332f661fa13742c0b4b64",
+    "openapi.json": "6f07cb53a7d9314240ba93ec490325d3c63dca7e4d077021047e216e7b26f478",
+    "backup.py": "be8827eaf3b655167404c5cdbbc4ba3229848176a58f958211772f888b346bed",
+    "verify_backup.py": "382fe87da1d857a1532f86b871d07f36fdc6d13ab37d47639eccebc9d7709426",
+    "verify_raw.py": "7658f324aeb57ad66ae4a76515e0d7abfca936609a62ba218a5ad1094bb3a742",
+    "backup.key": "8265be178bed4550334657b59687eaab06ff5740c3ce17c0877c45e7db2cfd8e",
+    "direct_boot.py": "7e9bfc429873da7c4cc7a04ac5e34b0cfd4978f5952696b3e3de5a42be0df42a",
+    "post_runtime.py": "feffb80fe4074204d88f63c5ca7ebdecfae4b613caf16d1985ac7aeb7dad726e",
+    "compiled_post.py": "ff95056243b315f6e12a5e2e163b40fe0c45302e2b7563489af8c4d5eade8d6d"
+  },
+  "runtime_core_sha256": "9cf747e308969ceba37e2cfcfa6591def45e118ad928c4f310f57b6ecf37542a",
+  "functional_sha256": "0e9245fc9cbc1f801907a47ec0aa8a00695358f09f5332f661fa13742c0b4b64",
+  "qa_adapter_sha256": "44451456d63d94b612924d215ece822dfce127f4cc67926294f33b643fd14cf3",
+  "entry_sha256": "d15874c477fef0d92bc68ab77802a5354d15be237c853621b56467005c20d43e",
+  "recipient_public_key_der_sha256": "385f2632f9c82260639db1c0994ebf951a9c1e9efa97a2cd5249b190220f5e66",
+  "SUT_requests": 0,
+  "run_id": "r30posttools18",
+  "workspace": "/root/t44-final-20261101/QA753_DIRECT_P18",
+  "formal_acceptance_authorized": false,
+  "diagnostic_mode": "USER_REQUESTED_DIRECT_PRESSURE",
+  "old_admission_protocol_used": false,
+  "effective_runtime": {
+    "base_sha256": "9cf747e308969ceba37e2cfcfa6591def45e118ad928c4f310f57b6ecf37542a",
+    "post_sha256": "feffb80fe4074204d88f63c5ca7ebdecfae4b613caf16d1985ac7aeb7dad726e",
+    "compiled_schema_sha256": "ff95056243b315f6e12a5e2e163b40fe0c45302e2b7563489af8c4d5eade8d6d",
+    "boot_sha256": "7e9bfc429873da7c4cc7a04ac5e34b0cfd4978f5952696b3e3de5a42be0df42a"
+  },
+  "effective_runtime_binding_sha256": "af93a6ffd956c0a2ae86362a6a0e13db9be589e8cfde7335195020cc3a7401b7",
+  "status": "OFFLINE_ONLY_PENDING_FRESH_INDEPENDENT_TOOL_REVIEW"
+}

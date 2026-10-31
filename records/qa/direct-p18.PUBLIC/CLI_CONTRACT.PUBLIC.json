@@ -1,0 +1,60 @@
+{
+  "schema": "DIRECT_P17_PUBLIC_CLI_V1",
+  "run_id": "r30posttools18",
+  "material_run_id": "r30materialposttools18",
+  "workspace": "/root/t44-final-20261101/QA753_DIRECT_P18",
+  "remote_root": "/root/t44-direct-p18",
+  "install_argv": [
+    "sh",
+    "{W}/public/INSTALL_DIRECT.sh",
+    "{W}",
+    "/root/t44-r9/r29-load-key-01/load-only-private.pem"
+  ],
+  "launch_argv": [
+    "sh",
+    "{W}/public/DIRECT_PRESSURE.sh",
+    "{W}",
+    "{OPENED}/inputs/session.private.json"
+  ],
+  "input_kind": "FILE",
+  "direct_shell_sha256": "f69ff75d8db633d3e50e62bf4d308d2552de4dd5f556e14924bfbf04c8205383",
+  "install_sha256": "b71a084b7ba27caa6148632916fe3915ee70f67ce4ca59c512774daecaaa4a25",
+  "observe_argv": [
+    "python3",
+    "{W}/public/OBSERVE_DIRECT.py",
+    "{W}",
+    "r30posttools18"
+  ],
+  "phase_path": "{W}/results/r30posttools18.phase.json",
+  "once_marker": "{W}/runs/r30posttools18/consumed.json",
+  "exit_path": "{W}/operator-channel/r30posttools18/exit.PUBLIC.json",
+  "outer_conclusion": "{W}/runs/r30posttools18/DIRECT_CONCLUSION.PUBLIC.json",
+  "backup_path": "/root/t44-sealed-directp18-tmpfs/r30posttools18.753backup",
+  "backup_receipt_path": "/root/t44-sealed-directp18-tmpfs/r30posttools18.753backup.receipt.json",
+  "automatic_seal": true,
+  "seal_is_automatic_do_not_call_twice": true,
+  "external_detach_supported": true,
+  "detach_logs_must_be_outside_workspace": true,
+  "download_backup_even_on_nonzero_exit": true,
+  "source_candidate": "bcec3326b40814fdb1922bbfea7c29473b47ba47",
+  "effective_runtime": {
+    "base_sha256": "9cf747e308969ceba37e2cfcfa6591def45e118ad928c4f310f57b6ecf37542a",
+    "post_sha256": "feffb80fe4074204d88f63c5ca7ebdecfae4b613caf16d1985ac7aeb7dad726e",
+    "compiled_schema_sha256": "ff95056243b315f6e12a5e2e163b40fe0c45302e2b7563489af8c4d5eade8d6d",
+    "boot_sha256": "7e9bfc429873da7c4cc7a04ac5e34b0cfd4978f5952696b3e3de5a42be0df42a"
+  },
+  "effective_runtime_binding_sha256": "af93a6ffd956c0a2ae86362a6a0e13db9be589e8cfde7335195020cc3a7401b7",
+  "tool_manifest_sha256": "ded4ba4124ad191664028f382df3491d88453e160f354f90e3eb17a6b6ba0a96",
+  "legacy_profile_approval_or_grant_required": false,
+  "current_environment_verified": false,
+  "Linux_resource_validation": "PENDING_LOCAL_ATTEMPT_NOT_CLOUD",
+  "classification": "DIAGNOSTIC_PRESSURE_NOT_FORMAL_ACCEPTANCE",
+  "bootstrap_run_id": "r30posttools18",
+  "producer_expected_run_id": "r30posttools18",
+  "packet_run_id_policy": "DIRECT_INPUTS_V1.run_id equals cohort RUN; material_run_id is transport binding metadata only; no legacy NEUTRAL distinct-run rule",
+  "material_id_scope": "transport_binding_only",
+  "producer_schema": "T44_FAST_BOOTSTRAP_V2",
+  "current_preparation_status": "PREPARING_LOCAL_FULL_ROUND_RUNNING_DO_NOT_NOTIFY_START",
+  "producer_source_sha256": "c7e77a5f6d0c2a3c2cf4792ff599e84124387d932307196704cf10b5dfdfd42c",
+  "producer_support_sha256": "ebbf9a15b8ea9dd8f4294b6d48aacd9f603b2ab9881cce797e4945f09711b77e"
+}
